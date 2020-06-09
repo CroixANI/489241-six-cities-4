@@ -1,11 +1,13 @@
 import React from "react";
-import Main from "../main/main.js"
+import Main from "../main/main.js";
 
-const App = () => {
+const App = (props) => {
+  // eslint-disable-next-line react/prop-types
+  const {offersCount} = props;
+
   return (
-    <Main />
-  )
+    <Main offersCount={offersCount} />
+  );
 };
 
 export default App;
-
