@@ -9,7 +9,8 @@ module.exports = {
   },
   devServer: {
     contentBase: dirPath,
-    open: false,
+    open: true,
+    inline: false,
     port: 1337
   },
   module: {
