@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Ничипорович](https://up.htmlacademy.ru/react/4/user/489241).
-* Наставник: `Неизвестно`.
+* Наставник: [Богдан Волик](https://htmlacademy.ru/profile/id997699).
 
 ---
 
