@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 /* eslint-disable react/prop-types */
 const Main = (props) => {
-  const {offersCount, titles} = props;
+  const {titles} = props;
 
   return (
     <>
@@ -76,7 +77,7 @@ const Main = (props) => {
 
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{offersCount} places to stay in Amsterdam</b>
+                <b className="places__found">{titles.length} places to stay in Amsterdam</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by</span>
                   <span className="places__sorting-type" tabIndex="0">
@@ -146,6 +147,12 @@ const Main = (props) => {
       </div>
     </>
   );
+};
+
+Main.propTypes = {
+  titles: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
 };
 
 export default Main;
