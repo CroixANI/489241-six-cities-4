@@ -152,6 +152,17 @@ Main.propTypes = {
   titles: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
+  offers: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        city: PropTypes.string.isRequired,
+        apartmentType: PropTypes.string.isRequired,
+        offerTag: PropTypes.string.isRequired,
+        isFavorite: PropTypes.bool.isRequired,
+      })
+  ),
 };
 
 export default Main;
