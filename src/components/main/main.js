@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-/* eslint-disable react/prop-types */
 const Main = (props) => {
   const {titles} = props;
 
