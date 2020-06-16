@@ -3,10 +3,12 @@ import Main from "../main/main.js";
 import PropTypes from "prop-types";
 
 const App = (props) => {
-  const {titles} = props;
+  const {
+    titles,
+    onOfferTitleClick: handleOfferTitleClick} = props;
 
   return (
-    <Main titles={titles} />
+    <Main titles={titles} onOfferTitleClick={handleOfferTitleClick} />
   );
 };
 
@@ -14,6 +16,7 @@ App.propTypes = {
   titles: PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
+  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
