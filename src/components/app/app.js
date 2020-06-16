@@ -3,12 +3,10 @@ import Main from "../main/main.js";
 import PropTypes from "prop-types";
 
 const App = (props) => {
-  const {
-    titles,
-    onOfferTitleClick: handleOfferTitleClick} = props;
+  const {titles, onOfferTitleClick} = props;
 
   return (
-    <Main titles={titles} onOfferTitleClick={handleOfferTitleClick} />
+    <Main titles={titles} onOfferTitleClick={onOfferTitleClick} />
   );
 };
 

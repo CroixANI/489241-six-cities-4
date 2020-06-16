@@ -10,9 +10,7 @@ const offers = [
   `Wood and stone place`,
 ];
 
-const handleOfferTitleClick => {};
-
 ReactDOM.render(
-    <App titles={offers} onOfferTitleClick={handleOfferTitleClick} />,
+    <App titles={offers} onOfferTitleClick={() => {}} />,
     document.querySelector(`#root`)
 );

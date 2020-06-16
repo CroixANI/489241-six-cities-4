@@ -13,7 +13,7 @@ const titles = [
 
 it(`Render Main component`, () => {
   const tree = renderer
-    .create(<Main titles={titles} />)
+    .create(<Main titles={titles} onOfferTitleClick={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
