@@ -1,4 +1,5 @@
-const path = require("path");
+const path = require(`path`);
+// eslint-disable-next-line no-undef
 const dirPath = path.join(__dirname, `public`);
 
 module.exports = {
