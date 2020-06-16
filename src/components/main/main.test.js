@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Main from './Main.js';
+import Main from './main';
 
 const titles = [
   `Beautiful & luxurious apartment at great location`,
