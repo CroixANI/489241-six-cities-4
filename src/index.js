@@ -11,6 +11,6 @@ const offers = [
 ];
 
 ReactDOM.render(
-    <App titles={offers} />,
+    <App titles={offers} onOfferTitleClick={() => {}} />,
     document.querySelector(`#root`)
 );
