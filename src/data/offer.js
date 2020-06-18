@@ -1,5 +1,5 @@
 export default class Offer {
-  constructor(id, title, price, rating, city, apartmentType, offerTag, isBookmarked) {
+  constructor(id, title, price, rating, city, apartmentType, offerTag, isBookmarked, mainImageUrl) {
     this.id = id;
     this.title = title;
     this.price = price;
@@ -8,5 +8,6 @@ export default class Offer {
     this.apartmentType = apartmentType;
     this.offerTag = offerTag;
     this.isBookmarked = isBookmarked;
+    this.mainImageUrl = mainImageUrl;
   }
 }
