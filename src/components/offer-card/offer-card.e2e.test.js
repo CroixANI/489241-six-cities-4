@@ -19,7 +19,7 @@ describe(`Offer Card Component`, () => {
 
     const card = offerCard.find(`.place-card`);
 
-    card.simulate(`onMouseOver`);
+    card.prop(`onMouseOver`)();
 
     expect(onMouseOver.mock.calls.length).toBe(1);
   });
