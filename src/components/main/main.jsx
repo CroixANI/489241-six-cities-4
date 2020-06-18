@@ -95,9 +95,6 @@ const Main = (props) => {
                 <div className="cities__places-list places__list tabs__content">
 
                   {titles.map((title, index) => (
-                    // Будьте внимательны! Index элемента для key
-                    // применяется только для демонстрации.
-                    // В реальном приложении используйте идентификаторы.
                     <article key={index} className="cities__place-card place-card">
                       <div className="place-card__mark">
                         <span>Premium</span>
@@ -155,6 +152,7 @@ Main.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
@@ -162,6 +160,7 @@ Main.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isFavorite: PropTypes.bool.isRequired,
+        mainImageUrl: PropTypes.string.isRequired
       })
   ),
 };

@@ -1,6 +1,7 @@
 import React from "react";
-import Main from "../main/main.js";
 import PropTypes from "prop-types";
+
+import Main from "../main/main.jsx";
 
 const App = (props) => {
   const {titles, onOfferTitleClick} = props;
@@ -17,6 +18,7 @@ App.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
@@ -24,6 +26,7 @@ App.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isFavorite: PropTypes.bool.isRequired,
+        mainImageUrl: PropTypes.string.isRequired
       })
   ),
 };
