@@ -3,6 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import App from './app';
+import OffersList from '../offers-list/offers-list.jsx';
 import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
@@ -11,16 +12,14 @@ Enzyme.configure({
 
 describe(`App Component`, () => {
   it(`Should offer title be clicked`, () => {
-    const onOfferTitleClick = jest.fn();
-
     const appComponent = mount(
         <App offers={OFFERS_TESTS} />
     );
 
-    const allTitles = appComponent.find(`h2.place-card__name`);
+    const card = appComponent.find(`.place-card`).first();
 
-    allTitles.forEach((title) => title.simulate(`click`, {}));
+    card.simulate(`mouseover`, {});
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+    expect(appComponent.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 });

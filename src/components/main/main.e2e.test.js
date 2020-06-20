@@ -1,8 +1,9 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import Main from './main';
+import OffersList from '../offers-list/offers-list.jsx';
 import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
@@ -11,16 +12,14 @@ Enzyme.configure({
 
 describe(`Main Screen`, () => {
   it(`Should offer title be clicked`, () => {
-    const onOfferTitleClick = jest.fn();
-
-    const mainScreen = shallow(
+    const mainScreen = mount(
         <Main offers={OFFERS_TESTS} />
     );
 
-    const allTitles = mainScreen.find(`h2.place-card__name`);
+    const card = mainScreen.find(`.place-card`).first();
 
-    allTitles.forEach((title) => title.simulate(`mouseOver`, {}));
+    card.simulate(`mouseover`, {});
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+    expect(mainScreen.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 });
