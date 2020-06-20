@@ -3,7 +3,7 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import Main from './main';
-import OFFERS_TITLES from '../../mocks/offers-titles';
+import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -14,13 +14,13 @@ describe(`Main Screen`, () => {
     const onOfferTitleClick = jest.fn();
 
     const mainScreen = shallow(
-        <Main titles={OFFERS_TITLES} onOfferTitleClick={onOfferTitleClick} />
+        <Main offers={OFFERS_TESTS} />
     );
 
     const allTitles = mainScreen.find(`h2.place-card__name`);
 
-    allTitles.forEach((title) => title.simulate(`click`));
+    allTitles.forEach((title) => title.simulate(`mouseOver`, {}));
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TITLES.length);
+    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
   });
 });

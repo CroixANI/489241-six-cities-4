@@ -3,7 +3,7 @@ import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import OfferCard from './offer-card';
-import OFFERS from '../../mocks/offers';
+import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -15,7 +15,7 @@ describe(`Offer Card Component`, () => {
     const onMouseOver = jest.fn((selected) => {
       result = selected;
     });
-    const currentOffer = OFFERS[0];
+    const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = shallow(
         <OfferCard offer={currentOffer} onHover={onMouseOver} />

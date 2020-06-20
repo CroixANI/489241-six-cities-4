@@ -3,7 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import App from './app';
-import OFFERS_TITLES from '../../mocks/offers-titles';
+import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -14,13 +14,13 @@ describe(`App Component`, () => {
     const onOfferTitleClick = jest.fn();
 
     const appComponent = mount(
-        <App titles={OFFERS_TITLES} onOfferTitleClick={onOfferTitleClick} />
+        <App offers={OFFERS_TESTS} />
     );
 
     const allTitles = appComponent.find(`h2.place-card__name`);
 
     allTitles.forEach((title) => title.simulate(`click`, {}));
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TITLES.length);
+    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
   });
 });

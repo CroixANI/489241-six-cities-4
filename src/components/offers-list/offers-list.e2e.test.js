@@ -3,7 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import OffersList from './offers-list';
-import OFFERS from '../../mocks/offers';
+import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -17,15 +17,15 @@ describe(`Offers List Component`, () => {
     });
 
     const offersList = mount(
-        <OffersList offers={OFFERS} />
+        <OffersList offers={OFFERS_TESTS} />
     );
 
     const card = offersList.find(`.place-card`).first();
 
-    card.simulate(`mouseover`);
+    card.simulate(`mouseover`, {});
 
     expect(onMouseOver.mock.calls.length).toBe(1);
-    expect(result).toEqual(OFFERS[0]);
-    expect(offersList.state(`selectedOffer`)).toBe(OFFERS[0]);
+    expect(result).toEqual(OFFERS_TESTS[0]);
+    expect(offersList.state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 });
