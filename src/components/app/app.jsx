@@ -4,18 +4,14 @@ import PropTypes from 'prop-types';
 import Main from '../main/main.jsx';
 
 const App = (props) => {
-  const {titles, onOfferTitleClick} = props;
+  const {offers} = props;
 
   return (
-    <Main titles={titles} onOfferTitleClick={onOfferTitleClick} />
+    <Main offers={offers} />
   );
 };
 
 App.propTypes = {
-  titles: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
