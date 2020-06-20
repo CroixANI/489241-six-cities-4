@@ -1,6 +1,6 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from 'react';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 import OfferCard from './offer-card';
 import OFFERS from '../../mocks/offers';
@@ -10,11 +10,15 @@ Enzyme.configure({
 });
 
 describe(`Offer Card Component`, () => {
-  it(`Should mouse over be triggered`, () => {
-    const onMouseOver = jest.fn();
+  it(`Should mouse over be triggered and return offer`, () => {
+    let result = null;
+    const onMouseOver = jest.fn((selected) => {
+      result = selected;
+    });
+    const currentOffer = OFFERS[0];
 
     const offerCard = shallow(
-        <OfferCard offer={OFFERS[0]} onHover={onMouseOver} />
+        <OfferCard offer={currentOffer} onHover={onMouseOver} />
     );
 
     const card = offerCard.find(`.place-card`);
@@ -22,5 +26,6 @@ describe(`Offer Card Component`, () => {
     card.prop(`onMouseOver`)();
 
     expect(onMouseOver.mock.calls.length).toBe(1);
+    expect(result).toEqual(currentOffer);
   });
 });

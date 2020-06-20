@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App from "./components/app/app.jsx";
+import App from './components/app/app.jsx';
 
 const offers = [
   `Beautiful & luxurious apartment at great location`,

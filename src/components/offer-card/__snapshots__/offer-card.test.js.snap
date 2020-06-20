@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Main component 1`] = `
+exports[`Render Offer Card component 1`] = `
 <article
   className="cities__place-card place-card"
   onMouseOver={[Function]}

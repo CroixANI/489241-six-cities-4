@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Main = (props) => {
   const {titles, onOfferTitleClick} = props;
@@ -159,7 +159,7 @@ Main.propTypes = {
         city: PropTypes.string.isRequired,
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
+        isBookmarked: PropTypes.bool.isRequired,
         mainImageUrl: PropTypes.string.isRequired
       })
   ),

@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Main from "../main/main.jsx";
+import Main from '../main/main.jsx';
 
 const App = (props) => {
   const {titles, onOfferTitleClick} = props;
@@ -25,7 +25,7 @@ App.propTypes = {
         city: PropTypes.string.isRequired,
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
-        isFavorite: PropTypes.bool.isRequired,
+        isBookmarked: PropTypes.bool.isRequired,
         mainImageUrl: PropTypes.string.isRequired
       })
   ),

@@ -1,8 +1,8 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from 'react';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import Main from "./main";
+import Main from './main';
 import OFFERS_TITLES from '../../mocks/offers-titles';
 
 Enzyme.configure({

@@ -1,10 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const OfferCard = (props) => {
   const {offer, onHover} = props;
   const {
-    id,
     title,
     price,
     apartmentType,
@@ -12,7 +11,12 @@ const OfferCard = (props) => {
   } = offer;
 
   return (
-    <article onMouseOver={onHover} key={id} className="cities__place-card place-card">
+    <article
+      className="cities__place-card place-card"
+      onMouseOver={() => {
+        onHover(offer);
+      }}
+    >
       <div className="place-card__mark">
         <span>Premium</span>
       </div>
