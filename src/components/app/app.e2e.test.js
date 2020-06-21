@@ -23,17 +23,15 @@ describe(`App Component`, () => {
     expect(appComponent.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 
-  it(`Should offers titles be clicked`, () => {
-    const onOfferTitleClick = jest.fn();
-
+  it(`Should offer title be clicked and change state`, () => {
     const appComponent = mount(
-        <App offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
+        <App offers={OFFERS_TESTS} />
     );
 
-    const allTitles = appComponent.find(`h2.place-card__name`);
+    const title = appComponent.find(`h2.place-card__name`).first();
 
-    allTitles.forEach((title) => title.simulate(`click`, {}));
+    title.simulate(`click`, {});
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+    expect(appComponent.state(`clickedOfferId`)).toBe(OFFERS_TESTS[0].id);
   });
 });

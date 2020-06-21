@@ -13,7 +13,7 @@ Enzyme.configure({
 describe(`Main Screen`, () => {
   it(`Should mouse over be triggered`, () => {
     const mainScreen = mount(
-        <Main offers={OFFERS_TESTS} />
+        <Main offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />
     );
 
     const card = mainScreen.find(`.place-card`).first();

@@ -13,7 +13,7 @@ Enzyme.configure({
 describe(`Offers List Component`, () => {
   it(`Should mouse over be triggered and change component state`, () => {
     const offersList = mount(
-        <OffersList offers={OFFERS_TESTS} />
+        <OffersList offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />
     );
 
     const card = offersList.find(`.place-card`).first();
