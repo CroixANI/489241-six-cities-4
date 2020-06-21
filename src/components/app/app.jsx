@@ -1,15 +1,38 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from '../main/main.jsx';
+import Offer from '../offer/offer.jsx';
 
-const App = (props) => {
-  const {offers} = props;
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <Main offers={offers} />
-  );
-};
+  render() {
+
+
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-component">
+            <Offer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+
+  _renderApp() {
+    const {offers} = this.props;
+
+    return <Main offers={offers} />;
+  }
+}
 
 App.propTypes = {
   offers: PropTypes.arrayOf(
