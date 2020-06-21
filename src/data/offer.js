@@ -11,7 +11,7 @@ export default class Offer {
     this.images = images || [];
     this.capacity = capacity || {bedRoomsCount: 0, adultsCount: 0};
     this.features = features;
-    this.host = host || {name: ``, isPro: false};
+    this.host = host || {name: ``, isPro: false, imageUrl: ``};
     this.descriptions = descriptions || [];
   }
 }

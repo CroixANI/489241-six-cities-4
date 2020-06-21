@@ -132,7 +132,7 @@ exports[`Render Offer Card component 1`] = `
           className="property__wrapper"
         >
           <div
-            className="place-card__mark"
+            className="property__mark"
           >
             <span>
               Premium
@@ -147,7 +147,7 @@ exports[`Render Offer Card component 1`] = `
               Beautiful & luxurious apartment at great location
             </h1>
             <button
-              className="place-card__bookmark-button button"
+              className="property__bookmark-button button"
               type="button"
             >
               <svg

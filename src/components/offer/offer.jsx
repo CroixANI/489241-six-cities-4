@@ -19,7 +19,7 @@ const Offer = (props) => {
 
   let tag;
   if (offerTag) {
-    tag = <div className="place-card__mark">
+    tag = <div className="property__mark">
       <span>{offerTag}</span>
     </div>;
   } else {
@@ -31,9 +31,9 @@ const Offer = (props) => {
     hostAvatarClass = `${hostAvatarClass} property__avatar-wrapper--pro`;
   }
 
-  let bookmarkButtonClass = `place-card__bookmark-button button`;
+  let bookmarkButtonClass = `property__bookmark-button button`;
   if (isBookmarked) {
-    bookmarkButtonClass = `${bookmarkButtonClass} place-card__bookmark-button--active`;
+    bookmarkButtonClass = `${bookmarkButtonClass} property__bookmark-button--active`;
   }
 
   return (
@@ -123,7 +123,7 @@ const Offer = (props) => {
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
                     <div className={hostAvatarClass}>
-                      <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                      <img className="property__avatar user__avatar" src={host.imageUrl} width="74" height="74" alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
                       {host.name}
@@ -341,7 +341,8 @@ Offer.propTypes = {
     features: PropTypes.arrayOf(PropTypes.string).isRequired,
     host: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      isPro: PropTypes.bool.isRequired
+      isPro: PropTypes.bool.isRequired,
+      imageUrl: PropTypes.string.isRequired
     }),
     descriptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired

@@ -35,7 +35,8 @@ const OFFER_DETAILS = new Offer(
     ],
     {
       name: `Angelina`,
-      isPro: true
+      isPro: true,
+      imageUrl: `img/avatar-angelina.jpg`
     },
     [
       `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
