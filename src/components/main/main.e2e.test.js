@@ -1,33 +1,25 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import React from 'react';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-import Main from "./main";
+import Main from './main';
+import OffersList from '../offers-list/offers-list.jsx';
+import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-const titles = [
-  `Beautiful & luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prinsengracht`,
-  `Nice, cozy, warm big bed apartment`,
-  `Wood and stone place`,
-];
-
 describe(`Main Screen`, () => {
   it(`Should offer title be clicked`, () => {
-    const onOfferTitleClick = jest.fn();
-
-    const mainScreen = shallow(
-        <Main titles={titles} onOfferTitleClick={onOfferTitleClick} />
+    const mainScreen = mount(
+        <Main offers={OFFERS_TESTS} />
     );
 
-    const allTitles = mainScreen.find(`h2.place-card__name`);
+    const card = mainScreen.find(`.place-card`).first();
 
-    allTitles.forEach((title) => title.simulate(`click`));
+    card.simulate(`mouseover`, {});
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(titles.length);
+    expect(mainScreen.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 });
