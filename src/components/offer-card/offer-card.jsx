@@ -7,8 +7,24 @@ const OfferCard = (props) => {
     title,
     price,
     apartmentType,
-    mainImageUrl,
+    offerTag,
+    isBookmarked,
+    mainImageUrl
   } = offer;
+
+  let tag;
+  if (offerTag) {
+    tag = <div className="place-card__mark">
+      <span>{offerTag}</span>
+    </div>;
+  } else {
+    tag = <></>;
+  }
+
+  let bookmarkButtonClass = `place-card__bookmark-button button`;
+  if (isBookmarked) {
+    bookmarkButtonClass = `${bookmarkButtonClass} place-card__bookmark-button--active`;
+  }
 
   return (
     <article
@@ -17,9 +33,7 @@ const OfferCard = (props) => {
         onHover(offer);
       }}
     >
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+      {tag}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt="Place image" />
@@ -31,7 +45,7 @@ const OfferCard = (props) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
+          <button className={bookmarkButtonClass} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark" />
             </svg>
@@ -56,11 +70,9 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   onHover: PropTypes.func.isRequired,
   offer: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    city: PropTypes.string.isRequired,
     apartmentType: PropTypes.string.isRequired,
     offerTag: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,

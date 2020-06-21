@@ -373,13 +373,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -416,7 +409,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -475,13 +468,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -579,13 +565,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -622,7 +601,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -681,13 +660,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -785,13 +757,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -888,13 +853,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -931,7 +889,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -991,13 +949,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -1034,7 +985,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -1094,13 +1045,6 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
@@ -1137,7 +1081,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -1196,13 +1140,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
