@@ -8,6 +8,10 @@ import Offer from '../offer/offer.jsx';
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      clickedOfferId: null
+    };
   }
 
   render() {
@@ -26,14 +30,22 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers, onOfferTitleClick} = this.props;
+    const {offers} = this.props;
+    const {clickedOfferId} = this.state;
 
-    return <Main offers={offers} onOfferTitleClick={onOfferTitleClick} />;
+    if (clickedOfferId !== null) {
+      return <Offer />;
+    } else {
+      return <Main offers={offers} onOfferTitleClick={(offerId) => {
+        this.setState({
+          clickedOfferId: offerId
+        });
+      }} />;
+    }
   }
 }
 
 App.propTypes = {
-  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

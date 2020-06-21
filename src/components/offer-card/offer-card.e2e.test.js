@@ -30,7 +30,10 @@ describe(`Offer Card Component`, () => {
   });
 
   it(`Should title be clicked`, () => {
-    const onTitleClick = jest.fn();
+    let resultOfferId = null;
+    const onTitleClick = jest.fn((offerId) => {
+      resultOfferId = offerId;
+    });
     const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = shallow(
@@ -42,5 +45,6 @@ describe(`Offer Card Component`, () => {
     card.prop(`onClick`)();
 
     expect(onTitleClick.mock.calls.length).toBe(1);
+    expect(resultOfferId).toBe(currentOffer.id);
   });
 });

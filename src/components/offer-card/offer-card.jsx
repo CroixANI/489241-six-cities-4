@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const OfferCard = (props) => {
   const {offer, onHover, onTitleClick} = props;
   const {
+    id,
     title,
     price,
     apartmentType,
@@ -58,7 +59,9 @@ const OfferCard = (props) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 onClick={onTitleClick} className="place-card__name">
+        <h2 onClick={() => {
+          onTitleClick(id);
+        }} className="place-card__name">
           <a href="#">{title}</a>
         </h2>
         <p className="place-card__type">{apartmentType}</p>
@@ -71,6 +74,7 @@ OfferCard.propTypes = {
   onHover: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
