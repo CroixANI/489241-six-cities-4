@@ -6,7 +6,7 @@ import OFFERS_TESTS from '../../mocks/offers-tests';
 
 it(`Render Main component`, () => {
   const tree = renderer
-    .create(<Main offers={OFFERS_TESTS} />)
+    .create(<Main offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

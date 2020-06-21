@@ -11,7 +11,7 @@ Enzyme.configure({
 });
 
 describe(`App Component`, () => {
-  it(`Should offer title be clicked`, () => {
+  it(`Should mouse over be triggered`, () => {
     const appComponent = mount(
         <App offers={OFFERS_TESTS} />
     );
@@ -21,5 +21,19 @@ describe(`App Component`, () => {
     card.simulate(`mouseover`, {});
 
     expect(appComponent.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
+  });
+
+  it(`Should offers titles be clicked`, () => {
+    const onOfferTitleClick = jest.fn();
+
+    const appComponent = mount(
+        <App offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
+    );
+
+    const allTitles = appComponent.find(`h2.place-card__name`);
+
+    allTitles.forEach((title) => title.simulate(`click`, {}));
+
+    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
   });
 });

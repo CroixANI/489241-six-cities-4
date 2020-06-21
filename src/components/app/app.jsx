@@ -11,8 +11,6 @@ class App extends PureComponent {
   }
 
   render() {
-
-
     return (
       <BrowserRouter>
         <Switch>
@@ -28,13 +26,14 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
+    const {offers, onOfferTitleClick} = this.props;
 
-    return <Main offers={offers} />;
+    return <Main offers={offers} onOfferTitleClick={onOfferTitleClick} />;
   }
 }
 
 App.propTypes = {
+  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

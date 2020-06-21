@@ -23,4 +23,18 @@ describe(`Offers List Component`, () => {
     expect(offersList.state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
     expect(offersList.find(OfferCard).length).toBe(OFFERS_TESTS.length);
   });
+
+  it(`Should offers titles be clicked`, () => {
+    const onOfferTitleClick = jest.fn();
+
+    const offersList = mount(
+        <OffersList offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
+    );
+
+    const allTitles = offersList.find(`h2.place-card__name`);
+
+    allTitles.forEach((title) => title.simulate(`click`, {}));
+
+    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+  });
 });

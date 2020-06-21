@@ -6,7 +6,7 @@ import OFFERS from '../../mocks/offers';
 
 it(`Render Offer Card component`, () => {
   const tree = renderer
-    .create(<OfferCard offer={OFFERS[0]} onHover={() => {}} />)
+    .create(<OfferCard offer={OFFERS[0]} onHover={() => {}} onTitleClick={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

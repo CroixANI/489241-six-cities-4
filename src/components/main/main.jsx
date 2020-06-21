@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OffersList from '../offers-list/offers-list.jsx';
 
 const Main = (props) => {
-  const {offers} = props;
+  const {offers, onOfferTitleClick} = props;
 
   return (
     <>
@@ -94,7 +94,7 @@ const Main = (props) => {
                     <li className="places__option" tabIndex="0">Top rated first</li>
                   </ul>
                 </form>
-                <OffersList offers={offers} />
+                <OffersList offers={offers} onOfferTitleClick={onOfferTitleClick} />
               </section>
 
               <div className="cities__right-section">
@@ -109,6 +109,7 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
