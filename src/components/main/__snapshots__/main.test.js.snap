@@ -283,7 +283,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-01.jpg"
@@ -380,7 +380,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -477,7 +477,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-02.jpg"
@@ -574,7 +574,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-03.jpg"
@@ -671,7 +671,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -768,7 +768,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -865,7 +865,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-01.jpg"
@@ -962,7 +962,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-02.jpg"
@@ -1059,7 +1059,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-03.jpg"
@@ -1156,7 +1156,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"

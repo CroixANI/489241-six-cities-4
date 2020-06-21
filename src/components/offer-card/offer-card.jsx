@@ -10,8 +10,15 @@ const OfferCard = (props) => {
     apartmentType,
     offerTag,
     isBookmarked,
-    mainImageUrl
+    images
   } = offer;
+
+  let mainImageUrl = ``;
+  let mainImageTitle = ``;
+  if (images && images.length > 0) {
+    mainImageUrl = images[0].imageUrl;
+    mainImageTitle = images[0].imageTitle;
+  }
 
   let tag;
   if (offerTag) {
@@ -37,7 +44,7 @@ const OfferCard = (props) => {
       {tag}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
         </a>
       </div>
       <div className="place-card__info">
@@ -81,7 +88,10 @@ OfferCard.propTypes = {
     apartmentType: PropTypes.string.isRequired,
     offerTag: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
-    mainImageUrl: PropTypes.string.isRequired
+    images: PropTypes.arrayOf(PropTypes.shape({
+      imageUrl: PropTypes.string.isRequired,
+      imageTitle: PropTypes.string.isRequired
+    })).isRequired
   })
 };
 

@@ -73,7 +73,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Room"
               className="property__image"
               src="img/room.jpg"
             />
@@ -82,7 +82,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Apartment"
               className="property__image"
               src="img/apartment-01.jpg"
             />
@@ -91,7 +91,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Apartment"
               className="property__image"
               src="img/apartment-02.jpg"
             />
@@ -100,7 +100,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Apartment"
               className="property__image"
               src="img/apartment-03.jpg"
             />
@@ -109,7 +109,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Photo Studio"
               className="property__image"
               src="img/studio-01.jpg"
             />
@@ -118,7 +118,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo studio"
+              alt="Apartment"
               className="property__image"
               src="img/apartment-01.jpg"
             />
@@ -132,7 +132,7 @@ exports[`Render Offer Card component 1`] = `
           className="property__wrapper"
         >
           <div
-            className="property__mark"
+            className="place-card__mark"
           >
             <span>
               Premium
@@ -144,10 +144,10 @@ exports[`Render Offer Card component 1`] = `
             <h1
               className="property__name"
             >
-              Beautiful & luxurious studio at great location
+              Beautiful & luxurious apartment at great location
             </h1>
             <button
-              className="property__bookmark-button button"
+              className="place-card__bookmark-button button"
               type="button"
             >
               <svg
@@ -188,7 +188,7 @@ exports[`Render Offer Card component 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              4.8
+              4
             </span>
           </div>
           <ul
@@ -202,12 +202,15 @@ exports[`Render Offer Card component 1`] = `
             <li
               className="property__feature property__feature--bedrooms"
             >
-              3 Bedrooms
+              3
+               Bedrooms
             </li>
             <li
               className="property__feature property__feature--adults"
             >
-              Max 4 adults
+              Max 
+              3
+               adults
             </li>
           </ul>
           <div
@@ -216,7 +219,8 @@ exports[`Render Offer Card component 1`] = `
             <b
               className="property__price-value"
             >
-              €120
+              €
+              120
             </b>
             <span
               className="property__price-text"
@@ -299,7 +303,7 @@ exports[`Render Offer Card component 1`] = `
               className="property__host-user user"
             >
               <div
-                className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+                className="property__avatar-wrapper user__avatar-wrapper property__avatar-wrapper--pro"
               >
                 <img
                   alt="Host avatar"

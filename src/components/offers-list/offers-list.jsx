@@ -42,7 +42,10 @@ OffersList.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        mainImageUrl: PropTypes.string.isRequired
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired,
+          imageTitle: PropTypes.string.isRequired
+        })).isRequired
       })
   ).isRequired,
 };

@@ -4,6 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
+import OFFER_DETAILS from '../../mocks/offer-details';
 
 class App extends PureComponent {
   constructor(props) {
@@ -22,7 +23,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-component">
-            <Offer />
+            <Offer offer={OFFER_DETAILS} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -34,7 +35,7 @@ class App extends PureComponent {
     const {clickedOfferId} = this.state;
 
     if (clickedOfferId !== null) {
-      return <Offer />;
+      return <Offer offer={OFFER_DETAILS} />;
     } else {
       return <Main offers={offers} onOfferTitleClick={(offerId) => {
         this.setState({
@@ -56,7 +57,10 @@ App.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        mainImageUrl: PropTypes.string.isRequired
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired,
+          imageTitle: PropTypes.string.isRequired
+        })).isRequired
       })
   ),
 };
