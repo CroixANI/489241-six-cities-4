@@ -18,7 +18,7 @@ describe(`Offer Card Component`, () => {
     const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={onMouseOver} />
+        <OfferCard offer={currentOffer} onHover={onMouseOver} onTitleClick={() => {}} />
     );
 
     const card = offerCard.find(`.place-card`);
@@ -27,5 +27,24 @@ describe(`Offer Card Component`, () => {
 
     expect(onMouseOver.mock.calls.length).toBe(1);
     expect(result).toEqual(currentOffer);
+  });
+
+  it(`Should title be clicked`, () => {
+    let resultOfferId = null;
+    const onTitleClick = jest.fn((offerId) => {
+      resultOfferId = offerId;
+    });
+    const currentOffer = OFFERS_TESTS[0];
+
+    const offerCard = shallow(
+        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={onTitleClick} />
+    );
+
+    const card = offerCard.find(`h2.place-card__name`);
+
+    card.prop(`onClick`)();
+
+    expect(onTitleClick.mock.calls.length).toBe(1);
+    expect(resultOfferId).toBe(currentOffer.id);
   });
 });

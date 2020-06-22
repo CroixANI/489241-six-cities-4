@@ -13,16 +13,17 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, onOfferTitleClick} = this.props;
 
     return (
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer) => (
-          <OfferCard key={offer.id} offer={offer} onHover={(selectedOffer) => {
-            this.setState({
-              selectedOffer
-            });
-          }} />
+          <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+            onHover={(selectedOffer) => {
+              this.setState({
+                selectedOffer
+              });
+            }} />
         ))}
       </div>
     );
@@ -30,6 +31,7 @@ class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
+  onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -40,7 +42,10 @@ OffersList.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        mainImageUrl: PropTypes.string.isRequired
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired,
+          imageTitle: PropTypes.string.isRequired
+        })).isRequired
       })
   ).isRequired,
 };

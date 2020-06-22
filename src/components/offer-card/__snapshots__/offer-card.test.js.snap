@@ -19,7 +19,7 @@ exports[`Render Offer Card component 1`] = `
       href="#"
     >
       <img
-        alt="Place image"
+        alt="Apartment"
         className="place-card__image"
         height="200"
         src="img/apartment-01.jpg"
@@ -90,6 +90,7 @@ exports[`Render Offer Card component 1`] = `
     </div>
     <h2
       className="place-card__name"
+      onClick={[Function]}
     >
       <a
         href="#"

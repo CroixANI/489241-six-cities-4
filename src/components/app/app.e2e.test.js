@@ -11,7 +11,7 @@ Enzyme.configure({
 });
 
 describe(`App Component`, () => {
-  it(`Should offer title be clicked`, () => {
+  it(`Should mouse over be triggered`, () => {
     const appComponent = mount(
         <App offers={OFFERS_TESTS} />
     );
@@ -21,5 +21,17 @@ describe(`App Component`, () => {
     card.simulate(`mouseover`, {});
 
     expect(appComponent.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
+  });
+
+  it(`Should offer title be clicked and change state`, () => {
+    const appComponent = mount(
+        <App offers={OFFERS_TESTS} />
+    );
+
+    const title = appComponent.find(`h2.place-card__name`).first();
+
+    title.simulate(`click`, {});
+
+    expect(appComponent.state(`clickedOfferId`)).toBe(OFFERS_TESTS[0].id);
   });
 });

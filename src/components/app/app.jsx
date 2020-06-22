@@ -1,15 +1,50 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from '../main/main.jsx';
+import Offer from '../offer/offer.jsx';
+import OFFER_DETAILS from '../../mocks/offer-details';
 
-const App = (props) => {
-  const {offers} = props;
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <Main offers={offers} />
-  );
-};
+    this.state = {
+      clickedOfferId: null
+    };
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-component">
+            <Offer offer={OFFER_DETAILS} />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+
+  _renderApp() {
+    const {offers} = this.props;
+    const {clickedOfferId} = this.state;
+
+    if (clickedOfferId !== null) {
+      return <Offer offer={OFFER_DETAILS} />;
+    } else {
+      return <Main offers={offers} onOfferTitleClick={(offerId) => {
+        this.setState({
+          clickedOfferId: offerId
+        });
+      }} />;
+    }
+  }
+}
 
 App.propTypes = {
   offers: PropTypes.arrayOf(
@@ -22,7 +57,10 @@ App.propTypes = {
         apartmentType: PropTypes.string.isRequired,
         offerTag: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        mainImageUrl: PropTypes.string.isRequired
+        images: PropTypes.arrayOf(PropTypes.shape({
+          imageUrl: PropTypes.string.isRequired,
+          imageTitle: PropTypes.string.isRequired
+        })).isRequired
       })
   ),
 };

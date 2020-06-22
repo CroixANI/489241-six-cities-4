@@ -283,7 +283,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-01.jpg"
@@ -354,6 +354,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -373,20 +374,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -416,7 +410,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -457,6 +451,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -476,20 +471,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-02.jpg"
@@ -560,6 +548,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -579,20 +568,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-03.jpg"
@@ -622,7 +604,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -663,6 +645,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -682,20 +665,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -766,6 +742,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -785,20 +762,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -869,6 +839,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -888,20 +859,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-01.jpg"
@@ -931,7 +895,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -972,6 +936,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -991,20 +956,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-02.jpg"
@@ -1034,7 +992,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -1075,6 +1033,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -1094,20 +1053,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/apartment-03.jpg"
@@ -1137,7 +1089,7 @@ Array [
                       </span>
                     </div>
                     <button
-                      className="place-card__bookmark-button button"
+                      className="place-card__bookmark-button button place-card__bookmark-button--active"
                       type="button"
                     >
                       <svg
@@ -1178,6 +1130,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"
@@ -1197,20 +1150,13 @@ Array [
                 onMouseOver={[Function]}
               >
                 <div
-                  className="place-card__mark"
-                >
-                  <span>
-                    Premium
-                  </span>
-                </div>
-                <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
                     href="#"
                   >
                     <img
-                      alt="Place image"
+                      alt="Apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -1281,6 +1227,7 @@ Array [
                   </div>
                   <h2
                     className="place-card__name"
+                    onClick={[Function]}
                   >
                     <a
                       href="#"

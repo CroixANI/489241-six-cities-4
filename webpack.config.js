@@ -9,6 +9,7 @@ module.exports = {
     path: dirPath
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: dirPath,
     open: true,
     inline: false,
