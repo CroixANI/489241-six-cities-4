@@ -147,7 +147,7 @@ exports[`Render Offer Card component 1`] = `
               Beautiful & luxurious apartment at great location
             </h1>
             <button
-              className="property__bookmark-button button"
+              className="property__bookmark-button button "
               type="button"
             >
               <svg

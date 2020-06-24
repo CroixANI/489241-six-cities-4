@@ -13,26 +13,22 @@ const OfferCard = (props) => {
     images
   } = offer;
 
-  let mainImageUrl = ``;
-  let mainImageTitle = ``;
-  if (images && images.length > 0) {
-    mainImageUrl = images[0].imageUrl;
-    mainImageTitle = images[0].imageTitle;
-  }
+  const mainImageUrl = images && images.length > 0 ? images[0].imageUrl : null;
+  const mainImageTitle = images && images.length > 0 ? images[0].imageTitle : `Place image`;
+  const imageTag = mainImageUrl
+    ? <a href="#">
+      <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
+    </a>
+    : <></>;
 
-  let tag;
-  if (offerTag) {
-    tag = <div className="place-card__mark">
+  const tag = offerTag
+    ? <div className="place-card__mark">
       <span>{offerTag}</span>
-    </div>;
-  } else {
-    tag = <></>;
-  }
+    </div>
+    : <></>;
 
-  let bookmarkButtonClass = `place-card__bookmark-button button`;
-  if (isBookmarked) {
-    bookmarkButtonClass = `${bookmarkButtonClass} place-card__bookmark-button--active`;
-  }
+  const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
+  const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
 
   return (
     <article
@@ -43,9 +39,7 @@ const OfferCard = (props) => {
     >
       {tag}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
-        </a>
+        {imageTag}
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

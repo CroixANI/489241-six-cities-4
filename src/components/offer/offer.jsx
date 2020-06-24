@@ -17,24 +17,17 @@ const Offer = (props) => {
     descriptions
   } = offer;
 
-  let tag;
-  if (offerTag) {
-    tag = <div className="property__mark">
+  const tag = offerTag
+    ? <div className="property__mark">
       <span>{offerTag}</span>
-    </div>;
-  } else {
-    tag = <></>;
-  }
+    </div>
+    : <></>;
 
-  let hostAvatarClass = `property__avatar-wrapper user__avatar-wrapper`;
-  if (host.isPro) {
-    hostAvatarClass = `${hostAvatarClass} property__avatar-wrapper--pro`;
-  }
+  const additionalAvatarClass = host.isPro ? `property__avatar-wrapper--pro` : ``;
+  const hostAvatarClass = `property__avatar-wrapper user__avatar-wrapper ${additionalAvatarClass}`;
 
-  let bookmarkButtonClass = `property__bookmark-button button`;
-  if (isBookmarked) {
-    bookmarkButtonClass = `${bookmarkButtonClass} property__bookmark-button--active`;
-  }
+  const additionalClass = isBookmarked ? `property__bookmark-button--active` : ``;
+  const bookmarkButtonClass = `property__bookmark-button button ${additionalClass}`;
 
   return (
     <>

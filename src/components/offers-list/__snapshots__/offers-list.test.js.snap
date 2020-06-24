@@ -52,7 +52,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -246,7 +246,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -440,7 +440,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -537,7 +537,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -925,7 +925,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -1022,7 +1022,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -1216,7 +1216,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -1410,7 +1410,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
@@ -1604,7 +1604,7 @@ exports[`Render Offers List component 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button button "
           type="button"
         >
           <svg
