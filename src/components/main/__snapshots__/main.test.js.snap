@@ -373,6 +373,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -470,6 +471,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -567,6 +569,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -664,6 +667,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -761,6 +765,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -858,6 +863,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -955,6 +961,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -1052,6 +1059,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -1149,6 +1157,7 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
+                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >

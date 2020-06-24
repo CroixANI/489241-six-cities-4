@@ -15,17 +15,6 @@ const OfferCard = (props) => {
 
   const mainImageUrl = images && images.length > 0 ? images[0].imageUrl : null;
   const mainImageTitle = images && images.length > 0 ? images[0].imageTitle : `Place image`;
-  const imageTag = mainImageUrl
-    ? <a href="#">
-      <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
-    </a>
-    : <></>;
-
-  const tag = offerTag
-    ? <div className="place-card__mark">
-      <span>{offerTag}</span>
-    </div>
-    : <></>;
 
   const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
   const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
@@ -37,9 +26,13 @@ const OfferCard = (props) => {
         onHover(offer);
       }}
     >
-      {tag}
+      {offerTag && <div className="place-card__mark">
+        <span>{offerTag}</span>
+      </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        {imageTag}
+        {mainImageUrl && <a href="#">
+          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
+        </a>}
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
