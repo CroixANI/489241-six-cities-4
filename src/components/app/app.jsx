@@ -4,7 +4,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
-import OFFER_DETAILS from '../../mocks/offer-details';
+import OFFERS from '../../mocks/offers';
 
 class App extends PureComponent {
   constructor(props) {
@@ -23,7 +23,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-component">
-            <Offer offer={OFFER_DETAILS} />
+            <Offer offer={OFFERS[0]} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -35,7 +35,7 @@ class App extends PureComponent {
     const {clickedOfferId} = this.state;
 
     if (clickedOfferId !== null) {
-      return <Offer offer={OFFER_DETAILS} />;
+      return <Offer offer={OFFERS[0]} />;
     } else {
       return <Main offers={offers} onOfferTitleClick={(offerId) => {
         this.setState({
@@ -53,14 +53,15 @@ App.propTypes = {
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        city: PropTypes.string.isRequired,
-        apartmentType: PropTypes.string.isRequired,
-        offerTag: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        luxuryType: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        images: PropTypes.arrayOf(PropTypes.shape({
-          imageUrl: PropTypes.string.isRequired,
-          imageTitle: PropTypes.string.isRequired
-        })).isRequired
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+        location: PropTypes.shape({
+          city: PropTypes.string.isRequired,
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired
+        }).isRequired,
       })
   ),
 };

@@ -7,14 +7,13 @@ const OfferCard = (props) => {
     id,
     title,
     price,
-    apartmentType,
-    offerTag,
+    type,
+    luxuryType,
     isBookmarked,
     images
   } = offer;
 
-  const mainImageUrl = images && images.length > 0 ? images[0].imageUrl : null;
-  const mainImageTitle = images && images.length > 0 ? images[0].imageTitle : `Place image`;
+  const mainImageUrl = images && images.length > 0 ? images[0] : null;
 
   const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
   const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
@@ -26,12 +25,12 @@ const OfferCard = (props) => {
         onHover(offer);
       }}
     >
-      {offerTag && <div className="place-card__mark">
-        <span>{offerTag}</span>
+      {luxuryType && <div className="place-card__mark">
+        <span>{luxuryType}</span>
       </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         {mainImageUrl && <a href="#">
-          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
+          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={type} />
         </a>}
       </div>
       <div className="place-card__info">
@@ -58,7 +57,7 @@ const OfferCard = (props) => {
         }} className="place-card__name">
           <a href="#">{title}</a>
         </h2>
-        <p className="place-card__type">{apartmentType}</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
@@ -72,13 +71,15 @@ OfferCard.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    apartmentType: PropTypes.string.isRequired,
-    offerTag: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    luxuryType: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
-    images: PropTypes.arrayOf(PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      imageTitle: PropTypes.string.isRequired
-    })).isRequired
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    location: PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired
+    }),
   })
 };
 

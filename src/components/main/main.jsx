@@ -116,14 +116,15 @@ Main.propTypes = {
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        city: PropTypes.string.isRequired,
-        apartmentType: PropTypes.string.isRequired,
-        offerTag: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        luxuryType: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        images: PropTypes.arrayOf(PropTypes.shape({
-          imageUrl: PropTypes.string.isRequired,
-          imageTitle: PropTypes.string.isRequired
-        })).isRequired
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+        location: PropTypes.shape({
+          city: PropTypes.string.isRequired,
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired
+        }).isRequired,
       })
   ),
 };

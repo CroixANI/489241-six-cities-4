@@ -7,19 +7,19 @@ const Offer = (props) => {
     title,
     price,
     rating,
-    apartmentType,
-    offerTag,
+    type,
+    luxuryType,
     isBookmarked,
     images,
     capacity,
     features,
     host,
-    descriptions
+    description
   } = offer;
 
-  const tag = offerTag
+  const tag = luxuryType
     ? <div className="property__mark">
-      <span>{offerTag}</span>
+      <span>{luxuryType}</span>
     </div>
     : <></>;
 
@@ -59,9 +59,9 @@ const Offer = (props) => {
           <section className="property">
             <div className="property__gallery-container container">
               <div className="property__gallery">
-                {images.map((imageData, index) => (
-                  <div key={`${index}-${imageData.imageUrl}`} className="property__image-wrapper">
-                    <img className="property__image" src={imageData.imageUrl} alt={imageData.imageTitle} />
+                {images.map((url, index) => (
+                  <div key={`${index}-${url}`} className="property__image-wrapper">
+                    <img className="property__image" src={url} alt={type} />
                   </div>
                 ))}
               </div>
@@ -89,7 +89,7 @@ const Offer = (props) => {
                 </div>
                 <ul className="property__features">
                   <li className="property__feature property__feature--entire">
-                    {apartmentType}
+                    {type}
                   </li>
                   <li className="property__feature property__feature--bedrooms">
                     {capacity.bedRoomsCount} Bedrooms
@@ -123,9 +123,9 @@ const Offer = (props) => {
                     </span>
                   </div>
                   <div className="property__description">
-                    {descriptions.map((description, index) => (
+                    {description.split(/\r?\n/).map((text, index) => (
                       <p key={index} className="property__text">
-                        {description}
+                        {text}
                       </p>
                     ))}
                   </div>
@@ -320,13 +320,10 @@ Offer.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    apartmentType: PropTypes.string.isRequired,
-    offerTag: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    luxuryType: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
-    images: PropTypes.arrayOf(PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      imageTitle: PropTypes.string.isRequired
-    })).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
     capacity: PropTypes.shape({
       bedRoomsCount: PropTypes.number.isRequired,
       adultsCount: PropTypes.number.isRequired
@@ -337,7 +334,12 @@ Offer.propTypes = {
       isPro: PropTypes.bool.isRequired,
       imageUrl: PropTypes.string.isRequired
     }),
-    descriptions: PropTypes.arrayOf(PropTypes.string).isRequired,
+    location: PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired
+    }).isRequired,
+    description: PropTypes.string.isRequired,
   }).isRequired
 };
 
