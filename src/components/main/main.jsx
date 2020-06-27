@@ -6,6 +6,7 @@ import Map from '../map/map.jsx';
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
+  const locations = offers.map((offer) => offer.location);
 
   return (
     <>
@@ -99,7 +100,7 @@ const Main = (props) => {
               </section>
 
               <div className="cities__right-section">
-                <Map locations={[]} />
+                <Map locations={locations} />
               </div>
             </div>
           </div>

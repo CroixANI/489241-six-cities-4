@@ -21,6 +21,7 @@ class Map extends PureComponent {
       return;
     }
 
+    const {locations} = this.props;
     const map = leaflet.map(this.mapRef.current, {
       center: MAP_STARTING_POINT,
       MAP_ZOOM,
@@ -36,10 +37,13 @@ class Map extends PureComponent {
       })
       .addTo(map);
 
-    const offerCords = [52.3709553943508, 4.89309666406198];
-    leaflet
-      .marker(offerCords, {MAP_PIN_ICON})
-      .addTo(map);
+    if (locations) {
+      locations.forEach((location) => {
+        leaflet
+          .marker([location.latitude, location.longitude], {MAP_PIN_ICON})
+          .addTo(map);
+      });
+    }
   }
 
   render() {
