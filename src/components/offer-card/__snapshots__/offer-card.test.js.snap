@@ -22,7 +22,7 @@ exports[`Render Offer Card component 1`] = `
         alt="Apartment"
         className="place-card__image"
         height="200"
-        src="img/apartment-01.jpg"
+        src="img/room.jpg"
         width="260"
       />
     </a>
@@ -49,7 +49,7 @@ exports[`Render Offer Card component 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button"
+        className="place-card__bookmark-button button "
         type="button"
       >
         <svg

@@ -7,32 +7,16 @@ const OfferCard = (props) => {
     id,
     title,
     price,
-    apartmentType,
-    offerTag,
+    type,
+    luxuryType,
     isBookmarked,
     images
   } = offer;
 
-  let mainImageUrl = ``;
-  let mainImageTitle = ``;
-  if (images && images.length > 0) {
-    mainImageUrl = images[0].imageUrl;
-    mainImageTitle = images[0].imageTitle;
-  }
+  const mainImageUrl = images && images.length > 0 ? images[0] : null;
 
-  let tag;
-  if (offerTag) {
-    tag = <div className="place-card__mark">
-      <span>{offerTag}</span>
-    </div>;
-  } else {
-    tag = <></>;
-  }
-
-  let bookmarkButtonClass = `place-card__bookmark-button button`;
-  if (isBookmarked) {
-    bookmarkButtonClass = `${bookmarkButtonClass} place-card__bookmark-button--active`;
-  }
+  const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
+  const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
 
   return (
     <article
@@ -41,11 +25,13 @@ const OfferCard = (props) => {
         onHover(offer);
       }}
     >
-      {tag}
+      {luxuryType && <div className="place-card__mark">
+        <span>{luxuryType}</span>
+      </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={mainImageTitle} />
-        </a>
+        {mainImageUrl && <a href="#">
+          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={type} />
+        </a>}
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -71,7 +57,7 @@ const OfferCard = (props) => {
         }} className="place-card__name">
           <a href="#">{title}</a>
         </h2>
-        <p className="place-card__type">{apartmentType}</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
@@ -85,13 +71,15 @@ OfferCard.propTypes = {
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    apartmentType: PropTypes.string.isRequired,
-    offerTag: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    luxuryType: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
-    images: PropTypes.arrayOf(PropTypes.shape({
-      imageUrl: PropTypes.string.isRequired,
-      imageTitle: PropTypes.string.isRequired
-    })).isRequired
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    location: PropTypes.shape({
+      city: PropTypes.string.isRequired,
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired
+    }),
   })
 };
 

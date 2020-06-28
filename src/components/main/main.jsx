@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
+  const locations = offers.map((offer) => offer.location);
 
   return (
     <>
@@ -98,7 +100,7 @@ const Main = (props) => {
               </section>
 
               <div className="cities__right-section">
-                <section className="cities__map map"></section>
+                <Map locations={locations} />
               </div>
             </div>
           </div>
@@ -116,14 +118,15 @@ Main.propTypes = {
         title: PropTypes.string.isRequired,
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
-        city: PropTypes.string.isRequired,
-        apartmentType: PropTypes.string.isRequired,
-        offerTag: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        luxuryType: PropTypes.string.isRequired,
         isBookmarked: PropTypes.bool.isRequired,
-        images: PropTypes.arrayOf(PropTypes.shape({
-          imageUrl: PropTypes.string.isRequired,
-          imageTitle: PropTypes.string.isRequired
-        })).isRequired
+        images: PropTypes.arrayOf(PropTypes.string).isRequired,
+        location: PropTypes.shape({
+          city: PropTypes.string.isRequired,
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired
+        }).isRequired,
       })
   ),
 };

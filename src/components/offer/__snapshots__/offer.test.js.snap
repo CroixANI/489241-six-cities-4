@@ -73,7 +73,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Room"
+              alt="Apartment"
               className="property__image"
               src="img/room.jpg"
             />
@@ -109,7 +109,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Photo Studio"
+              alt="Apartment"
               className="property__image"
               src="img/studio-01.jpg"
             />
@@ -147,7 +147,7 @@ exports[`Render Offer Card component 1`] = `
               Beautiful & luxurious apartment at great location
             </h1>
             <button
-              className="property__bookmark-button button"
+              className="property__bookmark-button button "
               type="button"
             >
               <svg
@@ -209,7 +209,7 @@ exports[`Render Offer Card component 1`] = `
               className="property__feature property__feature--adults"
             >
               Max 
-              3
+              4
                adults
             </li>
           </ul>

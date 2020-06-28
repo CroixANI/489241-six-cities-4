@@ -5,6 +5,6 @@ import App from './components/app/app.jsx';
 import OFFERS from './mocks/offers';
 
 ReactDOM.render(
-    <App offers={OFFERS.filter((offer) => offer.city === `Amsterdam`)} />,
+    <App offers={OFFERS.filter((offer) => offer.location.city === `Amsterdam`)} />,
     document.querySelector(`#root`)
 );
