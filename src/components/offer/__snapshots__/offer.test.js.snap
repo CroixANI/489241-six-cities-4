@@ -170,12 +170,12 @@ exports[`Render Offer Card component 1`] = `
             className="property__rating rating"
           >
             <div
-              className="property__stars rating__stars"
+              className="place-card__stars rating__stars"
             >
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "100%",
                   }
                 }
               />
@@ -188,7 +188,7 @@ exports[`Render Offer Card component 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              4
+              4.8
             </span>
           </div>
           <ul
@@ -380,7 +380,7 @@ exports[`Render Offer Card component 1`] = `
                     className="reviews__rating rating"
                   >
                     <div
-                      className="reviews__stars rating__stars"
+                      className="place-card__stars rating__stars"
                     >
                       <span
                         style={
@@ -403,9 +403,9 @@ exports[`Render Offer Card component 1`] = `
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2019-04-24"
+                    dateTime={2019-04-24T00:00:00.000Z}
                   >
-                    April 2019
+                    April 24, 2019
                   </time>
                 </div>
               </li>

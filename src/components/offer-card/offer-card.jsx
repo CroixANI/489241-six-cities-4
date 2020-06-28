@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import OfferCardRating from './offer-card-rating.jsx';
+
 const OfferCard = (props) => {
   const {offer, onHover, onTitleClick} = props;
   const {
@@ -47,10 +49,7 @@ const OfferCard = (props) => {
           </button>
         </div>
         <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
+          <OfferCardRating rating={offer.rating} />
         </div>
         <h2 onClick={() => {
           onTitleClick(id);

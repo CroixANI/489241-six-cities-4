@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Review component 1`] = `
+exports[`Render Reviews List component 1`] = `
 <section
   className="property__reviews reviews"
 >
@@ -47,7 +47,7 @@ exports[`Render Review component 1`] = `
           className="reviews__rating rating"
         >
           <div
-            className="reviews__stars rating__stars"
+            className="place-card__stars rating__stars"
           >
             <span
               style={
@@ -70,9 +70,9 @@ exports[`Render Review component 1`] = `
         </p>
         <time
           className="reviews__time"
-          dateTime="2019-04-24"
+          dateTime={2019-04-24T00:00:00.000Z}
         >
-          April 2019
+          April 24, 2019
         </time>
       </div>
     </li>

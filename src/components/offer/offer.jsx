@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
+import OfferRating from './offer-rating.jsx';
 
 const Offer = (props) => {
   const {offer} = props;
@@ -84,10 +85,7 @@ const Offer = (props) => {
                   </button>
                 </div>
                 <div className="property__rating rating">
-                  <div className="property__stars rating__stars">
-                    <span style={{width: `80%`}}></span>
-                    <span className="visually-hidden">Rating</span>
-                  </div>
+                  <OfferRating rating={rating} />
                   <span className="property__rating-value rating__value">{rating}</span>
                 </div>
                 <ul className="property__features">
@@ -272,7 +270,7 @@ Offer.propTypes = {
     }).isRequired,
     description: PropTypes.string.isRequired,
     reviews: PropTypes.arrayOf(PropTypes.shape({
-      review: PropTypes.string.isRequired,
+      reviewText: PropTypes.string.isRequired,
       rating: PropTypes.number.isRequired,
       user: PropTypes.shape({
         name: PropTypes.string.isRequired,

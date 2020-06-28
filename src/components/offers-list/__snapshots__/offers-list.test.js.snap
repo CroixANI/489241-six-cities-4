@@ -80,7 +80,7 @@ exports[`Render Offers List component 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "100%",
               }
             }
           />
@@ -178,7 +178,7 @@ exports[`Render Offers List component 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />
@@ -374,7 +374,7 @@ exports[`Render Offers List component 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "100%",
               }
             }
           />
@@ -472,7 +472,7 @@ exports[`Render Offers List component 1`] = `
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />

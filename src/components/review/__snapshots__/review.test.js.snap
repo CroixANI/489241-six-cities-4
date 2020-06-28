@@ -29,7 +29,7 @@ Array [
       className="reviews__rating rating"
     >
       <div
-        className="reviews__stars rating__stars"
+        className="place-card__stars rating__stars"
       >
         <span
           style={
@@ -52,9 +52,9 @@ Array [
     </p>
     <time
       className="reviews__time"
-      dateTime="2019-04-24"
+      dateTime={2019-04-24T00:00:00.000Z}
     >
-      April 2019
+      April 24, 2019
     </time>
   </div>,
 ]
