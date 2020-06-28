@@ -33,3 +33,17 @@ export const HOSTS = {
 
 export const DEFAULT_DESCRIPTION = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
 An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`;
+
+export const REVIEWS = [
+  {
+    review: `TEST A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: new Date(`2019-04-24`),
+    rating: 4,
+    user: {
+      id: `bfaa6ec6-015f-4360-bf7e-ea80a378963f`,
+      name: `Max`,
+      imageUrl: `img/avatar-max.jpg`,
+      isPro: false
+    }
+  }
+];
