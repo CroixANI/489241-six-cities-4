@@ -28,7 +28,7 @@ const Offer = (props) => {
   } = offer;
 
   const limitedNearPlaces = nearPlaces.slice(0, MAX_NEAR_PLACES);
-  const locations = [location, ...limitedNearPlaces.map((nearOffer) => nearOffer.location)];
+  const locations = limitedNearPlaces.map((nearOffer) => nearOffer.location);
 
   const tag = luxuryType
     ? <div className="property__mark">
@@ -143,7 +143,7 @@ const Offer = (props) => {
                 <ReviewsList reviews={reviews} />
               </div>
             </div>
-            <OfferMap locations={locations} />
+            <OfferMap activeLocation={location} locations={locations} />
           </section>
           <div className="container">
             <section className="near-places places">
