@@ -592,16 +592,18 @@ exports[`Render Offer Card component 1`] = `
           className="near-places__list places__list"
         >
           <article
-            className="near-places__card place-card"
+            className="cities__place-card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Private room"
                   className="place-card__image"
                   height="200"
                   src="img/room.jpg"
@@ -621,7 +623,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €80
+                    €
+                    80
                   </b>
                   <span
                     className="place-card__price-text"
@@ -630,7 +633,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  className="place-card__bookmark-button button place-card__bookmark-button--active"
                   type="button"
                 >
                   <svg
@@ -645,7 +648,7 @@ exports[`Render Offer Card component 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    In bookmarks
+                    To bookmarks
                   </span>
                 </button>
               </div>
@@ -653,12 +656,12 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "60%",
                       }
                     }
                   />
@@ -671,6 +674,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -686,19 +690,21 @@ exports[`Render Offer Card component 1`] = `
             </div>
           </article>
           <article
-            className="near-places__card place-card"
+            className="cities__place-card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Private room"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-02.jpg"
+                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -715,7 +721,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €132
+                    €
+                    132
                   </b>
                   <span
                     className="place-card__price-text"
@@ -724,7 +731,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button"
+                  className="place-card__bookmark-button button "
                   type="button"
                 >
                   <svg
@@ -747,7 +754,7 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
@@ -765,6 +772,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -775,24 +783,26 @@ exports[`Render Offer Card component 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                Private room
               </p>
             </div>
           </article>
           <article
-            className="near-places__card place-card"
+            className="cities__place-card place-card"
+            onMouseOver={[Function]}
           >
+            
             <div
-              className="near-places__image-wrapper place-card__image-wrapper"
+              className="cities__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Apartment"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-03.jpg"
+                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -809,7 +819,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €180
+                    €
+                    180
                   </b>
                   <span
                     className="place-card__price-text"
@@ -818,7 +829,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button"
+                  className="place-card__bookmark-button button place-card__bookmark-button--active"
                   type="button"
                 >
                   <svg
@@ -841,12 +852,12 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "100%",
                       }
                     }
                   />
@@ -859,6 +870,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"

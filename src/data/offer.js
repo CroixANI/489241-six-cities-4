@@ -1,7 +1,7 @@
 export default class Offer {
   constructor(id, title, type, luxuryType, price, rating, isBookmarked,
       images = [], capacity = null, features = [], host = null,
-      location = null, description = ``, reviews = []) {
+      location = null, description = ``, reviews = [], nearPlaces = []) {
     this.id = id;
     this.title = title;
     this.type = type;
@@ -16,5 +16,6 @@ export default class Offer {
     this.location = location;
     this.description = description;
     this.reviews = reviews;
+    this.nearPlaces = nearPlaces;
   }
 }

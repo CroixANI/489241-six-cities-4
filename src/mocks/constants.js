@@ -1,4 +1,7 @@
+import Offer from '../data/offer';
 import OfferHost from '../data/offer-host';
+import OfferLocation from '../data/offer-location';
+import {OFFER_TYPES, OFFER_LUXURY_TYPE} from '../data/constants';
 
 export const OFFER_DETAILS_IMAGES = [
   `img/room.jpg`,
@@ -47,3 +50,19 @@ export const REVIEWS = [
     }
   }
 ];
+
+export const NEAR_PLACES = [
+  new Offer(2, `Wood and stone place`, OFFER_TYPES.PRIVATE_ROOM, OFFER_LUXURY_TYPE.NONE, 80, 3.2, true,
+      OFFER_DETAILS_IMAGES, DEFAULT_CAPACITY, DEFAULT_FEATURES, HOSTS.ANGELINA, new OfferLocation(`Amsterdam`, 52.369553943508, 4.85309666406198),
+      DEFAULT_DESCRIPTION, REVIEWS),
+  new Offer(3, `Canal View Prinsengracht`, OFFER_TYPES.PRIVATE_ROOM, OFFER_LUXURY_TYPE.NONE, 132, 4.1, false,
+      OFFER_DETAILS_IMAGES, DEFAULT_CAPACITY, DEFAULT_FEATURES, HOSTS.ANGELINA, new OfferLocation(`Amsterdam`, 52.3909553943508, 4.929309666406198),
+      DEFAULT_DESCRIPTION, REVIEWS),
+  new Offer(4, `Nice, cozy, warm big bed apartment`, OFFER_TYPES.APARTMENT, OFFER_LUXURY_TYPE.NONE, 180, 5, true,
+      OFFER_DETAILS_IMAGES, DEFAULT_CAPACITY, DEFAULT_FEATURES, HOSTS.ANGELINA, new OfferLocation(`Amsterdam`, 52.3809553943508, 4.939309666406198),
+      DEFAULT_DESCRIPTION, REVIEWS),
+  new Offer(5, `Wood and stone place`, OFFER_TYPES.APARTMENT, OFFER_LUXURY_TYPE.NONE, 80, 2.7, false,
+      OFFER_DETAILS_IMAGES, DEFAULT_CAPACITY, DEFAULT_FEATURES, HOSTS.ANGELINA, new OfferLocation(`Amsterdam`, 52.3819553943508, 4.939319666406198),
+      DEFAULT_DESCRIPTION, REVIEWS),
+];
+
