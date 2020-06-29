@@ -336,7 +336,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -434,7 +434,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -532,7 +532,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -630,7 +630,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -728,7 +728,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -767,7 +767,7 @@ Array [
             className="cities__right-section"
           >
             <section
-              className="cities__map map"
+              className="cities__map  map"
             />
           </div>
         </div>

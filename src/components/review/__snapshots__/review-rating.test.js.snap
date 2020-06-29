@@ -2,7 +2,7 @@
 
 exports[`Render Review Rating component 1`] = `
 <div
-  className="place-card__stars rating__stars"
+  className="reviews__stars  rating__stars"
 >
   <span
     style={

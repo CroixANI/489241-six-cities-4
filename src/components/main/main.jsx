@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OffersList from '../offers-list/offers-list.jsx';
-import Map from '../map/map.jsx';
+import MainMap from './main-map.jsx';
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
@@ -100,7 +100,7 @@ const Main = (props) => {
               </section>
 
               <div className="cities__right-section">
-                <Map locations={locations} />
+                <MainMap locations={locations} />
               </div>
             </div>
           </div>

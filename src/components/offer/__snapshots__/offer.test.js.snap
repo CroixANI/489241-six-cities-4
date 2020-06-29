@@ -170,7 +170,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__rating rating"
           >
             <div
-              className="place-card__stars rating__stars"
+              className="property__stars  rating__stars"
             >
               <span
                 style={
@@ -380,7 +380,7 @@ exports[`Render Offer Card component 1`] = `
                     className="reviews__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="reviews__stars  rating__stars"
                     >
                       <span
                         style={

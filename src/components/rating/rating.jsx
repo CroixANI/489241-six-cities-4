@@ -7,11 +7,12 @@ const countWidth = (rating) => {
 };
 
 const Rating = (props) => {
-  const {rating} = props;
+  const {rating, className} = props;
   const ratingWidth = countWidth(rating);
+  const fullClassName = `${className || ``} rating__stars`;
 
   return (
-    <div className="place-card__stars rating__stars">
+    <div className={fullClassName}>
       <span style={{width: `${ratingWidth}%`}}></span>
       <span className="visually-hidden">Rating</span>
     </div>
@@ -19,6 +20,7 @@ const Rating = (props) => {
 };
 
 Rating.propTypes = {
+  className: PropTypes.string,
   rating: PropTypes.number.isRequired
 };
 

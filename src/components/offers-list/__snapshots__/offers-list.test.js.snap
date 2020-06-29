@@ -75,7 +75,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
@@ -173,7 +173,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
@@ -271,7 +271,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
@@ -369,7 +369,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
@@ -467,7 +467,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={

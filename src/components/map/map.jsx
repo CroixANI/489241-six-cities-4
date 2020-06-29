@@ -47,14 +47,18 @@ class Map extends PureComponent {
   }
 
   render() {
+    const {className} = this.props;
+    const fullClassName = `${className || ``} map`;
+
     return (
-      <section ref={this.mapRef} className="cities__map map">
+      <section ref={this.mapRef} className={fullClassName}>
       </section>
     );
   }
 }
 
 Map.propTypes = {
+  className: PropTypes.string,
   locations: PropTypes.arrayOf(PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
