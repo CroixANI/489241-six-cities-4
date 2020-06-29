@@ -48,6 +48,39 @@ export const REVIEWS = [
       imageUrl: `img/avatar-max.jpg`,
       isPro: false
     }
+  },
+  {
+    reviewText: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: new Date(`2018-04-24`),
+    rating: 3,
+    user: {
+      id: `cda78b3e-74be-4e31-8ada-9a4885baedac`,
+      name: `Alex`,
+      imageUrl: `img/avatar-max.jpg`,
+      isPro: false
+    }
+  },
+  {
+    reviewText: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: new Date(`2019-05-24`),
+    rating: 2,
+    user: {
+      id: `ccf25925-3f45-4aee-86e7-c9e3b0880f03`,
+      name: `Adam`,
+      imageUrl: `img/avatar-max.jpg`,
+      isPro: true
+    }
+  },
+  {
+    reviewText: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`,
+    date: new Date(`2019-04-27`),
+    rating: 5,
+    user: {
+      id: `8b939b62-6d8c-4405-b7d5-40f5532af5ca`,
+      name: `Alice`,
+      imageUrl: `img/avatar-max.jpg`,
+      isPro: false
+    }
   }
 ];
 

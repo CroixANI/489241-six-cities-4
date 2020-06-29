@@ -7,7 +7,9 @@ const MAX_REVIEW = 10;
 
 const ReviewsList = (props) => {
   const {reviews} = props;
-  const limitedReviews = reviews.slice(0, MAX_REVIEW);
+  const limitedReviews = reviews.slice(0, MAX_REVIEW).sort((firstReview, secondReview) => {
+    return secondReview.date - firstReview.date;
+  });
   return (
     <section className="property__reviews reviews">
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{limitedReviews.length}</span></h2>
