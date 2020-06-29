@@ -574,7 +574,7 @@ exports[`Render Offer Card component 1`] = `
         </div>
       </div>
       <section
-        className="property__map map"
+        className="property__map  map"
       />
     </section>
     <div

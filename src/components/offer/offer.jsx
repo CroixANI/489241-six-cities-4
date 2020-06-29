@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import OfferRating from './offer-rating.jsx';
+import OfferMap from './offer-map.jsx';
 import OfferCard from '../offer-card/offer-card.jsx';
 
 const MAX_NEAR_PLACES = 3;
@@ -22,10 +23,12 @@ const Offer = (props) => {
     host,
     description,
     reviews,
-    nearPlaces
+    nearPlaces,
+    location
   } = offer;
 
   const limitedNearPlaces = nearPlaces.slice(0, MAX_NEAR_PLACES);
+  const locations = [location, ...limitedNearPlaces.map((nearOffer) => nearOffer.location)];
 
   const tag = luxuryType
     ? <div className="property__mark">
@@ -140,7 +143,7 @@ const Offer = (props) => {
                 <ReviewsList reviews={reviews} />
               </div>
             </div>
-            <section className="property__map map"></section>
+            <OfferMap locations={locations} />
           </section>
           <div className="container">
             <section className="near-places places">
