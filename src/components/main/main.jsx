@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OffersList from '../offers-list/offers-list.jsx';
+import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import MainMap from './main-map.jsx';
 
 const Main = (props) => {
@@ -96,7 +96,7 @@ const Main = (props) => {
                     <li className="places__option" tabIndex="0">Top rated first</li>
                   </ul>
                 </form>
-                <OffersList offers={offers} onOfferTitleClick={onOfferTitleClick} />
+                <OffersCardsContainer offers={offers} onOfferTitleClick={onOfferTitleClick} />
               </section>
 
               <div className="cities__right-section">

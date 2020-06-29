@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import OffersList from './offers-list';
+import OffersCardsContainer from './offers-cards-container';
 import OfferCard from '../offer-card/offer-card.jsx';
 import OFFERS_TESTS from '../../mocks/offers-tests';
 
@@ -13,7 +13,7 @@ Enzyme.configure({
 describe(`Offers List Component`, () => {
   it(`Should mouse over be triggered and change component state`, () => {
     const offersList = mount(
-        <OffersList offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />
+        <OffersCardsContainer offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />
     );
 
     const card = offersList.find(`.place-card`).first();
@@ -28,7 +28,7 @@ describe(`Offers List Component`, () => {
     const onOfferTitleClick = jest.fn();
 
     const offersList = mount(
-        <OffersList offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
+        <OffersCardsContainer offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
     );
 
     const allTitles = offersList.find(`h2.place-card__name`);

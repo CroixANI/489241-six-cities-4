@@ -4,17 +4,19 @@ import PropTypes from 'prop-types';
 import OfferCardRating from './offer-card-rating.jsx';
 
 const OfferCard = (props) => {
-  const {offer, onHover, onTitleClick} = props;
+  // eslint-disable-next-line react/prop-types
+  const {offer, renderMark, onHover, onTitleClick, containerCssClass, imageWrapperCssClass} = props;
   const {
     id,
     title,
     price,
     type,
-    luxuryType,
     isBookmarked,
     images
   } = offer;
 
+  const containerCss = `${containerCssClass || `cities__place-card`} place-card`;
+  const wrapperCss = `${imageWrapperCssClass || `cities__image-wrapper`} place-card__image-wrapper`;
   const mainImageUrl = images && images.length > 0 ? images[0] : null;
 
   const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
@@ -22,15 +24,13 @@ const OfferCard = (props) => {
 
   return (
     <article
-      className="cities__place-card place-card"
+      className={containerCss}
       onMouseOver={() => {
         onHover(offer);
       }}
     >
-      {luxuryType && <div className="place-card__mark">
-        <span>{luxuryType}</span>
-      </div>}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      {renderMark && renderMark()}
+      <div className={wrapperCss}>
         {mainImageUrl && <a href="#">
           <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={type} />
         </a>}
@@ -63,8 +63,11 @@ const OfferCard = (props) => {
 };
 
 OfferCard.propTypes = {
+  renderMark: PropTypes.func,
   onHover: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
+  containerCssClass: PropTypes.string,
+  imageWrapperCssClass: PropTypes.string,
   offer: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

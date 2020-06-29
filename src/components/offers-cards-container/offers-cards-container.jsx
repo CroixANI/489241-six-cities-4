@@ -2,35 +2,47 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
 import OfferCard from '../offer-card/offer-card.jsx';
+import OfferCardPremium from '../offer-card-premium/offer-card-premium.jsx';
+import {OFFER_LUXURY_TYPE} from '../../data/constants.js';
 
-class OffersList extends PureComponent {
+class OffersCardsContainer extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedOffer: null
     };
+
+    this._handleOfferOnHover = this._handleOfferOnHover.bind(this);
+  }
+
+  _handleOfferOnHover(selectedOffer) {
+    this.setState({
+      selectedOffer
+    });
   }
 
   render() {
     const {offers, onOfferTitleClick} = this.props;
-
+    const getOfferCardByLuxuryType = (offer) => {
+      switch (offer.luxuryType) {
+        case OFFER_LUXURY_TYPE.PREMIUM:
+          return <OfferCardPremium key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+            onHover={this._handleOfferOnHover} />;
+        default:
+          return <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+            onHover={this._handleOfferOnHover} />;
+      }
+    };
     return (
       <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => (
-          <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
-            onHover={(selectedOffer) => {
-              this.setState({
-                selectedOffer
-              });
-            }} />
-        ))}
+        {offers.map((offer) => getOfferCardByLuxuryType(offer))}
       </div>
     );
   }
 }
 
-OffersList.propTypes = {
+OffersCardsContainer.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -51,4 +63,4 @@ OffersList.propTypes = {
   ).isRequired,
 };
 
-export default OffersList;
+export default OffersCardsContainer;

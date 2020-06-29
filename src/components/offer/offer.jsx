@@ -150,7 +150,9 @@ const Offer = (props) => {
               <h2 className="near-places__title">Other places in the neighbourhood</h2>
               <div className="near-places__list places__list">
                 {limitedNearPlaces.map((place) => (
-                  <OfferCard key={place.id} offer={place} onHover={() => {}} onTitleClick={onOfferTitleClick} />
+                  <OfferCard key={place.id} offer={place} onHover={() => {}}
+                    onTitleClick={onOfferTitleClick} containerCssClass='near-places__card'
+                    imageWrapperCssClass='near-places__image-wrapper' />
                 ))}
               </div>
             </section>

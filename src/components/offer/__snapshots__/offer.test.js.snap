@@ -769,12 +769,11 @@ exports[`Render Offer Card component 1`] = `
           className="near-places__list places__list"
         >
           <article
-            className="cities__place-card place-card"
+            className="near-places__card place-card"
             onMouseOver={[Function]}
           >
-            
             <div
-              className="cities__image-wrapper place-card__image-wrapper"
+              className="near-places__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
@@ -867,12 +866,11 @@ exports[`Render Offer Card component 1`] = `
             </div>
           </article>
           <article
-            className="cities__place-card place-card"
+            className="near-places__card place-card"
             onMouseOver={[Function]}
           >
-            
             <div
-              className="cities__image-wrapper place-card__image-wrapper"
+              className="near-places__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"
@@ -965,12 +963,11 @@ exports[`Render Offer Card component 1`] = `
             </div>
           </article>
           <article
-            className="cities__place-card place-card"
+            className="near-places__card place-card"
             onMouseOver={[Function]}
           >
-            
             <div
-              className="cities__image-wrapper place-card__image-wrapper"
+              className="near-places__image-wrapper place-card__image-wrapper"
             >
               <a
                 href="#"

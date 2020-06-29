@@ -3,7 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import App from './app';
-import OffersList from '../offers-list/offers-list.jsx';
+import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import OFFERS_TESTS from '../../mocks/offers-tests';
 
 Enzyme.configure({
@@ -20,7 +20,7 @@ describe(`App Component`, () => {
 
     card.simulate(`mouseover`, {});
 
-    expect(appComponent.find(OffersList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
+    expect(appComponent.find(OffersCardsContainer).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 
   it(`Should offer title be clicked and change state`, () => {

@@ -41,9 +41,10 @@ class App extends PureComponent {
   _renderApp() {
     const {offers} = this.props;
     const {clickedOfferId} = this.state;
+    const foundOffer = OFFERS.find((offer) => offer.id === clickedOfferId);
 
     if (clickedOfferId !== null) {
-      return <Offer offer={OFFERS[0]} onOfferTitleClick={this._handleOfferTitleClick} />;
+      return <Offer offer={foundOffer} onOfferTitleClick={this._handleOfferTitleClick} />;
     } else {
       return <Main offers={offers} onOfferTitleClick={this._handleOfferTitleClick} />;
     }
