@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Offer from './offer';
+import ReviewsList from './reviews-list';
 import OFFERS_TESTS from '../../mocks/offers-tests';
 
-it(`Render Offer Card component`, () => {
+it(`Render Reviews List component`, () => {
   const tree = renderer
-    .create(<Offer offer={OFFERS_TESTS[0]} onOfferTitleClick={() => {}} />)
+    .create(<ReviewsList reviews={OFFERS_TESTS[0].reviews} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

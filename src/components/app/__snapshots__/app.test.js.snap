@@ -336,12 +336,12 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "100%",
                           }
                         }
                       />
@@ -373,7 +373,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -434,12 +433,12 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "60%",
                           }
                         }
                       />
@@ -471,7 +470,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -532,7 +530,7 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
@@ -569,7 +567,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -630,12 +627,12 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "100%",
                           }
                         }
                       />
@@ -667,7 +664,6 @@ Array [
                 className="cities__place-card place-card"
                 onMouseOver={[Function]}
               >
-                
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
                 >
@@ -728,12 +724,12 @@ Array [
                     className="place-card__rating rating"
                   >
                     <div
-                      className="place-card__stars rating__stars"
+                      className="place-card__stars  rating__stars"
                     >
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "60%",
                           }
                         }
                       />
@@ -767,7 +763,7 @@ Array [
             className="cities__right-section"
           >
             <section
-              className="cities__map map"
+              className="cities__map  map"
             />
           </div>
         </div>

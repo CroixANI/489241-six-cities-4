@@ -7,6 +7,10 @@ const MAP_PIN_ICON = leaflet.icon({
   iconUrl: `img/pin.svg`,
   iconSize: [30, 30]
 });
+const MAP_ORANGE_PIN_ICON = leaflet.icon({
+  iconUrl: `img/pin-active.svg`,
+  iconSize: [30, 30]
+});
 const MAP_ZOOM = 12;
 
 class Map extends PureComponent {
@@ -21,7 +25,7 @@ class Map extends PureComponent {
       return;
     }
 
-    const {locations} = this.props;
+    const {activeLocation, locations} = this.props;
     const map = leaflet.map(this.mapRef.current, {
       center: MAP_STARTING_POINT,
       MAP_ZOOM,
@@ -40,21 +44,35 @@ class Map extends PureComponent {
     if (locations) {
       locations.forEach((location) => {
         leaflet
-          .marker([location.latitude, location.longitude], {MAP_PIN_ICON})
+          .marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON})
           .addTo(map);
       });
+    }
+
+    if (activeLocation) {
+      leaflet
+          .marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON})
+          .addTo(map);
     }
   }
 
   render() {
+    const {className} = this.props;
+    const fullClassName = `${className || ``} map`;
+
     return (
-      <section ref={this.mapRef} className="cities__map map">
+      <section ref={this.mapRef} className={fullClassName}>
       </section>
     );
   }
 }
 
 Map.propTypes = {
+  className: PropTypes.string,
+  activeLocation: PropTypes.shape({
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  }),
   locations: PropTypes.arrayOf(PropTypes.shape({
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired

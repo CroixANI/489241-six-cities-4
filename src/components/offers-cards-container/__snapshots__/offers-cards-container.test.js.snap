@@ -75,12 +75,12 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "100%",
               }
             }
           />
@@ -112,7 +112,6 @@ exports[`Render Offers List component 1`] = `
     className="cities__place-card place-card"
     onMouseOver={[Function]}
   >
-    
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -173,12 +172,12 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />
@@ -210,7 +209,6 @@ exports[`Render Offers List component 1`] = `
     className="cities__place-card place-card"
     onMouseOver={[Function]}
   >
-    
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -271,7 +269,7 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
@@ -308,7 +306,6 @@ exports[`Render Offers List component 1`] = `
     className="cities__place-card place-card"
     onMouseOver={[Function]}
   >
-    
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -369,12 +366,12 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "100%",
               }
             }
           />
@@ -406,7 +403,6 @@ exports[`Render Offers List component 1`] = `
     className="cities__place-card place-card"
     onMouseOver={[Function]}
   >
-    
     <div
       className="cities__image-wrapper place-card__image-wrapper"
     >
@@ -467,12 +463,12 @@ exports[`Render Offers List component 1`] = `
         className="place-card__rating rating"
       >
         <div
-          className="place-card__stars rating__stars"
+          className="place-card__stars  rating__stars"
         >
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />

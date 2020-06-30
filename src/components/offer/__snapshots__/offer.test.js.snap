@@ -170,12 +170,12 @@ exports[`Render Offer Card component 1`] = `
             className="property__rating rating"
           >
             <div
-              className="property__stars rating__stars"
+              className="property__stars  rating__stars"
             >
               <span
                 style={
                   Object {
-                    "width": "80%",
+                    "width": "100%",
                   }
                 }
               />
@@ -188,7 +188,7 @@ exports[`Render Offer Card component 1`] = `
             <span
               className="property__rating-value rating__value"
             >
-              4
+              4.8
             </span>
           </div>
           <ul
@@ -344,12 +344,130 @@ exports[`Render Offer Card component 1`] = `
               <span
                 className="reviews__amount"
               >
-                1
+                4
               </span>
             </h2>
             <ul
               className="reviews__list"
             >
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Adam
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars  rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "40%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime={2019-05-24T00:00:00.000Z}
+                  >
+                    May 24, 2019
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Alice
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars  rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime={2019-04-27T00:00:00.000Z}
+                  >
+                    April 27, 2019
+                  </time>
+                </div>
+              </li>
               <li
                 className="reviews__item"
               >
@@ -380,7 +498,7 @@ exports[`Render Offer Card component 1`] = `
                     className="reviews__rating rating"
                   >
                     <div
-                      className="reviews__stars rating__stars"
+                      className="reviews__stars  rating__stars"
                     >
                       <span
                         style={
@@ -403,9 +521,68 @@ exports[`Render Offer Card component 1`] = `
                   </p>
                   <time
                     className="reviews__time"
-                    dateTime="2019-04-24"
+                    dateTime={2019-04-24T00:00:00.000Z}
                   >
-                    April 2019
+                    April 24, 2019
+                  </time>
+                </div>
+              </li>
+              <li
+                className="reviews__item"
+              >
+                <div
+                  className="reviews__user user"
+                >
+                  <div
+                    className="reviews__avatar-wrapper user__avatar-wrapper"
+                  >
+                    <img
+                      alt="Reviews avatar"
+                      className="reviews__avatar user__avatar"
+                      height="54"
+                      src="img/avatar-max.jpg"
+                      width="54"
+                    />
+                  </div>
+                  <span
+                    className="reviews__user-name"
+                  >
+                    Alex
+                  </span>
+                </div>
+                <div
+                  className="reviews__info"
+                >
+                  <div
+                    className="reviews__rating rating"
+                  >
+                    <div
+                      className="reviews__stars  rating__stars"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "width": "60%",
+                          }
+                        }
+                      />
+                      <span
+                        className="visually-hidden"
+                      >
+                        Rating
+                      </span>
+                    </div>
+                  </div>
+                  <p
+                    className="reviews__text"
+                  >
+                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+                  </p>
+                  <time
+                    className="reviews__time"
+                    dateTime={2018-04-24T00:00:00.000Z}
+                  >
+                    April 24, 2018
                   </time>
                 </div>
               </li>
@@ -574,7 +751,7 @@ exports[`Render Offer Card component 1`] = `
         </div>
       </div>
       <section
-        className="property__map map"
+        className="property__map  map"
       />
     </section>
     <div
@@ -593,6 +770,7 @@ exports[`Render Offer Card component 1`] = `
         >
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
@@ -601,7 +779,7 @@ exports[`Render Offer Card component 1`] = `
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Private room"
                   className="place-card__image"
                   height="200"
                   src="img/room.jpg"
@@ -621,7 +799,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €80
+                    €
+                    80
                   </b>
                   <span
                     className="place-card__price-text"
@@ -630,7 +809,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button place-card__bookmark-button--active button"
+                  className="place-card__bookmark-button button place-card__bookmark-button--active"
                   type="button"
                 >
                   <svg
@@ -645,7 +824,7 @@ exports[`Render Offer Card component 1`] = `
                   <span
                     className="visually-hidden"
                   >
-                    In bookmarks
+                    To bookmarks
                   </span>
                 </button>
               </div>
@@ -653,12 +832,12 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "60%",
                       }
                     }
                   />
@@ -671,6 +850,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -687,6 +867,7 @@ exports[`Render Offer Card component 1`] = `
           </article>
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
@@ -695,10 +876,10 @@ exports[`Render Offer Card component 1`] = `
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Private room"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-02.jpg"
+                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -715,7 +896,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €132
+                    €
+                    132
                   </b>
                   <span
                     className="place-card__price-text"
@@ -724,7 +906,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button"
+                  className="place-card__bookmark-button button "
                   type="button"
                 >
                   <svg
@@ -747,7 +929,7 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
@@ -765,6 +947,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"
@@ -775,12 +958,13 @@ exports[`Render Offer Card component 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                Private room
               </p>
             </div>
           </article>
           <article
             className="near-places__card place-card"
+            onMouseOver={[Function]}
           >
             <div
               className="near-places__image-wrapper place-card__image-wrapper"
@@ -789,10 +973,10 @@ exports[`Render Offer Card component 1`] = `
                 href="#"
               >
                 <img
-                  alt="Place image"
+                  alt="Apartment"
                   className="place-card__image"
                   height="200"
-                  src="img/apartment-03.jpg"
+                  src="img/room.jpg"
                   width="260"
                 />
               </a>
@@ -809,7 +993,8 @@ exports[`Render Offer Card component 1`] = `
                   <b
                     className="place-card__price-value"
                   >
-                    €180
+                    €
+                    180
                   </b>
                   <span
                     className="place-card__price-text"
@@ -818,7 +1003,7 @@ exports[`Render Offer Card component 1`] = `
                   </span>
                 </div>
                 <button
-                  className="place-card__bookmark-button button"
+                  className="place-card__bookmark-button button place-card__bookmark-button--active"
                   type="button"
                 >
                   <svg
@@ -841,12 +1026,12 @@ exports[`Render Offer Card component 1`] = `
                 className="place-card__rating rating"
               >
                 <div
-                  className="place-card__stars rating__stars"
+                  className="place-card__stars  rating__stars"
                 >
                   <span
                     style={
                       Object {
-                        "width": "80%",
+                        "width": "100%",
                       }
                     }
                   />
@@ -859,6 +1044,7 @@ exports[`Render Offer Card component 1`] = `
               </div>
               <h2
                 className="place-card__name"
+                onClick={[Function]}
               >
                 <a
                   href="#"

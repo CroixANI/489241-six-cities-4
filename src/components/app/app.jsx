@@ -13,6 +13,8 @@ class App extends PureComponent {
     this.state = {
       clickedOfferId: null
     };
+
+    this._handleOfferTitleClick = this._handleOfferTitleClick.bind(this);
   }
 
   render() {
@@ -23,25 +25,28 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-component">
-            <Offer offer={OFFERS[0]} />
+            <Offer offer={OFFERS[0]} onOfferTitleClick={this._handleOfferTitleClick} />
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 
+  _handleOfferTitleClick(offerId) {
+    this.setState({
+      clickedOfferId: offerId
+    });
+  }
+
   _renderApp() {
     const {offers} = this.props;
     const {clickedOfferId} = this.state;
+    const foundOffer = OFFERS.find((offer) => offer.id === clickedOfferId);
 
     if (clickedOfferId !== null) {
-      return <Offer offer={OFFERS[0]} />;
+      return <Offer offer={foundOffer} onOfferTitleClick={this._handleOfferTitleClick} />;
     } else {
-      return <Main offers={offers} onOfferTitleClick={(offerId) => {
-        this.setState({
-          clickedOfferId: offerId
-        });
-      }} />;
+      return <Main offers={offers} onOfferTitleClick={this._handleOfferTitleClick} />;
     }
   }
 }

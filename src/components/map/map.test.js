@@ -12,7 +12,7 @@ const LOCATIONS = [
 
 it(`Render Map component`, () => {
   const tree = renderer
-    .create(<Map locations={[]} />)
+    .create(<Map locations={LOCATIONS} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
