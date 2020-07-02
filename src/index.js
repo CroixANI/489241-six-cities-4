@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 
 import App from './components/app/app.jsx';
 import OFFERS from './mocks/offers';
-import reducer from './reducer';
+import {reducer} from './reducer';
 
 const store = createStore(reducer);
 
