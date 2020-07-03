@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import MainMap from './main-map.jsx';
+import CitiesContainer from '../cities-container/cities-container.jsx';
+import {CITIES} from '../../mocks/constants';
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
@@ -39,42 +41,7 @@ const Main = (props) => {
 
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <div className="tabs">
-            <section className="locations container">
-              <ul className="locations__list tabs__list">
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Paris</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Cologne</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Brussels</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item tabs__item--active">
-                    <span>Amsterdam</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Hamburg</span>
-                  </a>
-                </li>
-                <li className="locations__item">
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>Dusseldorf</span>
-                  </a>
-                </li>
-              </ul>
-            </section>
-          </div>
+          <CitiesContainer cities={CITIES} />
           <div className="cities">
             <div className="cities__places-container container">
 

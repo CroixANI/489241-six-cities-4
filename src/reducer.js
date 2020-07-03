@@ -1,8 +1,8 @@
-import {OFFERS} from './mocks/offers';
-
 const initialState = {
   city: ``,
-  offers: []
+  cities: [],
+  filteredOffers: [],
+  allOffers: []
 };
 
 const ActionType = {
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.LIST_OFFERS:
       return Object.assign({}, state, {
-        city: OFFERS.filter((offer) => offer.location.city === action.payload)
+        filteredOffers: state.allOffers.filter((offer) => offer.location.city === state.city)
       });
   }
 

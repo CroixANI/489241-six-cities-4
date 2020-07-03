@@ -99,3 +99,5 @@ export const NEAR_PLACES = [
       DEFAULT_DESCRIPTION, REVIEWS),
 ];
 
+export const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
+
