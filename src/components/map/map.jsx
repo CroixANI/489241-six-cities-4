@@ -38,7 +38,9 @@ class Map extends PureComponent {
       locationsMarkers.push(leaflet.marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON}));
     }
 
-    this._mapPinsLayer = leaflet.layerGroup(locationsMarkers).addTo(this._map);
+    locationsMarkers.forEach((marker) => marker.addTo(this._mapPinsLayer));
+    const bounds = this._mapPinsLayer.getBounds();
+    this._map.fitBounds(bounds, {maxZoom: 12});
   }
 
   componentDidMount() {
@@ -47,23 +49,23 @@ class Map extends PureComponent {
     }
 
     const {activeLocation, locations} = this.props;
-    const centerLocation = locations[0];
-    const center = centerLocation ? [centerLocation.latitude, centerLocation.longitude] : MAP_STARTING_POINT;
 
     this._map = leaflet.map(this._mapRef.current, {
-      center,
+      MAP_STARTING_POINT,
       MAP_ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    this._map.setView(center, MAP_ZOOM);
+    this._map.setView(MAP_STARTING_POINT, MAP_ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
       .addTo(this._map);
+
+    this._mapPinsLayer = leaflet.featureGroup().addTo(this._map);
 
     this._renderPinsOnSeparateLayer(activeLocation, locations);
   }
