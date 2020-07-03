@@ -8,10 +8,6 @@ import CitiesContainer from '../cities-container/cities-container.jsx';
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
   const locations = offers.map((offer) => offer.location);
-  const cities = offers
-    .map((offer) => offer.location.city)
-    .filter((value, index, self) => self.indexOf(value) === index)
-    .sort();
 
   return (
     <>

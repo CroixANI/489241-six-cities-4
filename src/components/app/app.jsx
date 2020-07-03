@@ -1,10 +1,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import OFFERS from '../../mocks/offers';
+import {ActionCreator} from "../../reducer.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -71,4 +73,18 @@ App.propTypes = {
   ),
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  offers: state.filteredOffers,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onWelcomeButtonClick() {
+    dispatch(ActionCreator.incrementStep());
+  },
+  onUserAnswer() {
+    dispatch(ActionCreator.incrementStep());
+  },
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
