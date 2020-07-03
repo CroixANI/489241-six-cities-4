@@ -5,7 +5,8 @@ const MAX_CITIES_COUNT = 6;
 
 const CitiesContainer = (props) => {
   const {cities, selectedCity, onCityClick} = props;
-  const limitedCities = cities.slice(0, MAX_CITIES_COUNT);
+  // to test empty screen
+  const limitedCities = [`Düsseldorf`, ...cities].sort().slice(0, MAX_CITIES_COUNT);
   const defaultCityClass = `locations__item-link tabs__item`;
   const activeCityClass = `${defaultCityClass} tabs__item--active`;
 

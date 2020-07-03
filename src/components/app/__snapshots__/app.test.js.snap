@@ -98,7 +98,7 @@ Array [
       </div>
     </header>
     <main
-      className="page__main page__main--index"
+      className="page__main page__main--index "
     >
       <h1
         className="visually-hidden"
@@ -137,6 +137,19 @@ Array [
               >
                 <span>
                   Cologne
+                </span>
+              </a>
+            </li>
+            <li
+              className="locations__item"
+            >
+              <a
+                className="locations__item-link tabs__item"
+                href="#"
+                onClick={[Function]}
+              >
+                <span>
+                  Düsseldorf
                 </span>
               </a>
             </li>
