@@ -1,8 +1,11 @@
+import OFFERS from './mocks/offers';
+import {CITIES} from './mocks/constants';
+
 const initialState = {
   city: ``,
-  cities: [],
+  cities: CITIES,
   filteredOffers: [],
-  allOffers: []
+  allOffers: OFFERS
 };
 
 const ActionType = {
