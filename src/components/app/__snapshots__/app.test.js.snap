@@ -120,6 +120,7 @@ Array [
               <a
                 className="locations__item-link tabs__item tabs__item--active"
                 href="#"
+                onClick={[Function]}
               >
                 <span>
                   Amsterdam
@@ -132,6 +133,7 @@ Array [
               <a
                 className="locations__item-link tabs__item"
                 href="#"
+                onClick={[Function]}
               >
                 <span>
                   Cologne
@@ -144,6 +146,7 @@ Array [
               <a
                 className="locations__item-link tabs__item"
                 href="#"
+                onClick={[Function]}
               >
                 <span>
                   Paris

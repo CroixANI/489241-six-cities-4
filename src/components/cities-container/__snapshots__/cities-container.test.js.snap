@@ -16,6 +16,7 @@ exports[`Render Map component 1`] = `
         <a
           className="locations__item-link tabs__item tabs__item--active"
           href="#"
+          onClick={[Function]}
         >
           <span>
             Minsk
@@ -28,6 +29,7 @@ exports[`Render Map component 1`] = `
         <a
           className="locations__item-link tabs__item"
           href="#"
+          onClick={[Function]}
         >
           <span>
             Brest
@@ -40,6 +42,7 @@ exports[`Render Map component 1`] = `
         <a
           className="locations__item-link tabs__item"
           href="#"
+          onClick={[Function]}
         >
           <span>
             Grodno
