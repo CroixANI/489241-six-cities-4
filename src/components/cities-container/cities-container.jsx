@@ -11,7 +11,7 @@ const CitiesContainer = (props) => {
           {cities.map((city) => (
             <li key={city} className="locations__item">
               <a className="locations__item-link tabs__item" href="#">
-                <span>city</span>
+                <span>{city}</span>
               </a>
             </li>
           ))}

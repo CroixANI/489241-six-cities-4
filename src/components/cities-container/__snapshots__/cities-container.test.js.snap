@@ -18,7 +18,7 @@ exports[`Render Map component 1`] = `
           href="#"
         >
           <span>
-            city
+            Minsk
           </span>
         </a>
       </li>
@@ -30,7 +30,7 @@ exports[`Render Map component 1`] = `
           href="#"
         >
           <span>
-            city
+            Brest
           </span>
         </a>
       </li>
@@ -42,7 +42,7 @@ exports[`Render Map component 1`] = `
           href="#"
         >
           <span>
-            city
+            Grodno
           </span>
         </a>
       </li>

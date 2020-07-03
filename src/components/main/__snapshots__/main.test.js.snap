@@ -122,7 +122,7 @@ Array [
                 href="#"
               >
                 <span>
-                  city
+                  Amsterdam
                 </span>
               </a>
             </li>
@@ -134,7 +134,7 @@ Array [
                 href="#"
               >
                 <span>
-                  city
+                  Cologne
                 </span>
               </a>
             </li>
@@ -146,43 +146,7 @@ Array [
                 href="#"
               >
                 <span>
-                  city
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-              >
-                <span>
-                  city
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-              >
-                <span>
-                  city
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-              >
-                <span>
-                  city
+                  Paris
                 </span>
               </a>
             </li>

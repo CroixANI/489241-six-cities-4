@@ -4,11 +4,14 @@ import PropTypes from 'prop-types';
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import MainMap from './main-map.jsx';
 import CitiesContainer from '../cities-container/cities-container.jsx';
-import {CITIES} from '../../mocks/constants';
 
 const Main = (props) => {
   const {offers, onOfferTitleClick} = props;
   const locations = offers.map((offer) => offer.location);
+  const cities = offers
+    .map((offer) => offer.location.city)
+    .filter((value, index, self) => self.indexOf(value) === index)
+    .sort();
 
   return (
     <>
@@ -41,7 +44,7 @@ const Main = (props) => {
 
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <CitiesContainer cities={CITIES} />
+          <CitiesContainer cities={cities} />
           <div className="cities">
             <div className="cities__places-container container">
 
