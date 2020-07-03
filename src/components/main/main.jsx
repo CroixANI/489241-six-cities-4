@@ -6,7 +6,7 @@ import MainMap from './main-map.jsx';
 import CitiesContainer from '../cities-container/cities-container.jsx';
 
 const Main = (props) => {
-  const {offers, onOfferTitleClick} = props;
+  const {offers, cities, selectedCity, onCityClick, onOfferTitleClick} = props;
   const locations = offers.map((offer) => offer.location);
 
   return (
@@ -40,7 +40,7 @@ const Main = (props) => {
 
         <main className="page__main page__main--index">
           <h1 className="visually-hidden">Cities</h1>
-          <CitiesContainer cities={cities} />
+          <CitiesContainer cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} />
           <div className="cities">
             <div className="cities__places-container container">
 
@@ -77,7 +77,10 @@ const Main = (props) => {
 };
 
 Main.propTypes = {
+  onCityClick: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

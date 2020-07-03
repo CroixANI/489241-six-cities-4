@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 const MAX_CITIES_COUNT = 6;
 
 const CitiesContainer = (props) => {
-  const {cities} = props;
-  const limitedCities = cities.sort().slice(0, MAX_CITIES_COUNT);
+  const {cities, selectedCity} = props;
+  const limitedCities = cities.slice(0, MAX_CITIES_COUNT);
+  const defaultCityClass = `locations__item-link tabs__item`;
+  const activeCityClass = `${defaultCityClass} tabs__item--active`;
 
   return (
     <div className="tabs">
@@ -13,7 +15,7 @@ const CitiesContainer = (props) => {
         <ul className="locations__list tabs__list">
           {limitedCities.map((city) => (
             <li key={city} className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className={city === selectedCity ? activeCityClass : defaultCityClass} href="#">
                 <span>{city}</span>
               </a>
             </li>
@@ -25,7 +27,8 @@ const CitiesContainer = (props) => {
 };
 
 CitiesContainer.propTypes = {
-  cities: PropTypes.arrayOf(PropTypes.string).isRequired
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCity: PropTypes.string.isRequired
 };
 
 export default CitiesContainer;

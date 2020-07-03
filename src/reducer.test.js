@@ -1,6 +1,6 @@
 import {reducer, ActionCreator} from './reducer';
 
-import OFFERS_TESTS from './mocks/offers-tests';
+import {OFFERS_TESTS, CITIES_TESTS} from './mocks/offers-tests';
 
 it(`Reducer with no incoming parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -12,15 +12,10 @@ it(`Reducer with no incoming parameters should return initial state`, () => {
 });
 
 it(`Reducer should load data`, () => {
-  const cities = OFFERS_TESTS
-    .map((offer) => offer.location.city)
-    .filter((value, index, self) => self.indexOf(value) === index)
-    .sort();
-
   const filteredOffers = OFFERS_TESTS.filter((offer) => offer.location.city === `Amsterdam`);
   expect(reducer(void 0, ActionCreator.loadData(OFFERS_TESTS))).toEqual({
-    city: cities[0],
-    cities,
+    city: CITIES_TESTS[0],
+    cities: CITIES_TESTS,
     filteredOffers,
     allOffers: OFFERS_TESTS
   });

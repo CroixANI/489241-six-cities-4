@@ -14,6 +14,18 @@ exports[`Render Map component 1`] = `
         className="locations__item"
       >
         <a
+          className="locations__item-link tabs__item tabs__item--active"
+          href="#"
+        >
+          <span>
+            Minsk
+          </span>
+        </a>
+      </li>
+      <li
+        className="locations__item"
+      >
+        <a
           className="locations__item-link tabs__item"
           href="#"
         >
@@ -31,18 +43,6 @@ exports[`Render Map component 1`] = `
         >
           <span>
             Grodno
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          href="#"
-        >
-          <span>
-            Minsk
           </span>
         </a>
       </li>

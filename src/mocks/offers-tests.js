@@ -22,4 +22,9 @@ const OFFERS_TESTS = [
       DEFAULT_DESCRIPTION, REVIEWS, NEAR_PLACES),
 ];
 
-export default OFFERS_TESTS;
+const CITIES_TESTS = OFFERS_TESTS
+  .map((offer) => offer.location.city)
+  .filter((value, index, self) => self.indexOf(value) === index)
+  .sort();
+
+export {OFFERS_TESTS, CITIES_TESTS};

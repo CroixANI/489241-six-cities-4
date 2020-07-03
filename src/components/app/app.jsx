@@ -41,19 +41,22 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {offers} = this.props;
+    const {offers, cities, selectedCity, onCityClick} = this.props;
     const {clickedOfferId} = this.state;
     const foundOffer = OFFERS.find((offer) => offer.id === clickedOfferId);
 
     if (clickedOfferId !== null) {
       return <Offer offer={foundOffer} onOfferTitleClick={this._handleOfferTitleClick} />;
     } else {
-      return <Main offers={offers} onOfferTitleClick={this._handleOfferTitleClick} />;
+      return <Main offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={this._handleOfferTitleClick} />;
     }
   }
 }
 
 App.propTypes = {
+  onCityClick: PropTypes.func.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCity: PropTypes.string.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -75,15 +78,14 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   offers: state.filteredOffers,
+  cities: state.cities,
+  selectedCity: state.city
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onWelcomeButtonClick() {
-    dispatch(ActionCreator.incrementStep());
-  },
-  onUserAnswer() {
-    dispatch(ActionCreator.incrementStep());
-  },
+  onCityClick(city) {
+    dispatch(ActionCreator.changeCity(city));
+  }
 });
 
 export {App};
