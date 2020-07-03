@@ -8,7 +8,10 @@ import OFFERS from './mocks/offers';
 import {CITIES} from '../../data/constants';
 import {reducer} from './reducer';
 
-const store = createStore(reducer);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 ReactDOM.render(
     <Provider store={store}>
