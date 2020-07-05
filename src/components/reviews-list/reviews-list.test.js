@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import ReviewsList from './reviews-list';
-import OFFERS_TESTS from '../../mocks/offers-tests';
+import {OFFERS_TESTS} from '../../mocks/offers-tests';
 
 it(`Render Reviews List component`, () => {
   const tree = renderer

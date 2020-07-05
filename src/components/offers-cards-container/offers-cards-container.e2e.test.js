@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import OffersCardsContainer from './offers-cards-container';
 import OfferCard from '../offer-card/offer-card.jsx';
-import OFFERS_TESTS from '../../mocks/offers-tests';
+import {OFFERS_TESTS} from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),

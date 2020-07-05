@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Main from './main';
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
-import OFFERS_TESTS from '../../mocks/offers-tests';
+import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -13,7 +13,7 @@ Enzyme.configure({
 describe(`Main Screen`, () => {
   it(`Should mouse over be triggered`, () => {
     const mainScreen = mount(
-        <Main offers={OFFERS_TESTS} onOfferTitleClick={() => {}} />
+        <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={() => {}} />
     );
 
     const card = mainScreen.find(`.place-card`).first();
@@ -27,7 +27,7 @@ describe(`Main Screen`, () => {
     const onOfferTitleClick = jest.fn();
 
     const mainScreen = mount(
-        <Main offers={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} />
+        <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={onOfferTitleClick} />
     );
 
     const allTitles = mainScreen.find(`h2.place-card__name`);

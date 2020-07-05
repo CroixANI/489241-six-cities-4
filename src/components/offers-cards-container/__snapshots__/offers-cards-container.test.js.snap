@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Offers List component 1`] = `
+exports[`Render Offers Container component 1`] = `
 <div
   className="cities__places-list places__list tabs__content"
 >

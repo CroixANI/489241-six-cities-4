@@ -17,43 +17,66 @@ class Map extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.mapRef = createRef();
+    this._mapRef = createRef();
+    this._map = null;
+    this._mapPinsLayer = null;
+
+    this._renderPinsOnSeparateLayer = this._renderPinsOnSeparateLayer.bind(this);
+  }
+
+  _renderPinsOnSeparateLayer(activeLocation, locations) {
+    if (this._mapPinsLayer) {
+      this._mapPinsLayer.clearLayers();
+    }
+
+    const centerLocation = locations[0];
+    const center = centerLocation ? [centerLocation.latitude, centerLocation.longitude] : MAP_STARTING_POINT;
+    this._map.setView(center);
+
+    const locationsMarkers = locations.map((location) => leaflet.marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON}));
+    if (activeLocation) {
+      locationsMarkers.push(leaflet.marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON}));
+    }
+
+    locationsMarkers.forEach((marker) => marker.addTo(this._mapPinsLayer));
+    const bounds = this._mapPinsLayer.getBounds();
+    this._map.fitBounds(bounds, {maxZoom: 12});
   }
 
   componentDidMount() {
-    if (!this.mapRef.current) {
+    if (!this._mapRef.current) {
       return;
     }
 
     const {activeLocation, locations} = this.props;
-    const map = leaflet.map(this.mapRef.current, {
-      center: MAP_STARTING_POINT,
+
+    this._map = leaflet.map(this._mapRef.current, {
+      MAP_STARTING_POINT,
       MAP_ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    map.setView(MAP_STARTING_POINT, MAP_ZOOM);
+    this._map.setView(MAP_STARTING_POINT, MAP_ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(map);
+      .addTo(this._map);
 
-    if (locations) {
-      locations.forEach((location) => {
-        leaflet
-          .marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON})
-          .addTo(map);
-      });
-    }
+    this._mapPinsLayer = leaflet.featureGroup().addTo(this._map);
 
-    if (activeLocation) {
-      leaflet
-          .marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON})
-          .addTo(map);
-    }
+    this._renderPinsOnSeparateLayer(activeLocation, locations);
+  }
+
+  componentDidUpdate() {
+    const {activeLocation, locations} = this.props;
+    this._renderPinsOnSeparateLayer(activeLocation, locations);
+  }
+
+  componentWillUnmount() {
+    this._map.remove();
   }
 
   render() {
@@ -61,7 +84,7 @@ class Map extends PureComponent {
     const fullClassName = `${className || ``} map`;
 
     return (
-      <section ref={this.mapRef} className={fullClassName}>
+      <section ref={this._mapRef} className={fullClassName}>
       </section>
     );
   }
