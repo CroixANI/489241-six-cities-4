@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import OffersCardsList from './offers-cards-list';
+import {OffersCardsList} from './offers-cards-list';
 import {OFFERS_TESTS} from '../../mocks/offers-tests';
 
 it(`Render Offers List component`, () => {

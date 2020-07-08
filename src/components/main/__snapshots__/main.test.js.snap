@@ -193,6 +193,7 @@ Array [
               action="#"
               className="places__sorting"
               method="get"
+              onClick={[Function]}
             >
               <span
                 className="places__sorting-caption"
@@ -215,31 +216,39 @@ Array [
                 </svg>
               </span>
               <ul
-                className="places__options places__options--custom places__options--opened"
+                className="places__options places__options--custom "
               >
                 <li
                   className="places__option places__option--active"
+                  data-option="Popular"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
-                  Popular
+                  option
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  data-option="Price: low to high"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
-                  Price: low to high
+                  option
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  data-option="Price: high to low"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
-                  Price: high to low
+                  option
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  data-option="Top rated first"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
-                  Top rated first
+                  option
                 </li>
               </ul>
             </form>

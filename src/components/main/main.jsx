@@ -39,7 +39,7 @@ const Main = (props) => {
         <main className={mainClassName}>
           <h1 className="visually-hidden">Cities</h1>
           <CitiesContainer cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} />
-          <OffersCardsList offers={offers} onOfferTitleClick={onOfferTitleClick} />
+          <OffersCardsList onOfferTitleClick={onOfferTitleClick} />
         </main>
       </div>
     </>
