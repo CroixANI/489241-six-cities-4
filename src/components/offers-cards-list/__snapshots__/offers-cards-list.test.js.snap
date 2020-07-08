@@ -36,6 +36,7 @@ exports[`Render Offers List component 1`] = `
           className="places__sorting-type"
           tabIndex="0"
         >
+          Popular
           <svg
             className="places__sorting-arrow"
             height="4"
@@ -50,7 +51,7 @@ exports[`Render Offers List component 1`] = `
           className="places__options places__options--custom "
         >
           <li
-            className="places__option "
+            className="places__option places__option--active"
             data-option="Popular"
             onClick={[Function]}
             tabIndex="0"

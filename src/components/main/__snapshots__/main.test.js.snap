@@ -224,7 +224,7 @@ Array [
                   onClick={[Function]}
                   tabIndex="0"
                 >
-                  option
+                  Popular
                 </li>
                 <li
                   className="places__option "
@@ -232,7 +232,7 @@ Array [
                   onClick={[Function]}
                   tabIndex="0"
                 >
-                  option
+                  Price: low to high
                 </li>
                 <li
                   className="places__option "
@@ -240,7 +240,7 @@ Array [
                   onClick={[Function]}
                   tabIndex="0"
                 >
-                  option
+                  Price: high to low
                 </li>
                 <li
                   className="places__option "
@@ -248,7 +248,7 @@ Array [
                   onClick={[Function]}
                   tabIndex="0"
                 >
-                  option
+                  Top rated first
                 </li>
               </ul>
             </form>
