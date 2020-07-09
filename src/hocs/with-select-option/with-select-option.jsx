@@ -6,23 +6,15 @@ const withSelectableOption = (Component, options, initialActiveOption, onOptionC
       super();
 
       this.state = {
-        isOpened: false,
         activeOption: initialActiveOption
       };
 
-      this._handleSortMenuClick = this._handleSortMenuClick.bind(this);
       this._handlerMenuItemClick = this._handlerMenuItemClick.bind(this);
     }
 
     render() {
-      const {isOpened, activeOption} = this.state;
-      return <Component isOpened={isOpened} options={options} activeOption={activeOption} onMenuClicked={this._handleSortMenuClick} onOptionSelected={this._handlerMenuItemClick} />;
-    }
-
-    _handleSortMenuClick() {
-      this.setState((prevState) => ({
-        isOpened: !prevState.isOpened
-      }));
+      const {activeOption} = this.state;
+      return <Component options={options} activeOption={activeOption} onOptionSelected={this._handlerMenuItemClick} {...this.props} />;
     }
 
     _handlerMenuItemClick(evt) {
