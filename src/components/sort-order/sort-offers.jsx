@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SortMenu from '../sort-order/sort-menu.jsx';
+import SortMenu from './sort-menu.jsx';
 import withSelectableOption from '../../hocs/with-select-option/with-select-option.jsx';
 import {SORT_TYPE} from '../../data/constants.js';
 

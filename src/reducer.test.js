@@ -73,4 +73,11 @@ describe(`Action creators should work correctly`, () => {
       payload: `Amsterdam`
     });
   });
+
+  it(`Action creator for change sort type should create correct action`, () => {
+    expect(ActionCreator.changeSortType(`Popular`)).toEqual({
+      type: ActionType.CHANGE_SORT_TYPE,
+      payload: `Popular`
+    });
+  });
 });

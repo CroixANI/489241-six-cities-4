@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import OffersCardsListMap from './offers-cards-list-map.jsx';
-import SortOffers from '../sort-order/sort-offers';
+import SortOffers from '../sort-order/sort-offers.jsx';
 import {ActionCreator} from "../../reducer.js";
 import {SORT_TYPE} from '../../data/constants.js';
 
