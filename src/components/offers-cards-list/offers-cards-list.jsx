@@ -29,7 +29,7 @@ class OffersCardsList extends PureComponent {
     const {selectedOffer} = this.state;
     const {sortType, offers, onOfferTitleClick, onSort} = this.props;
     const locations = offers.map((offer) => offer.location);
-    const activeLocation = selectedOffer !== null ? selectedOffer.location : null;
+    const activeLocation = selectedOffer && offers && offers.length > 0 && offers[0].location.city === selectedOffer.location.city ? selectedOffer.location : null;
 
     if (offers.length === 0) {
       return (

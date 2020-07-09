@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 const SortMenu = (props) => {
   const {isOpened, options, activeOption, onMenuClicked, onOptionSelected} = props;
   const menuClass = `places__options places__options--custom ${isOpened ? `places__options--opened` : ``}`;
+  const handleMenuItemClick = (sortOption) => (evt) => {
+    evt.preventDefault();
+    evt.stopPropagation();
+    return onOptionSelected(sortOption);
+  };
 
   return (
     <form onClick={onMenuClicked} className="places__sorting" action="#" method="get">
@@ -16,7 +21,7 @@ const SortMenu = (props) => {
       </span>
       <ul className={menuClass}>
         {options.map((option) => (
-          <li key={option} onClick={onOptionSelected} className={`places__option ${option === activeOption ? `places__option--active` : ``}`} tabIndex="0" data-option={option}>{option}</li>
+          <li key={option} onClick={handleMenuItemClick(option)} className={`places__option ${option === activeOption ? `places__option--active` : ``}`} tabIndex="0">{option}</li>
         ))}
       </ul>
     </form>

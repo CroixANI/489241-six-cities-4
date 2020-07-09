@@ -7,7 +7,7 @@ const CITIES = [`Minsk`, `Brest`, `Grodno`];
 
 it(`Render Map component`, () => {
   const tree = renderer
-    .create(<CitiesContainer cities={CITIES} selectedCity={CITIES[0]} onCityClick={() => {}} />)
+    .create(<CitiesContainer activeOption={CITIES[0]} options={CITIES} onOptionSelected={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

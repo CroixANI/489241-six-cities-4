@@ -52,7 +52,6 @@ exports[`Render Offers List component 1`] = `
         >
           <li
             className="places__option places__option--active"
-            data-option="Popular"
             onClick={[Function]}
             tabIndex="0"
           >
@@ -60,7 +59,6 @@ exports[`Render Offers List component 1`] = `
           </li>
           <li
             className="places__option "
-            data-option="Price: low to high"
             onClick={[Function]}
             tabIndex="0"
           >
@@ -68,7 +66,6 @@ exports[`Render Offers List component 1`] = `
           </li>
           <li
             className="places__option "
-            data-option="Price: high to low"
             onClick={[Function]}
             tabIndex="0"
           >
@@ -76,7 +73,6 @@ exports[`Render Offers List component 1`] = `
           </li>
           <li
             className="places__option "
-            data-option="Top rated first"
             onClick={[Function]}
             tabIndex="0"
           >

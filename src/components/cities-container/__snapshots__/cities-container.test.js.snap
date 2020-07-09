@@ -14,6 +14,19 @@ exports[`Render Map component 1`] = `
         className="locations__item"
       >
         <a
+          className="locations__item-link tabs__item tabs__item--active"
+          href="#"
+          onClick={[Function]}
+        >
+          <span>
+            Minsk
+          </span>
+        </a>
+      </li>
+      <li
+        className="locations__item"
+      >
+        <a
           className="locations__item-link tabs__item"
           href="#"
           onClick={[Function]}
@@ -32,33 +45,7 @@ exports[`Render Map component 1`] = `
           onClick={[Function]}
         >
           <span>
-            Düsseldorf
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item"
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
             Grodno
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
-          className="locations__item-link tabs__item tabs__item--active"
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
-            Minsk
           </span>
         </a>
       </li>

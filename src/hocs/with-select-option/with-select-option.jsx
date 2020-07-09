@@ -17,10 +17,7 @@ const withSelectableOption = (Component, options, initialActiveOption, onOptionC
       return <Component options={options} activeOption={activeOption} onOptionSelected={this._handlerMenuItemClick} {...this.props} />;
     }
 
-    _handlerMenuItemClick(evt) {
-      evt.preventDefault();
-      evt.stopPropagation();
-      const selectedOption = evt.target.dataset.option;
+    _handlerMenuItemClick(selectedOption) {
       const {activeOption} = this.state;
 
       this.setState((prevState) => ({
