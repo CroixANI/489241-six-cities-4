@@ -3,7 +3,8 @@
 exports[`Render Offer Card Premium component 1`] = `
 <article
   className="cities__place-card place-card"
-  onMouseOver={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
   <div
     className="place-card__mark"

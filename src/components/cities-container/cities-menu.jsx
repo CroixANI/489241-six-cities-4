@@ -11,9 +11,9 @@ const CitiesMenu = (props) => {
   // to test empty screen
   const limitedCities = [`Düsseldorf`, ...cities].sort().slice(0, MAX_CITIES_COUNT);
 
-  const WrappedComponent = withSelectableOption(CitiesContainer, limitedCities, selectedCity, onCityClick);
+  const WrappedComponent = withSelectableOption(CitiesContainer);
 
-  return <WrappedComponent />;
+  return <WrappedComponent options={limitedCities} activeOption={selectedCity} onOptionSelected={onCityClick} {...props} />;
 };
 
 CitiesMenu.propTypes = {

@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const withSelectableOption = (Component, options, initialActiveOption, onOptionChanged) => {
-  return class WithSelectableOption extends React.PureComponent {
-    constructor() {
-      super();
+const withSelectableOption = (Component) => {
+  class WithSelectableOption extends React.PureComponent {
+    constructor(props) {
+      super(props);
 
+      const {activeOption} = props;
       this.state = {
-        activeOption: initialActiveOption
+        activeOption
       };
 
       this._handlerMenuItemClick = this._handlerMenuItemClick.bind(this);
@@ -14,22 +16,31 @@ const withSelectableOption = (Component, options, initialActiveOption, onOptionC
 
     render() {
       const {activeOption} = this.state;
-      return <Component options={options} activeOption={activeOption} onOptionSelected={this._handlerMenuItemClick} {...this.props} />;
+      return <Component activeOption={activeOption} onOptionSelected={this._handlerMenuItemClick} {...this.props} />;
     }
 
     _handlerMenuItemClick(selectedOption) {
       const {activeOption} = this.state;
+      const {onOptionSelected} = this.props;
 
       this.setState((prevState) => ({
         isOpened: !prevState.isOpened,
         activeOption: selectedOption
       }), () => {
         if (activeOption !== selectedOption) {
-          onOptionChanged(selectedOption);
+          onOptionSelected(selectedOption);
         }
       });
     }
+  }
+
+  WithSelectableOption.propTypes = {
+    activeOption: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onOptionSelected: PropTypes.func.isRequired
   };
+
+  return WithSelectableOption;
 };
 
 export default withSelectableOption;

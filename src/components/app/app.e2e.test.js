@@ -30,7 +30,7 @@ describe(`App Component`, () => {
 
     const card = appComponent.find(`.place-card`).first();
 
-    card.simulate(`mouseover`, {});
+    card.simulate(`mouseenter`, {});
 
     expect(appComponent.find(OffersCardsList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });

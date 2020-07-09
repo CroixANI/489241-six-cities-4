@@ -10,9 +10,9 @@ const sortOptions = Object.values(SORT_TYPE);
 
 const SortOffers = (props) => {
   const {onSortTypeChange, activeOption} = props;
-  const WrappedComponent = withOpenedClosedState(withSelectableOption(SortMenu, sortOptions, activeOption, onSortTypeChange));
+  const WrappedComponent = withOpenedClosedState(withSelectableOption(SortMenu));
 
-  return <WrappedComponent />;
+  return <WrappedComponent options={sortOptions} activeOption={activeOption} onOptionSelected={onSortTypeChange} {...props} />;
 };
 
 SortOffers.propTypes = {

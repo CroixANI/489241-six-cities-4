@@ -19,7 +19,7 @@ describe(`Offers List Component`, () => {
 
     const card = offersList.find(`.place-card`).first();
 
-    card.simulate(`mouseover`, {});
+    card.simulate(`mouseenter`, {});
 
     expect(offersList.state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
     expect(offersList.find(OfferCard).length).toBe(OFFERS_TESTS.length);

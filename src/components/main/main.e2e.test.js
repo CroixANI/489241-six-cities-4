@@ -29,7 +29,7 @@ describe(`Main Screen`, () => {
 
     const card = mainScreen.find(`.place-card`).first();
 
-    card.simulate(`mouseover`, {});
+    card.simulate(`mouseenter`, {});
 
     expect(mainScreen.find(OffersCardsList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
