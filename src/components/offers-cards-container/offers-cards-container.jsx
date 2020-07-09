@@ -1,49 +1,33 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import OfferCard from '../offer-card/offer-card.jsx';
 import OfferCardPremium from '../offer-card-premium/offer-card-premium.jsx';
 import {OFFER_LUXURY_TYPE} from '../../data/constants.js';
 
-class OffersCardsContainer extends PureComponent {
-  constructor(props) {
-    super(props);
+const OffersCardsContainer = (props) => {
+  const {offers, onOfferTitleClick, onOfferHover} = props;
+  const getOfferCardByLuxuryType = (offer) => {
+    switch (offer.luxuryType) {
+      case OFFER_LUXURY_TYPE.PREMIUM:
+        return <OfferCardPremium key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+          onHover={onOfferHover} />;
+      default:
+        return <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+          onHover={onOfferHover} />;
+    }
+  };
 
-    this.state = {
-      selectedOffer: null
-    };
-
-    this._handleOfferOnHover = this._handleOfferOnHover.bind(this);
-  }
-
-  _handleOfferOnHover(selectedOffer) {
-    this.setState({
-      selectedOffer
-    });
-  }
-
-  render() {
-    const {offers, onOfferTitleClick} = this.props;
-    const getOfferCardByLuxuryType = (offer) => {
-      switch (offer.luxuryType) {
-        case OFFER_LUXURY_TYPE.PREMIUM:
-          return <OfferCardPremium key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
-            onHover={this._handleOfferOnHover} />;
-        default:
-          return <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
-            onHover={this._handleOfferOnHover} />;
-      }
-    };
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => getOfferCardByLuxuryType(offer))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {offers.map((offer) => getOfferCardByLuxuryType(offer))}
+    </div>
+  );
+};
 
 OffersCardsContainer.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
+  onOfferHover: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

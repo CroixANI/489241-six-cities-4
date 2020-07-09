@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import {App} from './app';
-import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
+import {OffersCardsList} from '../offers-cards-list/offers-cards-list.jsx';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 
@@ -32,7 +32,7 @@ describe(`App Component`, () => {
 
     card.simulate(`mouseover`, {});
 
-    expect(appComponent.find(OffersCardsContainer).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
+    expect(appComponent.find(OffersCardsList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
   });
 
   it(`Should offer title be clicked and change state`, () => {
