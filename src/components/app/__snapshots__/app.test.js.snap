@@ -193,6 +193,7 @@ Array [
               action="#"
               className="places__sorting"
               method="get"
+              onClick={[Function]}
             >
               <span
                 className="places__sorting-caption"
@@ -215,28 +216,32 @@ Array [
                 </svg>
               </span>
               <ul
-                className="places__options places__options--custom places__options--opened"
+                className="places__options places__options--custom "
               >
                 <li
                   className="places__option places__option--active"
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Popular
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: low to high
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Price: high to low
                 </li>
                 <li
-                  className="places__option"
+                  className="places__option "
+                  onClick={[Function]}
                   tabIndex="0"
                 >
                   Top rated first
@@ -248,7 +253,8 @@ Array [
             >
               <article
                 className="cities__place-card place-card"
-                onMouseOver={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="place-card__mark"
@@ -352,7 +358,8 @@ Array [
               </article>
               <article
                 className="cities__place-card place-card"
-                onMouseOver={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
@@ -449,7 +456,8 @@ Array [
               </article>
               <article
                 className="cities__place-card place-card"
-                onMouseOver={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
@@ -546,7 +554,8 @@ Array [
               </article>
               <article
                 className="cities__place-card place-card"
-                onMouseOver={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"
@@ -643,7 +652,8 @@ Array [
               </article>
               <article
                 className="cities__place-card place-card"
-                onMouseOver={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
               >
                 <div
                   className="cities__image-wrapper place-card__image-wrapper"

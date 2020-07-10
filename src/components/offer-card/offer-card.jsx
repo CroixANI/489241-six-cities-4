@@ -22,13 +22,20 @@ const OfferCard = (props) => {
   const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
   const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
 
+  const handleHover = (selectedOffer) => () => {
+    onHover(selectedOffer);
+  };
+
+  const handleMouseLeave = () => {
+    onHover(null);
+  };
+
+  const handleTitleClick = (offerId) => () => {
+    onTitleClick(offerId);
+  };
+
   return (
-    <article
-      className={containerCss}
-      onMouseOver={() => {
-        onHover(offer);
-      }}
-    >
+    <article className={containerCss} onMouseEnter={handleHover(offer)} onMouseLeave={handleMouseLeave}>
       {renderMark && renderMark()}
       <div className={wrapperCss}>
         {mainImageUrl && <a href="#">
@@ -51,9 +58,7 @@ const OfferCard = (props) => {
         <div className="place-card__rating rating">
           <OfferCardRating rating={offer.rating} />
         </div>
-        <h2 onClick={() => {
-          onTitleClick(id);
-        }} className="place-card__name">
+        <h2 onClick={handleTitleClick(id)} className="place-card__name">
           <a href="#">{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>

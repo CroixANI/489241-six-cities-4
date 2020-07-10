@@ -1,6 +1,7 @@
 import {reducer, ActionCreator, ActionType} from './reducer';
 
 import {OFFERS_TESTS, CITIES_TESTS} from './mocks/offers-tests';
+import {SORT_TYPE} from './data/constants';
 
 describe(`Reducer should work correctly`, () => {
   it(`Reducer with no incoming parameters should return initial state`, () => {
@@ -18,7 +19,8 @@ describe(`Reducer should work correctly`, () => {
       city: CITIES_TESTS[0],
       cities: CITIES_TESTS,
       filteredOffers,
-      allOffers: OFFERS_TESTS
+      allOffers: OFFERS_TESTS,
+      sortType: SORT_TYPE.POPULAR
     });
   });
 
@@ -69,6 +71,13 @@ describe(`Action creators should work correctly`, () => {
     expect(ActionCreator.changeCity(`Amsterdam`)).toEqual({
       type: ActionType.CHANGE_CITY,
       payload: `Amsterdam`
+    });
+  });
+
+  it(`Action creator for change sort type should create correct action`, () => {
+    expect(ActionCreator.changeSortType(`Popular`)).toEqual({
+      type: ActionType.CHANGE_SORT_TYPE,
+      payload: `Popular`
     });
   });
 });
