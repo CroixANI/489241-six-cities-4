@@ -11,23 +11,22 @@ const withActiveItem = (Component) => {
         activeItem
       };
 
-      this._handlerMenuItemClick = this._handlerMenuItemClick.bind(this);
+      this._handleItemSelected = this._handleItemSelected.bind(this);
     }
 
     render() {
+      const {items} = this.props;
       const {activeItem} = this.state;
-      return <Component activeOption={activeItem} onOptionSelected={this._handlerMenuItemClick} {...this.props} />;
+      return <Component items={items} activeItem={activeItem} onItemSelected={this._handleItemSelected} {...this.props} />;
     }
 
-    _handlerMenuItemClick(selectedItem) {
-      const {activeItem} = this.state;
+    _handleItemSelected(selectedItem) {
       const {onItemSelected} = this.props;
 
-      this.setState((prevState) => ({
-        isOpened: !prevState.isOpened,
-        activeOption: selectedItem
+      this.setState(() => ({
+        activeItem: selectedItem
       }), () => {
-        if (activeItem !== selectedItem) {
+        if (onItemSelected) {
           onItemSelected(selectedItem);
         }
       });
@@ -35,9 +34,9 @@ const withActiveItem = (Component) => {
   }
 
   WithActiveItem.propTypes = {
-    activeItem: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(PropTypes.string).isRequired,
-    onItemSelected: PropTypes.func.isRequired
+    activeItem: PropTypes.any,
+    items: PropTypes.arrayOf(PropTypes.any).isRequired,
+    onItemSelected: PropTypes.func
   };
 
   return WithActiveItem;
