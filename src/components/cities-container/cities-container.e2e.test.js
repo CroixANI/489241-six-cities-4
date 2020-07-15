@@ -17,7 +17,7 @@ describe(`Cities Container Component`, () => {
     });
 
     const citiesList = shallow(
-        <CitiesContainer activeOption={CITIES_TESTS[0]} options={CITIES_TESTS} onOptionSelected={onCityTitleClick} />
+        <CitiesContainer activeItem={CITIES_TESTS[0]} items={CITIES_TESTS} onItemSelected={onCityTitleClick} />
     );
 
     const link = citiesList.find(`a.locations__item-link`).first();

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import CitiesContainer from './cities-container.jsx';
-import withSelectableOption from '../../hocs/with-select-option/with-select-option.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 
 const MAX_CITIES_COUNT = 6;
 
@@ -11,9 +11,9 @@ const CitiesMenu = (props) => {
   // to test empty screen
   const limitedCities = [`Düsseldorf`, ...cities].sort().slice(0, MAX_CITIES_COUNT);
 
-  const WrappedComponent = withSelectableOption(CitiesContainer);
+  const WrappedComponent = withActiveItem(CitiesContainer);
 
-  return <WrappedComponent options={limitedCities} activeOption={selectedCity} onOptionSelected={onCityClick} {...props} />;
+  return <WrappedComponent items={limitedCities} activeItem={selectedCity} onItemSelected={onCityClick} {...props} />;
 };
 
 CitiesMenu.propTypes = {
