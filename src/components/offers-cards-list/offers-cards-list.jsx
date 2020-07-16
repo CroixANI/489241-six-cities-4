@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
-import OffersCardsListMap from './offers-cards-list-map.jsx';
+import Map from '../map/map.jsx';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import SortOffers from '../sort-order/sort-offers.jsx';
 
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
   const locations = items.map((offer) => offer.location);
   const activeLocation = activeItem && items && items.length > 0 && items[0].location.city === activeItem.location.city ? activeItem.location : null;
+
+  const OffersCardsListMap = withClassName(`cities__map`, Map);
 
   if (items.length === 0) {
     return (
