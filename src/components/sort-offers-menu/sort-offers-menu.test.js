@@ -9,7 +9,7 @@ describe(`Render Sort Offers Menu component`, () => {
     const options = Object.values(SORT_TYPE);
     const activeOption = options[0];
     const tree = renderer
-      .create(<SortOffersMenu isOpened={true} items={options} activeItem={activeOption} onMenuClicked={() => {}} onItemSelected={() => {}} />)
+      .create(<SortOffersMenu isOpened={true} activeOption={activeOption} onMenuClicked={() => {}} onSortTypeChange={() => {}} />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -19,7 +19,7 @@ describe(`Render Sort Offers Menu component`, () => {
     const options = Object.values(SORT_TYPE);
     const activeOption = options[0];
     const tree = renderer
-      .create(<SortOffersMenu isOpened={false} items={options} activeItem={activeOption} onMenuClicked={() => {}} onItemSelected={() => {}} />)
+      .create(<SortOffersMenu isOpened={false} activeOption={activeOption} onMenuClicked={() => {}} onSortTypeChange={() => {}} />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

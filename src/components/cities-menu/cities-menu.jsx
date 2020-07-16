@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-const CitiesContainer = (props) => {
+const CitiesMenu = (props) => {
   const {items, activeItem, onItemSelected} = props;
   const defaultCityClass = `locations__item-link tabs__item`;
   const activeCityClass = `${defaultCityClass} tabs__item--active`;
@@ -28,10 +28,10 @@ const CitiesContainer = (props) => {
   );
 };
 
-CitiesContainer.propTypes = {
+CitiesMenu.propTypes = {
   onItemSelected: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeItem: PropTypes.string.isRequired
 };
 
-export default CitiesContainer;
+export default CitiesMenu;

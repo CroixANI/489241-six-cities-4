@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CitiesContainer from './cities-container';
+import CitiesMenu from './cities-menu.jsx';
 
 const CITIES = [`Minsk`, `Brest`, `Grodno`];
 
-it(`Render Map component`, () => {
+it(`Render Cities Menu component`, () => {
   const tree = renderer
-    .create(<CitiesContainer activeItem={CITIES[0]} items={CITIES} onItemSelected={() => {}} />)
+    .create(<CitiesMenu activeItem={CITIES[0]} items={CITIES} onItemSelected={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
