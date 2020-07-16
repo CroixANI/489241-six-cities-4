@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
 import Map from '../map/map.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
-import SortOffers from '../sort-order/sort-offers.jsx';
+import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
 
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
@@ -35,7 +35,7 @@ const OffersCardsList = (props) => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{items.length} places to stay in Amsterdam</b>
-          <SortOffers activeOption={sortType} onSortTypeChange={onSort} />
+          <SortOffersMenu activeOption={sortType} onSortTypeChange={onSort} />
           <OffersCardsContainer offers={items} onOfferTitleClick={onOfferTitleClick} onOfferHover={onItemSelected} />
         </section>
 

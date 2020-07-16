@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SortOffers from './sort-offers';
+import SortOffersMenu from './sort-offers-menu.jsx';
 import {SORT_TYPE} from '../../data/constants';
 
 Enzyme.configure({
@@ -19,7 +19,7 @@ describe(`Sort Offers Component`, () => {
     });
 
     const sortComponent = mount(
-        <SortOffers activeOption={SORT_TYPE.POPULAR} onSortTypeChange={onSortTypeChange} />
+        <SortOffersMenu activeOption={SORT_TYPE.POPULAR} onSortTypeChange={onSortTypeChange} />
     );
 
     const menuItem = sortComponent.find(`li.places__option`).last();
