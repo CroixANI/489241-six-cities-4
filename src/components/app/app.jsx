@@ -11,15 +11,10 @@ import {ActionCreator} from "../../reducer.js";
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      clickedOfferId: null
-    };
-
-    this._handleOfferTitleClick = this._handleOfferTitleClick.bind(this);
   }
 
   render() {
+    const {onOfferClick} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -27,36 +22,31 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-component">
-            <Offer offer={OFFERS[0]} onOfferTitleClick={this._handleOfferTitleClick} />
+            <Offer offer={OFFERS[0]} onOfferTitleClick={onOfferClick} />
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 
-  _handleOfferTitleClick(offerId) {
-    this.setState({
-      clickedOfferId: offerId
-    });
-  }
-
   _renderApp() {
-    const {offers, cities, selectedCity, onCityClick} = this.props;
-    const {clickedOfferId} = this.state;
-    const foundOffer = OFFERS.find((offer) => offer.id === clickedOfferId);
+    const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick} = this.props;
+    const foundOffer = OFFERS.find((offer) => offer.id === currentOfferId);
 
-    if (clickedOfferId !== null) {
-      return <Offer offer={foundOffer} onOfferTitleClick={this._handleOfferTitleClick} />;
+    if (foundOffer) {
+      return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} />;
     } else {
-      return <Main offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={this._handleOfferTitleClick} />;
+      return <Main offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
     }
   }
 }
 
 App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
+  onOfferClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string.isRequired,
+  currentOfferId: PropTypes.number,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -79,13 +69,17 @@ App.propTypes = {
 const mapStateToProps = (state) => ({
   offers: state.filteredOffers,
   cities: state.cities,
-  selectedCity: state.city
+  selectedCity: state.city,
+  currentOfferId: state.currentOfferId
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
     dispatch(ActionCreator.listOffers());
+  },
+  onOfferClick(offerId) {
+    dispatch(ActionCreator.changeCurrentOffer(offerId));
   }
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
+import OffersCardsListWithActiveOffer from '../offers-cards-list/offers-cards-list-with-active.jsx';
 import CitiesMenu from '../cities-container/cities-menu.jsx';
 
 const Main = (props) => {
@@ -39,7 +39,7 @@ const Main = (props) => {
         <main className={mainClassName}>
           <h1 className="visually-hidden">Cities</h1>
           <CitiesMenu cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} />
-          <OffersCardsList onOfferTitleClick={onOfferTitleClick} />
+          <OffersCardsListWithActiveOffer onOfferTitleClick={onOfferTitleClick} />
         </main>
       </div>
     </>

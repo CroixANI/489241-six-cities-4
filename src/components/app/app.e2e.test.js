@@ -4,8 +4,9 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import {App} from './app';
-import {OffersCardsList} from '../offers-cards-list/offers-cards-list.jsx';
+import App from './app';
+import OffersCardsListWithActiveOffer from '../offers-cards-list/offers-cards-list-with-active.jsx';
+import {ActionCreator} from '../../reducer';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 
@@ -18,13 +19,16 @@ const mockStore = configureStore([]);
 describe(`App Component`, () => {
   const store = mockStore({
     filteredOffers: OFFERS_TESTS,
-    sortType: SORT_TYPE.POPULAR
+    city: CITIES_TESTS[0],
+    sortType: SORT_TYPE.POPULAR,
+    cities: CITIES_TESTS,
+    currentOfferId: null
   });
 
   it(`Should mouse over be triggered`, () => {
     const appComponent = mount(
         <Provider store={store}>
-          <App offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} />
+          <App />
         </Provider>
     );
 
@@ -32,13 +36,13 @@ describe(`App Component`, () => {
 
     card.simulate(`mouseenter`, {});
 
-    expect(appComponent.find(OffersCardsList).state(`selectedOffer`)).toBe(OFFERS_TESTS[0]);
+    expect(appComponent.find(OffersCardsListWithActiveOffer).childAt(0).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
   });
 
   it(`Should offer title be clicked and change state`, () => {
     const wrapper = mount(
         <Provider store={store}>
-          <App offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} />
+          <App />
         </Provider>
     );
 
@@ -47,6 +51,7 @@ describe(`App Component`, () => {
 
     title.simulate(`click`, {});
 
-    expect(appComponent.state(`clickedOfferId`)).toBe(OFFERS_TESTS[0].id);
+    const actions = store.getActions();
+    expect(actions[0]).toEqual(ActionCreator.changeCurrentOffer(OFFERS_TESTS[0].id));
   });
 });

@@ -2,6 +2,7 @@ import {SORT_TYPE} from "./data/constants";
 
 const initialState = {
   city: ``,
+  currentOfferId: null,
   cities: [],
   filteredOffers: [],
   allOffers: []
@@ -11,7 +12,8 @@ const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
   LIST_OFFERS: `LIST_OFFERS`,
   LOAD_DATA: `LOAD_DATA`,
-  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`
+  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
+  CHANGE_CURRENT_OFFER: `CHANGE_CURRENT_OFFER`
 };
 
 const ActionCreator = {
@@ -29,6 +31,10 @@ const ActionCreator = {
   changeSortType: (sortType) => ({
     type: ActionType.CHANGE_SORT_TYPE,
     payload: sortType
+  }),
+  changeCurrentOffer: (offerId) => ({
+    type: ActionType.CHANGE_CURRENT_OFFER,
+    payload: offerId
   })
 };
 
@@ -44,6 +50,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {
         city: action.payload
+      });
+    case ActionType.CHANGE_CURRENT_OFFER:
+      return Object.assign({}, state, {
+        currentOfferId: action.payload
       });
     case ActionType.LIST_OFFERS:
       return Object.assign({}, state, {
