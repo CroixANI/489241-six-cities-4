@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import Main from './main';
-import OffersCardsListWithActiveOffer from '../offers-cards-list/offers-cards-list-with-active.jsx';
+import OffersCardsListWithActiveOffer from '../offers-cards-list-with-active/offers-cards-list-with-active.jsx';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 

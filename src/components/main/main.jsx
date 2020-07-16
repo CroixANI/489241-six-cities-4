@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OffersCardsListWithActiveOffer from '../offers-cards-list/offers-cards-list-with-active.jsx';
+import OffersCardsListWithActiveOffer from '../offers-cards-list-with-active/offers-cards-list-with-active.jsx';
 import CitiesMenuWithActive from '../cities-menu-with-active/cities-menu-wth-active.jsx';
 
 const Main = (props) => {

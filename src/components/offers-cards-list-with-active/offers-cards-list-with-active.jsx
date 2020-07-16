@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import OffersCardsList from './offers-cards-list.jsx';
+import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {ActionCreator} from "../../reducer.js";
 import {SORT_TYPE} from '../../data/constants.js';
