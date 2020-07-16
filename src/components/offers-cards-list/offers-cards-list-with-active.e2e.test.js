@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import OffersCardsListWithActiveOffer from './offers-cards-list-with-active.jsx';
+import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import OfferCard from '../offer-card/offer-card.jsx';
 import {OFFERS_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
@@ -24,7 +24,7 @@ describe(`Offers List Component`, () => {
   it(`Should mouse over be triggered and change component state`, () => {
     const offersList = mount(
         <Provider store={store}>
-          <OffersCardsListWithActiveOffer onOfferTitleClick={() => {}} />
+          <OffersCardsList onOfferTitleClick={() => {}} />
         </Provider>
     );
 
@@ -32,7 +32,7 @@ describe(`Offers List Component`, () => {
 
     card.simulate(`mouseenter`, {});
 
-    expect(offersList.find(OffersCardsListWithActiveOffer).childAt(0).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
+    expect(offersList.find(OffersCardsList).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
     expect(offersList.find(OfferCard).length).toBe(OFFERS_TESTS.length);
   });
 
@@ -41,7 +41,7 @@ describe(`Offers List Component`, () => {
 
     const offersList = mount(
         <Provider store={store}>
-          <OffersCardsListWithActiveOffer onOfferTitleClick={onOfferTitleClick} />
+          <OffersCardsList onOfferTitleClick={onOfferTitleClick} />
         </Provider>
     );
 

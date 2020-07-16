@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import Main from './main';
-import OffersCardsListWithActiveOffer from '../offers-cards-list-with-active/offers-cards-list-with-active.jsx';
+import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 
@@ -31,7 +31,7 @@ describe(`Main Screen`, () => {
 
     card.simulate(`mouseenter`, {});
 
-    expect(mainScreen.find(OffersCardsListWithActiveOffer).childAt(0).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
+    expect(mainScreen.find(OffersCardsList).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
   });
 
   it(`Should offers titles be clicked`, () => {

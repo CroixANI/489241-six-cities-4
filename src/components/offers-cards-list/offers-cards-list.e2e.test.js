@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import OffersCardsList from './offers-cards-list.jsx';
+import {OffersCardsList} from './offers-cards-list.jsx';
 import {OFFERS_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 
