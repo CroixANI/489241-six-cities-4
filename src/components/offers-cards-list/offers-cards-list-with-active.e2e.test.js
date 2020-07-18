@@ -4,9 +4,9 @@ import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import Main from './main';
 import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
-import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
+import OfferCard from '../offer-card/offer-card.jsx';
+import {OFFERS_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 
 Enzyme.configure({
@@ -19,31 +19,33 @@ const store = mockStore({
   sortType: SORT_TYPE.POPULAR
 });
 
-describe(`Main Screen`, () => {
-  it(`Should mouse over be triggered`, () => {
-    const mainScreen = mount(
+
+describe(`Offers List Component`, () => {
+  it(`Should mouse over be triggered and change component state`, () => {
+    const offersList = mount(
         <Provider store={store}>
-          <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={() => {}} />
+          <OffersCardsList onOfferTitleClick={() => {}} />
         </Provider>
     );
 
-    const card = mainScreen.find(`.place-card`).first();
+    const card = offersList.find(`.place-card`).first();
 
     card.simulate(`mouseenter`, {});
 
-    expect(mainScreen.find(OffersCardsList).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
+    expect(offersList.find(OffersCardsList).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
+    expect(offersList.find(OfferCard).length).toBe(OFFERS_TESTS.length);
   });
 
   it(`Should offers titles be clicked`, () => {
     const onOfferTitleClick = jest.fn();
 
-    const mainScreen = mount(
+    const offersList = mount(
         <Provider store={store}>
-          <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={onOfferTitleClick} />
+          <OffersCardsList onOfferTitleClick={onOfferTitleClick} />
         </Provider>
     );
 
-    const allTitles = mainScreen.find(`h2.place-card__name`);
+    const allTitles = offersList.find(`h2.place-card__name`);
 
     allTitles.forEach((title) => title.simulate(`click`, {}));
 

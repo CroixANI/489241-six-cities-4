@@ -2,14 +2,14 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import CitiesContainer from './cities-container';
+import CitiesMenu from './cities-menu.jsx';
 import {CITIES_TESTS} from '../../mocks/offers-tests';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`Cities Container Component`, () => {
+describe(`Cities Menu Component`, () => {
   it(`Should title be clicked`, () => {
     let clickedCityName = null;
     const onCityTitleClick = jest.fn((city) => {
@@ -17,7 +17,7 @@ describe(`Cities Container Component`, () => {
     });
 
     const citiesList = shallow(
-        <CitiesContainer activeItem={CITIES_TESTS[0]} items={CITIES_TESTS} onItemSelected={onCityTitleClick} />
+        <CitiesMenu activeItem={CITIES_TESTS[0]} items={CITIES_TESTS} onItemSelected={onCityTitleClick} />
     );
 
     const link = citiesList.find(`a.locations__item-link`).first();

@@ -1,28 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import OffersCardsContainer from '../offers-cards-container/offers-cards-container.jsx';
-import OffersCardsListMap from './offers-cards-list-map.jsx';
-import SortOffers from '../sort-order/sort-offers.jsx';
+import OffersCardsListEmpty from '../offers-cards-list-empty/offers-cards-list-empty.jsx';
+import Map from '../map/map.jsx';
+import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
+import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
+import {ActionCreator} from "../../reducer.js";
+import {SORT_TYPE} from '../../data/constants.js';
 
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
   const locations = items.map((offer) => offer.location);
   const activeLocation = activeItem && items && items.length > 0 && items[0].location.city === activeItem.location.city ? activeItem.location : null;
 
+  const OffersCardsListMap = withClassName(`cities__map`, Map);
+
   if (items.length === 0) {
     return (
-      <div className="cities">
-        <div className="cities__places-container cities__places-container--empty container">
-          <section className="cities__no-places">
-            <div className="cities__status-wrapper tabs__content">
-              <b className="cities__status">No places to stay available</b>
-              <p className="cities__status-description">We could not find any property availbale at the moment in Dusseldorf</p>
-            </div>
-          </section>
-          <div className="cities__right-section"></div>
-        </div>
-      </div>
+      <OffersCardsListEmpty />
     );
   }
 
@@ -32,7 +30,7 @@ const OffersCardsList = (props) => {
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{items.length} places to stay in Amsterdam</b>
-          <SortOffers activeOption={sortType} onSortTypeChange={onSort} />
+          <SortOffersMenu activeOption={sortType} onSortTypeChange={onSort} />
           <OffersCardsContainer offers={items} onOfferTitleClick={onOfferTitleClick} onOfferHover={onItemSelected} />
         </section>
 
@@ -83,4 +81,32 @@ OffersCardsList.propTypes = {
   ),
 };
 
-export default OffersCardsList;
+const sortOffers = (offers, sortType) => {
+  const copyOffers = [...offers];
+
+  switch (sortType) {
+    case SORT_TYPE.PRICE_HIGH_TO_LOW:
+      return copyOffers.sort((a, b) => b.price - a.price);
+    case SORT_TYPE.PRICE_LOW_TO_HIGH:
+      return copyOffers.sort((a, b) => a.price - b.price);
+    case SORT_TYPE.TOP_RATED:
+      return copyOffers.sort((a, b) => b.rating - a.rating);
+  }
+
+  return offers;
+};
+
+const mapStateToProps = (state) => ({
+  items: sortOffers(state.filteredOffers, state.sortType),
+  sortType: state.sortType
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSort(sortType) {
+    dispatch(ActionCreator.changeSortType(sortType));
+  }
+});
+
+export {OffersCardsList};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withActiveItem(OffersCardsList));

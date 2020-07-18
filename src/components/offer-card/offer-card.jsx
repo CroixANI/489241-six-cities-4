@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OfferCardRating from './offer-card-rating.jsx';
+import Rating from '../rating/rating.jsx';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
 const OfferCard = (props) => {
   // eslint-disable-next-line react/prop-types
@@ -14,6 +15,8 @@ const OfferCard = (props) => {
     isBookmarked,
     images
   } = offer;
+
+  const OfferCardRating = withClassName(`place-card__stars`, Rating);
 
   const containerCss = `${containerCssClass || `cities__place-card`} place-card`;
   const wrapperCss = `${imageWrapperCssClass || `cities__image-wrapper`} place-card__image-wrapper`;

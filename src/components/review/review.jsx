@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ReviewRating from './review-rating.jsx';
+import Rating from '../rating/rating.jsx';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
 const formatDate = (date) => {
   const yearFormatted = new Intl.DateTimeFormat(`en`, {year: `numeric`}).format(date);
@@ -21,6 +22,7 @@ const Review = (props) => {
   } = review;
 
   const formattedDate = formatDate(date);
+  const ReviewRating = withClassName(`reviews__stars`, Rating);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SortMenu from './sort-menu';
+import SortMenu from './sort-menu.jsx';
 import {SORT_TYPE} from '../../data/constants';
 
 describe(`Render Sort Menu component`, () => {
