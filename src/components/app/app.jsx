@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
-import OFFERS from '../../mocks/offers';
 import {ActionCreator} from "../../reducer.js";
 
 class App extends PureComponent {
@@ -14,15 +13,11 @@ class App extends PureComponent {
   }
 
   render() {
-    const {onOfferClick} = this.props;
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-component">
-            <Offer offer={OFFERS[0]} onOfferTitleClick={onOfferClick} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -31,7 +26,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick} = this.props;
-    const foundOffer = OFFERS.find((offer) => offer.id === currentOfferId);
+    const foundOffer = offers.find((offer) => offer.id === currentOfferId);
 
     if (foundOffer) {
       return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} />;

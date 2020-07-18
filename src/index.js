@@ -5,14 +5,13 @@ import {Provider} from 'react-redux';
 
 import App from './components/app/app.jsx';
 import {reducer, ActionCreator} from './reducer';
-import OFFERS from './mocks/offers';
 
 const store = createStore(
     reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
-store.dispatch(ActionCreator.loadData(OFFERS));
+store.dispatch(ActionCreator.loadData([]));
 
 ReactDOM.render(
     <Provider store={store}>
