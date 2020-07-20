@@ -1,11 +1,18 @@
+import {createOffer} from './data/offer';
 import {SORT_TYPE} from "./data/constants";
+
+const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
 
 const initialState = {
   city: ``,
   currentOfferId: null,
   cities: [],
   filteredOffers: [],
-  allOffers: []
+  allOffers: [],
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
 };
 
 const ActionType = {
@@ -13,7 +20,8 @@ const ActionType = {
   LIST_OFFERS: `LIST_OFFERS`,
   LOAD_DATA: `LOAD_DATA`,
   CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
-  CHANGE_CURRENT_OFFER: `CHANGE_CURRENT_OFFER`
+  CHANGE_CURRENT_OFFER: `CHANGE_CURRENT_OFFER`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
 };
 
 const ActionCreator = {
@@ -35,11 +43,26 @@ const ActionCreator = {
   changeCurrentOffer: (offerId) => ({
     type: ActionType.CHANGE_CURRENT_OFFER,
     payload: offerId
-  })
+  }),
+  requireAuthorization: (status) => {
+    return {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: status,
+    };
+  },
+};
+
+const OperationCreator = {
+  loadHotels: () => (dispatch, getState, api) => {
+    return api.get(`/hotels`)
+      .then((response) => {
+        dispatch(ActionCreator.loadData(response.data.map((offerData) => createOffer(offerData))));
+      });
+  }
 };
 
 const filterOffersByCity = (offers, city) =>
-  offers.filter((offer) => offer.location.city === city);
+  offers.filter((offer) => offer.location.city.name === city);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -61,7 +84,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.LOAD_DATA:
       const filteredCities = action.payload
-          .map((offer) => offer.location.city)
+          .map((offer) => offer.location.city.name)
           .filter((value, index, self) => self.indexOf(value) === index)
           .sort();
       const city = filteredCities.length > 0 ? filteredCities[0] : ``;
@@ -79,4 +102,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionType, ActionCreator};
+export {reducer, ActionType, ActionCreator, OperationCreator, AuthorizationStatus};

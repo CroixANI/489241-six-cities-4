@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import OfferCard from './offer-card';
-import OFFERS_TESTS from '../../mocks/offers-tests';
+import {OFFERS_TESTS} from '../../mocks/offers-tests';
 
 it(`Render Offer Card component`, () => {
   const tree = renderer

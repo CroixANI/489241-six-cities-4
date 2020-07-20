@@ -149,19 +149,6 @@ Array [
                 onClick={[Function]}
               >
                 <span>
-                  Düsseldorf
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-                onClick={[Function]}
-              >
-                <span>
                   Paris
                 </span>
               </a>
@@ -270,7 +257,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Apartment"
+                      alt="apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -352,7 +339,7 @@ Array [
                   <p
                     className="place-card__type"
                   >
-                    Apartment
+                    apartment
                   </p>
                 </div>
               </article>
@@ -564,7 +551,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Apartment"
+                      alt="apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -646,7 +633,7 @@ Array [
                   <p
                     className="place-card__type"
                   >
-                    Apartment
+                    apartment
                   </p>
                 </div>
               </article>
@@ -662,7 +649,7 @@ Array [
                     href="#"
                   >
                     <img
-                      alt="Apartment"
+                      alt="apartment"
                       className="place-card__image"
                       height="200"
                       src="img/room.jpg"
@@ -744,7 +731,7 @@ Array [
                   <p
                     className="place-card__type"
                   >
-                    Apartment
+                    apartment
                   </p>
                 </div>
               </article>

@@ -73,7 +73,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/room.jpg"
             />
@@ -82,7 +82,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/apartment-01.jpg"
             />
@@ -91,7 +91,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/apartment-02.jpg"
             />
@@ -100,7 +100,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/apartment-03.jpg"
             />
@@ -109,7 +109,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/studio-01.jpg"
             />
@@ -118,7 +118,7 @@ exports[`Render Offer Card component 1`] = `
             className="property__image-wrapper"
           >
             <img
-              alt="Apartment"
+              alt="apartment"
               className="property__image"
               src="img/apartment-01.jpg"
             />
@@ -197,7 +197,7 @@ exports[`Render Offer Card component 1`] = `
             <li
               className="property__feature property__feature--entire"
             >
-              Apartment
+              apartment
             </li>
             <li
               className="property__feature property__feature--bedrooms"
@@ -976,7 +976,7 @@ exports[`Render Offer Card component 1`] = `
                 href="#"
               >
                 <img
-                  alt="Apartment"
+                  alt="apartment"
                   className="place-card__image"
                   height="200"
                   src="img/room.jpg"
@@ -1058,7 +1058,7 @@ exports[`Render Offer Card component 1`] = `
               <p
                 className="place-card__type"
               >
-                Apartment
+                apartment
               </p>
             </div>
           </article>

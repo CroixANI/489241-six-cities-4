@@ -10,19 +10,22 @@ describe(`Reducer should work correctly`, () => {
       currentOfferId: null,
       cities: [],
       filteredOffers: [],
-      allOffers: []
+      allOffers: [],
+      authorizationStatus: `NO_AUTH`
     });
   });
 
   it(`Reducer should load data`, () => {
-    const filteredOffers = OFFERS_TESTS.filter((offer) => offer.location.city === `Amsterdam`);
-    expect(reducer(void 0, ActionCreator.loadData(OFFERS_TESTS))).toEqual({
+    const filteredOffers = OFFERS_TESTS.filter((offer) => offer.location.city.name === `Amsterdam`);
+    expect(reducer(void 0, ActionCreator.loadData(OFFERS_TESTS)))
+    .toEqual({
       city: CITIES_TESTS[0],
       currentOfferId: null,
       cities: CITIES_TESTS,
       filteredOffers,
       allOffers: OFFERS_TESTS,
-      sortType: SORT_TYPE.POPULAR
+      sortType: SORT_TYPE.POPULAR,
+      authorizationStatus: `NO_AUTH`
     });
   });
 
@@ -32,13 +35,15 @@ describe(`Reducer should work correctly`, () => {
       currentOfferId: null,
       cities: [],
       filteredOffers: [],
-      allOffers: []}, ActionCreator.changeCity(`Amsterdam`)))
+      allOffers: [],
+      authorizationStatus: `NO_AUTH`}, ActionCreator.changeCity(`Amsterdam`)))
     .toEqual({
       city: `Amsterdam`,
       currentOfferId: null,
       cities: [],
       filteredOffers: [],
-      allOffers: []
+      allOffers: [],
+      authorizationStatus: `NO_AUTH`
     });
   });
 
@@ -48,14 +53,16 @@ describe(`Reducer should work correctly`, () => {
       currentOfferId: null,
       cities: [],
       filteredOffers: [],
-      allOffers: OFFERS_TESTS},
+      allOffers: OFFERS_TESTS,
+      authorizationStatus: `NO_AUTH`},
     ActionCreator.listOffers()))
     .toEqual({
       city: `Amsterdam`,
       currentOfferId: null,
       cities: [],
-      filteredOffers: OFFERS_TESTS.filter((offer) => offer.location.city === `Amsterdam`),
-      allOffers: OFFERS_TESTS});
+      filteredOffers: OFFERS_TESTS.filter((offer) => offer.location.city.name === `Amsterdam`),
+      allOffers: OFFERS_TESTS,
+      authorizationStatus: `NO_AUTH`});
   });
 
   it(`Reducer with Change Current Offer action should change current offer id`, () => {
@@ -64,13 +71,15 @@ describe(`Reducer should work correctly`, () => {
       currentOfferId: null,
       cities: [],
       filteredOffers: [],
-      allOffers: []}, ActionCreator.changeCurrentOffer(1)))
+      allOffers: [],
+      authorizationStatus: `NO_AUTH`}, ActionCreator.changeCurrentOffer(1)))
     .toEqual({
       city: ``,
       currentOfferId: 1,
       cities: [],
       filteredOffers: [],
-      allOffers: []
+      allOffers: [],
+      authorizationStatus: `NO_AUTH`
     });
   });
 });
@@ -104,6 +113,16 @@ describe(`Action creators should work correctly`, () => {
   });
 
   it(`Action creator for change current offer should create correct action`, () => {
+    expect(ActionCreator.changeCurrentOffer(42)).toEqual({
+      type: ActionType.CHANGE_CURRENT_OFFER,
+      payload: 42
+    });
+  });
+});
+
+describe(`Operations creators should work correctly`, () => {
+  // TODO - Implement
+  it(`Operation creator for loading data from server should create correct action`, () => {
     expect(ActionCreator.changeCurrentOffer(42)).toEqual({
       type: ActionType.CHANGE_CURRENT_OFFER,
       payload: 42

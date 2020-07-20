@@ -187,7 +187,14 @@ Offer.propTypes = {
       imageUrl: PropTypes.string.isRequired
     }),
     location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
+      city: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        location: PropTypes.shape({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired,
+        }),
+      }),
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired
     }).isRequired,
@@ -213,7 +220,14 @@ Offer.propTypes = {
           isBookmarked: PropTypes.bool.isRequired,
           images: PropTypes.arrayOf(PropTypes.string).isRequired,
           location: PropTypes.shape({
-            city: PropTypes.string.isRequired,
+            city: PropTypes.shape({
+              name: PropTypes.string.isRequired,
+              location: PropTypes.shape({
+                latitude: PropTypes.number.isRequired,
+                longitude: PropTypes.number.isRequired,
+                zoom: PropTypes.number.isRequired,
+              }),
+            }),
             latitude: PropTypes.number.isRequired,
             longitude: PropTypes.number.isRequired
           }),

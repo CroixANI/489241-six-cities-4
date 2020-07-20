@@ -8,8 +8,7 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 const Main = (props) => {
   const {offers, cities, selectedCity, onCityClick, onOfferTitleClick} = props;
   const mainClassName = `page__main page__main--index ${offers.length > 0 ? `` : `page__main--index-empty`}`;
-  // to test empty screen
-  const limitedCities = [`Düsseldorf`, ...cities].sort().slice(0, 6);
+  const limitedCities = cities.sort().slice(0, 6);
 
   const CitiesMenuWithActive = withActiveItem(CitiesMenu);
 
@@ -68,7 +67,14 @@ Main.propTypes = {
         isBookmarked: PropTypes.bool.isRequired,
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
         location: PropTypes.shape({
-          city: PropTypes.string.isRequired,
+          city: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            location: PropTypes.shape({
+              latitude: PropTypes.number.isRequired,
+              longitude: PropTypes.number.isRequired,
+              zoom: PropTypes.number.isRequired,
+            }),
+          }),
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired
         }).isRequired,

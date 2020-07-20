@@ -14,7 +14,7 @@ import {SORT_TYPE} from '../../data/constants.js';
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
   const locations = items.map((offer) => offer.location);
-  const activeLocation = activeItem && items && items.length > 0 && items[0].location.city === activeItem.location.city ? activeItem.location : null;
+  const activeLocation = activeItem && items && items.length > 0 && items[0].location.city.name === activeItem.location.city.name ? activeItem.location : null;
 
   const OffersCardsListMap = withClassName(`cities__map`, Map);
 
@@ -57,7 +57,14 @@ OffersCardsList.propTypes = {
     isBookmarked: PropTypes.bool.isRequired,
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
+      city: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        location: PropTypes.shape({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired,
+        }),
+      }),
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired
     }).isRequired,
@@ -73,7 +80,14 @@ OffersCardsList.propTypes = {
         isBookmarked: PropTypes.bool.isRequired,
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
         location: PropTypes.shape({
-          city: PropTypes.string.isRequired,
+          city: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            location: PropTypes.shape({
+              latitude: PropTypes.number.isRequired,
+              longitude: PropTypes.number.isRequired,
+              zoom: PropTypes.number.isRequired,
+            }),
+          }),
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired
         }).isRequired,
