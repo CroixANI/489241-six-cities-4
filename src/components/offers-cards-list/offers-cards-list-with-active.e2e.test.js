@@ -6,8 +6,10 @@ import configureStore from 'redux-mock-store';
 
 import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import OfferCard from '../offer-card/offer-card.jsx';
-import {OFFERS_TESTS} from '../../mocks/offers-tests';
+import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
+import NameSpace from '../../reducer/name-space';
+import {getFilteredOffers} from '../../reducer/app/selectors';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -15,12 +17,25 @@ Enzyme.configure({
 
 const mockStore = configureStore([]);
 const store = mockStore({
-  filteredOffers: OFFERS_TESTS,
-  sortType: SORT_TYPE.POPULAR
+  [NameSpace.APP]: {
+    city: CITIES_TESTS[0],
+    currentOfferId: null,
+    filteredOffers: OFFERS_TESTS,
+    sortType: SORT_TYPE.POPULAR,
+  },
+  [NameSpace.DATA]: {
+    cities: CITIES_TESTS,
+    offers: OFFERS_TESTS,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: `NO_AUTH`,
+  },
 });
 
 
 describe(`Offers List Component`, () => {
+  const filteredOffers = getFilteredOffers(store.getState());
+
   it(`Should mouse over be triggered and change component state`, () => {
     const offersList = mount(
         <Provider store={store}>
@@ -33,7 +48,7 @@ describe(`Offers List Component`, () => {
     card.simulate(`mouseenter`, {});
 
     expect(offersList.find(OffersCardsList).childAt(0).instance().state.activeItem).toBe(OFFERS_TESTS[0]);
-    expect(offersList.find(OfferCard).length).toBe(OFFERS_TESTS.length);
+    expect(offersList.find(OfferCard).length).toBe(filteredOffers.length);
   });
 
   it(`Should offers titles be clicked`, () => {
@@ -49,6 +64,6 @@ describe(`Offers List Component`, () => {
 
     allTitles.forEach((title) => title.simulate(`click`, {}));
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+    expect(onOfferTitleClick.mock.calls.length).toBe(filteredOffers.length);
   });
 });

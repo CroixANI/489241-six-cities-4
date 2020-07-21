@@ -1,7 +1,10 @@
+import {SORT_TYPE} from '../../data/constants';
+
 const initialState = {
   city: ``,
   currentOfferId: null,
   filteredOffers: [],
+  sortType: SORT_TYPE.POPULAR
 };
 
 const ActionType = {
@@ -12,8 +15,9 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  listOffers: () => ({
-    type: ActionType.LIST_OFFERS
+  listOffers: (filteredOffers) => ({
+    type: ActionType.LIST_OFFERS,
+    payload: filteredOffers
   }),
   changeCity: (city) => ({
     type: ActionType.CHANGE_CITY,
@@ -28,9 +32,6 @@ const ActionCreator = {
     payload: offerId
   }),
 };
-
-const filterOffersByCity = (offers, city) =>
-  offers.filter((offer) => offer.location.city.name === city);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -48,7 +49,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.LIST_OFFERS:
       return Object.assign({}, state, {
-        filteredOffers: filterOffersByCity(state.allOffers, state.city)
+        filteredOffers: action.payload
       });
   }
 

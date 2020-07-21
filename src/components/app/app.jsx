@@ -6,6 +6,8 @@ import {connect} from "react-redux";
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import {ActionCreator} from "../../reducer/app/app";
+import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
+import {getCities} from '../../reducer/data/selectors.js';
 
 class App extends PureComponent {
   constructor(props) {
@@ -40,7 +42,7 @@ App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedCity: PropTypes.string.isRequired,
+  selectedCity: PropTypes.string,
   currentOfferId: PropTypes.number,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -69,10 +71,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.filteredOffers,
-  cities: state.cities,
-  selectedCity: state.city,
-  currentOfferId: state.currentOfferId
+  offers: getFilteredOffers(state),
+  cities: getCities(state),
+  selectedCity: getCity(state),
+  currentOfferId: getCurrentOfferId(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

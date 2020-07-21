@@ -1,13 +1,12 @@
 import {reducer, ActionCreator, ActionType} from './app';
 
-import {OFFERS_TESTS} from '../../mocks/offers-tests';
-
 describe(`Reducer should work correctly`, () => {
   it(`Reducer with no incoming parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: ``,
       currentOfferId: null,
       filteredOffers: [],
+      sortType: `Popular`,
     });
   });
 
@@ -15,34 +14,26 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      filteredOffers: []}, ActionCreator.changeCity(`Amsterdam`)))
+      filteredOffers: [],
+      sortType: `Popular`}, ActionCreator.changeCity(`Amsterdam`)))
     .toEqual({
       city: `Amsterdam`,
       currentOfferId: null,
-      filteredOffers: []});
-  });
-
-  it(`Reducer with List Offers action should filter offers by city`, () => {
-    expect(reducer({
-      city: `Amsterdam`,
-      currentOfferId: null,
-      filteredOffers: []},
-    ActionCreator.listOffers()))
-    .toEqual({
-      city: `Amsterdam`,
-      currentOfferId: null,
-      filteredOffers: OFFERS_TESTS.filter((offer) => offer.location.city.name === `Amsterdam`)});
+      filteredOffers: [],
+      sortType: `Popular`});
   });
 
   it(`Reducer with Change Current Offer action should change current offer id`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      filteredOffers: []}, ActionCreator.changeCurrentOffer(1)))
+      filteredOffers: [],
+      sortType: `Popular`}, ActionCreator.changeCurrentOffer(1)))
     .toEqual({
       city: ``,
       currentOfferId: 1,
-      filteredOffers: []});
+      filteredOffers: [],
+      sortType: `Popular`});
   });
 });
 

@@ -9,7 +9,7 @@ import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {ActionCreator} from '../../reducer/app/app';
-import {SORT_TYPE} from '../../data/constants';
+import {getSortedOffers, getSortType} from '../../reducer/app/selectors';
 
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
@@ -95,24 +95,9 @@ OffersCardsList.propTypes = {
   ),
 };
 
-const sortOffers = (offers, sortType) => {
-  const copyOffers = [...offers];
-
-  switch (sortType) {
-    case SORT_TYPE.PRICE_HIGH_TO_LOW:
-      return copyOffers.sort((a, b) => b.price - a.price);
-    case SORT_TYPE.PRICE_LOW_TO_HIGH:
-      return copyOffers.sort((a, b) => a.price - b.price);
-    case SORT_TYPE.TOP_RATED:
-      return copyOffers.sort((a, b) => b.rating - a.rating);
-  }
-
-  return offers;
-};
-
 const mapStateToProps = (state) => ({
-  items: sortOffers(state.filteredOffers, state.sortType),
-  sortType: state.sortType
+  items: getSortedOffers(state),
+  sortType: getSortType(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

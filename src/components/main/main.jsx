@@ -55,7 +55,7 @@ Main.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedCity: PropTypes.string.isRequired,
+  selectedCity: PropTypes.string,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,

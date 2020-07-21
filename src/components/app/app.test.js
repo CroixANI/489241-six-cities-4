@@ -6,13 +6,23 @@ import configureStore from 'redux-mock-store';
 import App from './app';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
+import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 const store = mockStore({
-  filteredOffers: OFFERS_TESTS,
-  city: CITIES_TESTS[0],
-  sortType: SORT_TYPE.POPULAR,
-  cities: CITIES_TESTS
+  [NameSpace.APP]: {
+    city: CITIES_TESTS[0],
+    currentOfferId: null,
+    filteredOffers: OFFERS_TESTS,
+    sortType: SORT_TYPE.POPULAR,
+  },
+  [NameSpace.DATA]: {
+    cities: CITIES_TESTS,
+    offers: OFFERS_TESTS,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: `NO_AUTH`,
+  },
 });
 
 it(`Render Main component`, () => {

@@ -1,4 +1,7 @@
 import {createOffer} from '../../data/offer';
+import {getCities} from './selectors';
+import {ActionCreator as AppActionCreator} from '../app/app';
+import {getFilteredOffers} from '../app/selectors';
 
 const initialState = {
   cities: [],
@@ -20,7 +23,14 @@ const OperationCreator = {
   loadHotels: () => (dispatch, getState, api) => {
     return api.get(`/hotels`)
       .then((response) => {
-        dispatch(ActionCreator.loadData(response.data.map((offerData) => createOffer(offerData))));
+        const offers = response.data.map((offerData) => createOffer(offerData));
+        dispatch(ActionCreator.loadData(offers));
+        const cities = getCities(getState());
+        if (cities && cities.length > 0) {
+          dispatch(AppActionCreator.changeCity(cities[0]));
+          const filteredOffers = getFilteredOffers(getState());
+          dispatch(AppActionCreator.listOffers(filteredOffers));
+        }
       });
   }
 };
