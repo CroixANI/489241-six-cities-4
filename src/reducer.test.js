@@ -1,7 +1,11 @@
-import {reducer, ActionCreator, ActionType} from './reducer';
+import MockAdapter from 'axios-mock-adapter';
+import {createAPI} from './api';
+import {reducer, ActionCreator, ActionType, OperationCreator} from './reducer';
 
 import {OFFERS_TESTS, CITIES_TESTS} from './mocks/offers-tests';
 import {SORT_TYPE} from './data/constants';
+
+const api = createAPI(() => {});
 
 describe(`Reducer should work correctly`, () => {
   it(`Reducer with no incoming parameters should return initial state`, () => {
@@ -120,12 +124,24 @@ describe(`Action creators should work correctly`, () => {
   });
 });
 
-describe(`Operations creators should work correctly`, () => {
-  // TODO - Implement
-  it(`Operation creator for loading data from server should create correct action`, () => {
-    expect(ActionCreator.changeCurrentOffer(42)).toEqual({
-      type: ActionType.CHANGE_CURRENT_OFFER,
-      payload: 42
-    });
+describe(`Operations work correctly`, () => {
+  const apiMock = new MockAdapter(api);
+  const dispatch = jest.fn();
+
+  it(`Should make correct API call to /hotels`, () => {
+    const loadHotels = OperationCreator.loadHotels();
+
+    apiMock
+      .onGet(`/hotels`)
+      .reply(200, {fake: true});
+
+    loadHotels(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_DATA,
+          payload: [{fake: true}]
+        });
+      });
   });
 });
