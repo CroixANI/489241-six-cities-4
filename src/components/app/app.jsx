@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app";
 
 class App extends PureComponent {
   constructor(props) {

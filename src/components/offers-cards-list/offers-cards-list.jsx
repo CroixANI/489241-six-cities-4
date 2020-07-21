@@ -8,8 +8,8 @@ import Map from '../map/map.jsx';
 import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {ActionCreator} from "../../reducer.js";
-import {SORT_TYPE} from '../../data/constants.js';
+import {ActionCreator} from '../../reducer/app/app';
+import {SORT_TYPE} from '../../data/constants';
 
 const OffersCardsList = (props) => {
   const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
