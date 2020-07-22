@@ -1,7 +1,6 @@
 import {createOffer} from '../../data/offer';
 import {getCities} from './selectors';
 import {ActionCreator as AppActionCreator} from '../app/app';
-import {getFilteredOffers} from '../app/selectors';
 
 const initialState = {
   cities: [],
@@ -28,8 +27,6 @@ const OperationCreator = {
         const cities = getCities(getState());
         if (cities && cities.length > 0) {
           dispatch(AppActionCreator.changeCity(cities[0]));
-          const filteredOffers = getFilteredOffers(getState());
-          dispatch(AppActionCreator.listOffers(filteredOffers));
         }
       });
   }

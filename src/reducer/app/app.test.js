@@ -5,7 +5,6 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: ``,
       currentOfferId: null,
-      filteredOffers: [],
       sortType: `Popular`,
     });
   });
@@ -14,12 +13,10 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      filteredOffers: [],
       sortType: `Popular`}, ActionCreator.changeCity(`Amsterdam`)))
     .toEqual({
       city: `Amsterdam`,
       currentOfferId: null,
-      filteredOffers: [],
       sortType: `Popular`});
   });
 
@@ -27,23 +24,15 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      filteredOffers: [],
       sortType: `Popular`}, ActionCreator.changeCurrentOffer(1)))
     .toEqual({
       city: ``,
       currentOfferId: 1,
-      filteredOffers: [],
       sortType: `Popular`});
   });
 });
 
 describe(`Action creators should work correctly`, () => {
-  it(`Action creator for list offers should create correct action`, () => {
-    expect(ActionCreator.listOffers()).toEqual({
-      type: ActionType.LIST_OFFERS
-    });
-  });
-
   it(`Action creator for change city should create correct action`, () => {
     expect(ActionCreator.changeCity(`Amsterdam`)).toEqual({
       type: ActionType.CHANGE_CITY,
