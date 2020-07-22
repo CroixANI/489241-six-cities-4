@@ -7,11 +7,42 @@ describe(`Reducer should work correctly`, () => {
     });
   });
 
-  it(`Reducer with Change Current Offer action should change current offer id`, () => {
-    expect(reducer(
-        {authorizationStatus: `AUTH`},
-        ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)))
-    .toEqual({authorizationStatus: `NO_AUTH`});
+  it(`Reducer with require authorization should change authorization status`, () => {
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }, {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: AuthorizationStatus.AUTH,
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.AUTH,
+    });
+
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }, {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: AuthorizationStatus.NO_AUTH,
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    });
+
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.AUTH,
+    }, {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: AuthorizationStatus.AUTH,
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.AUTH,
+    });
+
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    }, {
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: AuthorizationStatus.NO_AUTH,
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+    });
   });
 });
 
@@ -20,6 +51,11 @@ describe(`Action creators should work correctly`, () => {
     expect(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)).toEqual({
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: `NO_AUTH`
+    });
+
+    expect(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)).toEqual({
+      type: ActionType.REQUIRED_AUTHORIZATION,
+      payload: `AUTH`,
     });
   });
 });
