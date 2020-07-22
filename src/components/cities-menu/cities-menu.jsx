@@ -31,7 +31,7 @@ const CitiesMenu = (props) => {
 CitiesMenu.propTypes = {
   onItemSelected: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeItem: PropTypes.string.isRequired
+  activeItem: PropTypes.string
 };
 
 export default CitiesMenu;

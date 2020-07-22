@@ -5,8 +5,9 @@ import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
-import OFFERS from '../../mocks/offers';
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app";
+import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
+import {getCities} from '../../reducer/data/selectors.js';
 
 class App extends PureComponent {
   constructor(props) {
@@ -14,15 +15,11 @@ class App extends PureComponent {
   }
 
   render() {
-    const {onOfferClick} = this.props;
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-component">
-            <Offer offer={OFFERS[0]} onOfferTitleClick={onOfferClick} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -31,7 +28,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick} = this.props;
-    const foundOffer = OFFERS.find((offer) => offer.id === currentOfferId);
+    const foundOffer = offers.find((offer) => offer.id === currentOfferId);
 
     if (foundOffer) {
       return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} />;
@@ -45,7 +42,7 @@ App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
-  selectedCity: PropTypes.string.isRequired,
+  selectedCity: PropTypes.string,
   currentOfferId: PropTypes.number,
   offers: PropTypes.arrayOf(
       PropTypes.shape({
@@ -58,7 +55,14 @@ App.propTypes = {
         isBookmarked: PropTypes.bool.isRequired,
         images: PropTypes.arrayOf(PropTypes.string).isRequired,
         location: PropTypes.shape({
-          city: PropTypes.string.isRequired,
+          city: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            location: PropTypes.shape({
+              latitude: PropTypes.number.isRequired,
+              longitude: PropTypes.number.isRequired,
+              zoom: PropTypes.number.isRequired,
+            }),
+          }),
           latitude: PropTypes.number.isRequired,
           longitude: PropTypes.number.isRequired
         }).isRequired,
@@ -67,10 +71,10 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  offers: state.filteredOffers,
-  cities: state.cities,
-  selectedCity: state.city,
-  currentOfferId: state.currentOfferId
+  offers: getFilteredOffers(state),
+  cities: getCities(state),
+  selectedCity: getCity(state),
+  currentOfferId: getCurrentOfferId(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -6,9 +6,10 @@ import configureStore from 'redux-mock-store';
 
 import App from './app';
 import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
-import {ActionCreator} from '../../reducer';
+import {ActionCreator} from '../../reducer/app/app';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
+import NameSpace from '../../reducer/name-space';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -18,11 +19,19 @@ const mockStore = configureStore([]);
 
 describe(`App Component`, () => {
   const store = mockStore({
-    filteredOffers: OFFERS_TESTS,
-    city: CITIES_TESTS[0],
-    sortType: SORT_TYPE.POPULAR,
-    cities: CITIES_TESTS,
-    currentOfferId: null
+    [NameSpace.APP]: {
+      city: CITIES_TESTS[0],
+      currentOfferId: null,
+      filteredOffers: OFFERS_TESTS,
+      sortType: SORT_TYPE.POPULAR,
+    },
+    [NameSpace.DATA]: {
+      cities: CITIES_TESTS,
+      offers: OFFERS_TESTS,
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `NO_AUTH`,
+    },
   });
 
   it(`Should mouse over be triggered`, () => {

@@ -8,6 +8,8 @@ import Main from './main';
 import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
+import NameSpace from '../../reducer/name-space';
+import {getFilteredOffers} from '../../reducer/app/selectors';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -15,8 +17,19 @@ Enzyme.configure({
 
 const mockStore = configureStore([]);
 const store = mockStore({
-  filteredOffers: OFFERS_TESTS,
-  sortType: SORT_TYPE.POPULAR
+  [NameSpace.APP]: {
+    city: CITIES_TESTS[0],
+    currentOfferId: null,
+    filteredOffers: OFFERS_TESTS,
+    sortType: SORT_TYPE.POPULAR,
+  },
+  [NameSpace.DATA]: {
+    cities: CITIES_TESTS,
+    offers: OFFERS_TESTS,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: `NO_AUTH`,
+  },
 });
 
 describe(`Main Screen`, () => {
@@ -35,6 +48,7 @@ describe(`Main Screen`, () => {
   });
 
   it(`Should offers titles be clicked`, () => {
+    const filteredOffers = getFilteredOffers(store.getState());
     const onOfferTitleClick = jest.fn();
 
     const mainScreen = mount(
@@ -47,6 +61,6 @@ describe(`Main Screen`, () => {
 
     allTitles.forEach((title) => title.simulate(`click`, {}));
 
-    expect(onOfferTitleClick.mock.calls.length).toBe(OFFERS_TESTS.length);
+    expect(onOfferTitleClick.mock.calls.length).toBe(filteredOffers.length);
   });
 });

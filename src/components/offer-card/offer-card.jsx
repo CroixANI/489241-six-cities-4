@@ -13,14 +13,13 @@ const OfferCard = (props) => {
     price,
     type,
     isBookmarked,
-    images
+    previewImage
   } = offer;
 
   const OfferCardRating = withClassName(`place-card__stars`, Rating);
 
   const containerCss = `${containerCssClass || `cities__place-card`} place-card`;
   const wrapperCss = `${imageWrapperCssClass || `cities__image-wrapper`} place-card__image-wrapper`;
-  const mainImageUrl = images && images.length > 0 ? images[0] : null;
 
   const additionalClass = isBookmarked ? `place-card__bookmark-button--active` : ``;
   const bookmarkButtonClass = `place-card__bookmark-button button ${additionalClass}`;
@@ -41,8 +40,8 @@ const OfferCard = (props) => {
     <article className={containerCss} onMouseEnter={handleHover(offer)} onMouseLeave={handleMouseLeave}>
       {renderMark && renderMark()}
       <div className={wrapperCss}>
-        {mainImageUrl && <a href="#">
-          <img className="place-card__image" src={mainImageUrl} width="260" height="200" alt={type} />
+        {previewImage && <a href="#">
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt={type} />
         </a>}
       </div>
       <div className="place-card__info">
@@ -84,9 +83,16 @@ OfferCard.propTypes = {
     type: PropTypes.string.isRequired,
     luxuryType: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    previewImage: PropTypes.string.isRequired,
     location: PropTypes.shape({
-      city: PropTypes.string.isRequired,
+      city: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        location: PropTypes.shape({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired,
+        }),
+      }),
       latitude: PropTypes.number.isRequired,
       longitude: PropTypes.number.isRequired
     }),

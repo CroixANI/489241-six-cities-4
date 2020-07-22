@@ -1,18 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
+import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 
 import App from './components/app/app.jsx';
-import {reducer, ActionCreator} from './reducer';
-import OFFERS from './mocks/offers';
+import {createAPI} from './api';
+import {ActionCreator, AuthorizationStatus} from './reducer/user/user';
+import {OperationCreator} from './reducer/data/data';
+import reducer from './reducer/reducer';
+
+const api = createAPI(() => {
+  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+});
 
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
-store.dispatch(ActionCreator.loadData(OFFERS));
+store.dispatch(OperationCreator.loadHotels());
 
 ReactDOM.render(
     <Provider store={store}>

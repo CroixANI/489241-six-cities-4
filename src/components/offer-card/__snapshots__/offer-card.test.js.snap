@@ -13,7 +13,7 @@ exports[`Render Offer Card component 1`] = `
       href="#"
     >
       <img
-        alt="Apartment"
+        alt="apartment"
         className="place-card__image"
         height="200"
         src="img/room.jpg"
@@ -95,7 +95,7 @@ exports[`Render Offer Card component 1`] = `
     <p
       className="place-card__type"
     >
-      Apartment
+      apartment
     </p>
   </div>
 </article>
