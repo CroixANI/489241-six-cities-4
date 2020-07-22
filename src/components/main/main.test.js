@@ -13,7 +13,6 @@ const store = mockStore({
   [NameSpace.APP]: {
     city: CITIES_TESTS[0],
     currentOfferId: null,
-    filteredOffers: OFFERS_TESTS,
     sortType: SORT_TYPE.POPULAR,
   },
   [NameSpace.DATA]: {

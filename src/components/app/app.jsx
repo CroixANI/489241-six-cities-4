@@ -5,9 +5,11 @@ import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
+import Login from '../login/login.jsx';
 import {ActionCreator} from "../../reducer/app/app";
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
 import {getCities} from '../../reducer/data/selectors.js';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -15,11 +17,15 @@ class App extends PureComponent {
   }
 
   render() {
+    const LoginScreen = withClassName(`page--gray page--login`, Login);
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-auth">
+            <LoginScreen />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -29,11 +35,11 @@ class App extends PureComponent {
   _renderApp() {
     const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick} = this.props;
     const foundOffer = offers.find((offer) => offer.id === currentOfferId);
-
+    const MainScreen = withClassName(`page--gray page--main`, Main);
     if (foundOffer) {
       return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} />;
     } else {
-      return <Main offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
+      return <MainScreen offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
     }
   }
 }

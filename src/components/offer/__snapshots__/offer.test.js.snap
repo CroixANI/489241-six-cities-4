@@ -2,7 +2,7 @@
 
 exports[`Render Offer Card component 1`] = `
 <div
-  className="page"
+  className="page "
 >
   <header
     className="header"
@@ -17,8 +17,7 @@ exports[`Render Offer Card component 1`] = `
           className="header__left"
         >
           <a
-            className="header__logo-link"
-            href="main.html"
+            className="header__logo-link header__logo-link--active"
           >
             <img
               alt="6 cities logo"
