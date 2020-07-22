@@ -20,6 +20,18 @@ const ActionCreator = {
   },
 };
 
+const OperationCreator = {
+  checkAuth: () => (dispatch, getState, api) => {
+    return api.get(`/login`)
+      .then(() => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
@@ -31,4 +43,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer, ActionType, ActionCreator, AuthorizationStatus};
+export {reducer, ActionType, ActionCreator, OperationCreator, AuthorizationStatus};

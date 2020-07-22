@@ -7,13 +7,15 @@ import thunk from 'redux-thunk';
 
 import App from './components/app/app.jsx';
 import {createAPI} from './api';
-import {ActionCreator, AuthorizationStatus} from './reducer/user/user';
-import {OperationCreator} from './reducer/data/data';
+import {ActionCreator as UserActionCreator, OperationCreator as UserOperationCreator, AuthorizationStatus} from './reducer/user/user';
+import {OperationCreator as DataOperationCreator} from './reducer/data/data';
 import reducer from './reducer/reducer';
 
-const api = createAPI(() => {
-  store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-});
+const onUnauthorized = () => {
+  store.dispatch(UserActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+};
+
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
@@ -22,7 +24,8 @@ const store = createStore(
     )
 );
 
-store.dispatch(OperationCreator.loadHotels());
+store.dispatch(DataOperationCreator.loadHotels());
+store.dispatch(UserOperationCreator.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
