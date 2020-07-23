@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
@@ -9,7 +9,7 @@ import Login from '../login/login.jsx';
 import {ActionCreator} from "../../reducer/app/app";
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
 import {getCities} from '../../reducer/data/selectors.js';
-import {OperationCreator as UserOperationCreator} from "../../reducer/user/user";
+import {OperationCreator as UserOperationCreator, AuthorizationStatus} from "../../reducer/user/user";
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
@@ -19,7 +19,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {onLogin} = this.props;
+    const {onLogin, authorizationStatus} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
     return (
       <BrowserRouter>
@@ -28,6 +28,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-auth">
+            {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
             <LoginScreen onLogin={onLogin} />
           </Route>
         </Switch>
@@ -51,6 +52,7 @@ App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
   currentOfferId: PropTypes.number,
@@ -91,7 +93,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.listOffers());
   },
   onOfferClick(offerId) {
     dispatch(ActionCreator.changeCurrentOffer(offerId));

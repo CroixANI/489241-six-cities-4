@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Auth from './auth.jsx';
+import {Auth} from './auth.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user';
 
 describe(`Render Auth component`, () => {
@@ -15,7 +15,7 @@ describe(`Render Auth component`, () => {
 
   it(`Render Auth component with AUTH authorization status`, () => {
     const tree = renderer
-      .create(<Auth authorizationStatus={AuthorizationStatus.AUTH} />)
+      .create(<Auth authorizationStatus={AuthorizationStatus.AUTH} currentUserEmail={`Oliver.conner@gmail.com`} />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
