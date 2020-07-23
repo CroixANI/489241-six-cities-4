@@ -46,7 +46,7 @@ const OperationCreator = {
       password: authData.password,
     }).then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.setCurrentUser(createUser(response)));
+      dispatch(ActionCreator.setCurrentUser(createUser(response.data)));
     });
   }
 };

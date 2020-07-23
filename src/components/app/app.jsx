@@ -9,6 +9,8 @@ import Login from '../login/login.jsx';
 import {ActionCreator} from "../../reducer/app/app";
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
 import {getCities} from '../../reducer/data/selectors.js';
+import {OperationCreator as UserOperationCreator} from "../../reducer/user/user";
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
 class App extends PureComponent {
@@ -17,6 +19,7 @@ class App extends PureComponent {
   }
 
   render() {
+    const {onLogin} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
     return (
       <BrowserRouter>
@@ -25,7 +28,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-auth">
-            <LoginScreen />
+            <LoginScreen onLogin={onLogin} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -47,6 +50,7 @@ class App extends PureComponent {
 App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
   currentOfferId: PropTypes.number,
@@ -80,7 +84,8 @@ const mapStateToProps = (state) => ({
   offers: getFilteredOffers(state),
   cities: getCities(state),
   selectedCity: getCity(state),
-  currentOfferId: getCurrentOfferId(state)
+  currentOfferId: getCurrentOfferId(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -90,6 +95,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onOfferClick(offerId) {
     dispatch(ActionCreator.changeCurrentOffer(offerId));
+  },
+  onLogin(authData) {
+    dispatch(UserOperationCreator.login(authData));
   }
 });
 
