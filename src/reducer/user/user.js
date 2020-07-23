@@ -1,3 +1,5 @@
+import {createUser} from '../../data/user';
+
 const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
@@ -5,10 +7,12 @@ const AuthorizationStatus = {
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  currentUser: null,
 };
 
 const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  SET_CURRENT_USER: `SET_CURRENT_USER`,
 };
 
 const ActionCreator = {
@@ -16,6 +20,12 @@ const ActionCreator = {
     return {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: status,
+    };
+  },
+  setCurrentUser: (currentUser) => {
+    return {
+      type: ActionType.SET_CURRENT_USER,
+      payload: currentUser,
     };
   },
 };
@@ -29,6 +39,15 @@ const OperationCreator = {
       .catch((err) => {
         throw err;
       });
+  },
+  login: (authData) => (dispatch, getState, api) => {
+    return api.post(`/login`, {
+      email: authData.login,
+      password: authData.password,
+    }).then((response) => {
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(ActionCreator.setCurrentUser(createUser(response)));
+    });
   }
 };
 
@@ -37,6 +56,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
         authorizationStatus: action.payload
+      });
+    case ActionType.SET_CURRENT_USER:
+      return Object.assign({}, state, {
+        currentUser: action.payload
       });
   }
 

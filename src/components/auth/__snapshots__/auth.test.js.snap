@@ -9,9 +9,9 @@ exports[`Render Auth component Render Auth component with AUTH authorization sta
     className="header__avatar-wrapper user__avatar-wrapper"
   />
   <span
-    className="header__login"
+    className="header__user-name user__name"
   >
-    Sign in
+    Oliver.conner@gmail.com
   </span>
 </a>
 `;
@@ -25,9 +25,9 @@ exports[`Render Auth component Render Auth component with NO_AUTH authorization 
     className="header__avatar-wrapper user__avatar-wrapper"
   />
   <span
-    className="header__user-name user__name"
+    className="header__login"
   >
-    Oliver.conner@gmail.com
+    Sign in
   </span>
 </a>
 `;

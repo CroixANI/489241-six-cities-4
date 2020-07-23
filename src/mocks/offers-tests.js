@@ -1,5 +1,5 @@
 import Offer from '../data/offer';
-import OfferHost from '../data/offer-host';
+import User from '../data/user';
 import OfferLocation from '../data/offer-location';
 import {OFFER_TYPES, OFFER_LUXURY_TYPE} from '../data/constants';
 
@@ -37,7 +37,7 @@ const CITIES = {
 };
 
 const HOSTS = {
-  ANGELINA: new OfferHost(1, `Angelina`, `img/avatar-angelina.jpg`, true)
+  ANGELINA: new User(1, `Angelina`, `img/avatar-angelina.jpg`, true)
 };
 
 const DEFAULT_DESCRIPTION = `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
