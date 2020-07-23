@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Auth component Render Auth component with AUTH authorization status 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="#"
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  />
+  <span
+    className="header__login"
+  >
+    Sign in
+  </span>
+</a>
+`;
+
+exports[`Render Auth component Render Auth component with NO_AUTH authorization status 1`] = `
+<a
+  className="header__nav-link header__nav-link--profile"
+  href="#"
+>
+  <div
+    className="header__avatar-wrapper user__avatar-wrapper"
+  />
+  <span
+    className="header__user-name user__name"
+  >
+    Oliver.conner@gmail.com
+  </span>
+</a>
+`;
