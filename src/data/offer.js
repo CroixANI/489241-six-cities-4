@@ -1,4 +1,4 @@
-import {createOfferHost} from './offer-host';
+import {createUser} from './user';
 import {createOfferLocation} from './offer-location';
 import {OFFER_LUXURY_TYPE} from '../data/constants';
 
@@ -30,7 +30,7 @@ const createOffer = (offerData) =>
       offerData.is_premium === true ? OFFER_LUXURY_TYPE.PREMIUM : OFFER_LUXURY_TYPE.NONE,
       offerData.price, offerData.rating, offerData.is_favorite === true, offerData.preview_image,
       offerData.images, {bedRoomsCount: offerData.bedrooms, adultsCount: offerData.max_adults},
-      offerData.goods, createOfferHost(offerData.host), createOfferLocation(offerData.city, offerData.location),
+      offerData.goods, createUser(offerData.host), createOfferLocation(offerData.city, offerData.location),
       offerData.description);
 
 export {createOffer};

@@ -1,13 +1,17 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
+import Login from '../login/login.jsx';
 import {ActionCreator} from "../../reducer/app/app";
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
 import {getCities} from '../../reducer/data/selectors.js';
+import {OperationCreator as UserOperationCreator, AuthorizationStatus} from "../../reducer/user/user";
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 
 class App extends PureComponent {
   constructor(props) {
@@ -15,11 +19,17 @@ class App extends PureComponent {
   }
 
   render() {
+    const {onLogin, authorizationStatus} = this.props;
+    const LoginScreen = withClassName(`page--gray page--login`, Login);
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-auth">
+            {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
+            <LoginScreen onLogin={onLogin} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -27,13 +37,13 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick} = this.props;
+    const {currentOfferId, offers, cities, selectedCity, onCityClick, onOfferClick, authorizationStatus} = this.props;
     const foundOffer = offers.find((offer) => offer.id === currentOfferId);
-
+    const MainScreen = withClassName(`page--gray page--main`, Main);
     if (foundOffer) {
-      return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} />;
+      return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} authorizationStatus={authorizationStatus} />;
     } else {
-      return <Main offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
+      return <MainScreen offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
     }
   }
 }
@@ -41,6 +51,8 @@ class App extends PureComponent {
 App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
   currentOfferId: PropTypes.number,
@@ -74,16 +86,19 @@ const mapStateToProps = (state) => ({
   offers: getFilteredOffers(state),
   cities: getCities(state),
   selectedCity: getCity(state),
-  currentOfferId: getCurrentOfferId(state)
+  currentOfferId: getCurrentOfferId(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onCityClick(city) {
     dispatch(ActionCreator.changeCity(city));
-    dispatch(ActionCreator.listOffers());
   },
   onOfferClick(offerId) {
     dispatch(ActionCreator.changeCurrentOffer(offerId));
+  },
+  onLogin(authData) {
+    dispatch(UserOperationCreator.login(authData));
   }
 });
 
