@@ -1,4 +1,4 @@
-import {createSelector} from "reselect";
+import {createSelector} from 'reselect';
 
 import {SORT_TYPE} from '../../data/constants';
 import {getOffers, getCities} from '../data/selectors';
@@ -25,6 +25,11 @@ export const getCity = (state) => {
 
 export const getCurrentOfferId = (state) =>
   state[NAME_SPACE].currentOfferId;
+
+export const getCurrentOffer = createSelector(
+    getCurrentOfferId,
+    getOffers,
+    (offerId, offers) => offers.find((offer) => offer.id === offerId));
 
 export const getFilteredOffers = createSelector(
     getCity,

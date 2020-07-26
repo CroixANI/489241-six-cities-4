@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import Review from '../review/review.jsx';
 import ReviewForm from '../review-form/review-form.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {OperationCreator} from '../../reducer/offer-data/offer-data';
+import {getReviews} from '../../reducer/offer-data/selectors';
 
 const MAX_REVIEW = 10;
 
@@ -48,4 +52,16 @@ ReviewsList.propTypes = {
   })).isRequired
 };
 
-export default ReviewsList;
+const mapStateToProps = (state) => ({
+  reviews: getReviews(state),
+  authorizationStatus: getAuthorizationStatus(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onReviewSubmit(reviewData) {
+    dispatch(OperationCreator.submitReview(reviewData));
+  },
+});
+
+export {ReviewsList};
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewsList);

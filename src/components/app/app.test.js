@@ -21,6 +21,7 @@ const store = mockStore({
   },
   [NameSpace.USER]: {
     authorizationStatus: `NO_AUTH`,
+    currentUser: null,
   },
 });
 

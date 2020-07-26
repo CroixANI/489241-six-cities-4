@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Rating from '../rating/rating.jsx';
@@ -7,11 +8,13 @@ import Map from '../map/map.jsx';
 import OfferCard from '../offer-card/offer-card.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
+import {getCurrentOffer} from '../../reducer/app/selectors.js';
+import {getNearBy} from '../../reducer/offer-data/selectors';
 
 const MAX_NEAR_PLACES = 3;
 
 const Offer = (props) => {
-  const {offer, onOfferTitleClick, authorizationStatus, onReviewSubmit} = props;
+  const {offer, nearBy, onOfferTitleClick} = props;
   const {
     title,
     price,
@@ -27,9 +30,7 @@ const Offer = (props) => {
     location,
   } = offer;
 
-  // TODO - Load Near Places
-  const nearPlaces = [];
-  const limitedNearPlaces = nearPlaces.slice(0, MAX_NEAR_PLACES);
+  const limitedNearPlaces = nearBy.slice(0, MAX_NEAR_PLACES);
   const locations = limitedNearPlaces.map((nearOffer) => nearOffer.location);
   const OfferMap = withClassName(`property__map`, Map);
   const OfferRating = withClassName(`property__stars`, Rating);
@@ -119,7 +120,7 @@ const Offer = (props) => {
                 ))}
               </div>
             </div>
-            <ReviewsList reviews={[]} authorizationStatus={authorizationStatus} onReviewSubmit={onReviewSubmit} />
+            <ReviewsList />
           </div>
         </div>
         <OfferMap activeLocation={location} locations={locations} />
@@ -141,9 +142,7 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
-  onReviewSubmit: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -175,7 +174,45 @@ Offer.propTypes = {
       longitude: PropTypes.number.isRequired
     }).isRequired,
     description: PropTypes.string.isRequired,
-  }).isRequired
+  }).isRequired,
+  nearBy: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    luxuryType: PropTypes.string.isRequired,
+    isBookmarked: PropTypes.bool.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+    capacity: PropTypes.shape({
+      bedRoomsCount: PropTypes.number.isRequired,
+      adultsCount: PropTypes.number.isRequired
+    }),
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    host: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      isPro: PropTypes.bool.isRequired,
+      imageUrl: PropTypes.string.isRequired
+    }),
+    location: PropTypes.shape({
+      city: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        location: PropTypes.shape({
+          latitude: PropTypes.number.isRequired,
+          longitude: PropTypes.number.isRequired,
+          zoom: PropTypes.number.isRequired,
+        }),
+      }),
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
-export default withHeader(Offer);
+const mapStateToProps = (state) => ({
+  offer: getCurrentOffer(state),
+  nearBy: getNearBy(state),
+});
+
+export {Offer};
+export default connect(mapStateToProps)(withHeader(Offer));
