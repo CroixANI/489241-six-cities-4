@@ -11,7 +11,7 @@ exports[`Render Review List component Render Reviews List component for authenti
     <span
       className="reviews__amount"
     >
-      4
+      3
     </span>
   </h2>
   <ul
@@ -30,73 +30,14 @@ exports[`Render Review List component Render Reviews List component for authenti
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Adam
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars  rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "40%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime={2019-05-24T00:00:00.000Z}
-        >
-          May 24, 2019
-        </time>
-      </div>
-    </li>
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Alice
+          Angelina
         </span>
       </div>
       <div
@@ -125,13 +66,13 @@ exports[`Render Review List component Render Reviews List component for authenti
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          3 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2019-04-27T00:00:00.000Z}
+          dateTime={2020-05-08T14:13:56.569Z}
         >
-          April 27, 2019
+          May 08, 2020
         </time>
       </div>
     </li>
@@ -148,14 +89,14 @@ exports[`Render Review List component Render Reviews List component for authenti
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Max
+          Alice
         </span>
       </div>
       <div
@@ -184,13 +125,13 @@ exports[`Render Review List component Render Reviews List component for authenti
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          1 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2019-04-24T00:00:00.000Z}
+          dateTime={2019-05-08T14:13:56.569Z}
         >
-          April 24, 2019
+          May 08, 2019
         </time>
       </div>
     </li>
@@ -207,14 +148,14 @@ exports[`Render Review List component Render Reviews List component for authenti
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Alex
+          Max
         </span>
       </div>
       <div
@@ -229,7 +170,7 @@ exports[`Render Review List component Render Reviews List component for authenti
             <span
               style={
                 Object {
-                  "width": "60%",
+                  "width": "40%",
                 }
               }
             />
@@ -243,13 +184,13 @@ exports[`Render Review List component Render Reviews List component for authenti
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          2 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2018-04-24T00:00:00.000Z}
+          dateTime={2018-05-08T14:13:56.569Z}
         >
-          April 24, 2018
+          May 08, 2018
         </time>
       </div>
     </li>
@@ -429,7 +370,7 @@ exports[`Render Review List component Render Reviews List component for not auth
     <span
       className="reviews__amount"
     >
-      4
+      3
     </span>
   </h2>
   <ul
@@ -448,73 +389,14 @@ exports[`Render Review List component Render Reviews List component for not auth
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Adam
-        </span>
-      </div>
-      <div
-        className="reviews__info"
-      >
-        <div
-          className="reviews__rating rating"
-        >
-          <div
-            className="reviews__stars  rating__stars"
-          >
-            <span
-              style={
-                Object {
-                  "width": "40%",
-                }
-              }
-            />
-            <span
-              className="visually-hidden"
-            >
-              Rating
-            </span>
-          </div>
-        </div>
-        <p
-          className="reviews__text"
-        >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-        </p>
-        <time
-          className="reviews__time"
-          dateTime={2019-05-24T00:00:00.000Z}
-        >
-          May 24, 2019
-        </time>
-      </div>
-    </li>
-    <li
-      className="reviews__item"
-    >
-      <div
-        className="reviews__user user"
-      >
-        <div
-          className="reviews__avatar-wrapper user__avatar-wrapper"
-        >
-          <img
-            alt="Reviews avatar"
-            className="reviews__avatar user__avatar"
-            height="54"
-            src="img/avatar-max.jpg"
-            width="54"
-          />
-        </div>
-        <span
-          className="reviews__user-name"
-        >
-          Alice
+          Angelina
         </span>
       </div>
       <div
@@ -543,13 +425,13 @@ exports[`Render Review List component Render Reviews List component for not auth
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          3 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2019-04-27T00:00:00.000Z}
+          dateTime={2020-05-08T14:13:56.569Z}
         >
-          April 27, 2019
+          May 08, 2020
         </time>
       </div>
     </li>
@@ -566,14 +448,14 @@ exports[`Render Review List component Render Reviews List component for not auth
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Max
+          Alice
         </span>
       </div>
       <div
@@ -602,13 +484,13 @@ exports[`Render Review List component Render Reviews List component for not auth
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          1 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2019-04-24T00:00:00.000Z}
+          dateTime={2019-05-08T14:13:56.569Z}
         >
-          April 24, 2019
+          May 08, 2019
         </time>
       </div>
     </li>
@@ -625,14 +507,14 @@ exports[`Render Review List component Render Reviews List component for not auth
             alt="Reviews avatar"
             className="reviews__avatar user__avatar"
             height="54"
-            src="img/avatar-max.jpg"
+            src="img/avatar-angelina.jpg"
             width="54"
           />
         </div>
         <span
           className="reviews__user-name"
         >
-          Alex
+          Max
         </span>
       </div>
       <div
@@ -647,7 +529,7 @@ exports[`Render Review List component Render Reviews List component for not auth
             <span
               style={
                 Object {
-                  "width": "60%",
+                  "width": "40%",
                 }
               }
             />
@@ -661,13 +543,13 @@ exports[`Render Review List component Render Reviews List component for not auth
         <p
           className="reviews__text"
         >
-          A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
+          2 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
         </p>
         <time
           className="reviews__time"
-          dateTime={2018-04-24T00:00:00.000Z}
+          dateTime={2018-05-08T14:13:56.569Z}
         >
-          April 24, 2018
+          May 08, 2018
         </time>
       </div>
     </li>

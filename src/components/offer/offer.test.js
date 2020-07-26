@@ -19,7 +19,7 @@ it(`Render Offer Card component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Offer offer={OFFERS_TESTS[0]} onOfferTitleClick={() => {}} authorizationStatus={`AUTH`} />
+          <Offer offer={OFFERS_TESTS[0]} onOfferTitleClick={() => {}} authorizationStatus={`AUTH`} onReviewSubmit={() => {}} />
         </Provider>
     )
     .toJSON();

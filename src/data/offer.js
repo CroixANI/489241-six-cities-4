@@ -5,7 +5,7 @@ import {OFFER_LUXURY_TYPE} from '../data/constants';
 class Offer {
   constructor(id, title, type, luxuryType, price, rating, isBookmarked,
       previewImage = ``, images = [], capacity = null, features = [], host = null,
-      location = null, description = ``, reviews = [], nearPlaces = []) {
+      location = null, description = ``) {
     this.id = id;
     this.title = title;
     this.type = type;
@@ -20,8 +20,6 @@ class Offer {
     this.host = host;
     this.location = location;
     this.description = description;
-    this.reviews = reviews;
-    this.nearPlaces = nearPlaces;
   }
 }
 

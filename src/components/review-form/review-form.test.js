@@ -5,7 +5,7 @@ import ReviewForm from './review-form.jsx';
 
 it(`Render Review Form component`, () => {
   const tree = renderer
-    .create(<ReviewForm />)
+    .create(<ReviewForm onReviewSubmit={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

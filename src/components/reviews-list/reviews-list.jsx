@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Review from '../review/review.jsx';
-import ReviewForm from '../review-form/review-form.jsx'
+import ReviewForm from '../review-form/review-form.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user';
 
 const MAX_REVIEW = 10;
@@ -39,7 +39,7 @@ ReviewsList.propTypes = {
     reviewText: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     user: PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       isPro: PropTypes.bool.isRequired,
       imageUrl: PropTypes.string.isRequired

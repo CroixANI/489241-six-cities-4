@@ -24,11 +24,11 @@ const Offer = (props) => {
     features,
     host,
     description,
-    reviews,
-    nearPlaces,
     location,
   } = offer;
 
+  // TODO - Load Near Places
+  const nearPlaces = [];
   const limitedNearPlaces = nearPlaces.slice(0, MAX_NEAR_PLACES);
   const locations = limitedNearPlaces.map((nearOffer) => nearOffer.location);
   const OfferMap = withClassName(`property__map`, Map);
@@ -119,7 +119,7 @@ const Offer = (props) => {
                 ))}
               </div>
             </div>
-            <ReviewsList reviews={reviews} authorizationStatus={authorizationStatus} onReviewSubmit={onReviewSubmit} />
+            <ReviewsList reviews={[]} authorizationStatus={authorizationStatus} onReviewSubmit={onReviewSubmit} />
           </div>
         </div>
         <OfferMap activeLocation={location} locations={locations} />
@@ -175,40 +175,6 @@ Offer.propTypes = {
       longitude: PropTypes.number.isRequired
     }).isRequired,
     description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(PropTypes.shape({
-      reviewText: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-      user: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        isPro: PropTypes.bool.isRequired,
-        imageUrl: PropTypes.string.isRequired
-      }).isRequired,
-      date: PropTypes.instanceOf(Date).isRequired,
-    })).isRequired,
-    nearPlaces: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          title: PropTypes.string.isRequired,
-          price: PropTypes.number.isRequired,
-          rating: PropTypes.number.isRequired,
-          type: PropTypes.string.isRequired,
-          luxuryType: PropTypes.string.isRequired,
-          isBookmarked: PropTypes.bool.isRequired,
-          images: PropTypes.arrayOf(PropTypes.string).isRequired,
-          location: PropTypes.shape({
-            city: PropTypes.shape({
-              name: PropTypes.string.isRequired,
-              location: PropTypes.shape({
-                latitude: PropTypes.number.isRequired,
-                longitude: PropTypes.number.isRequired,
-                zoom: PropTypes.number.isRequired,
-              }),
-            }),
-            latitude: PropTypes.number.isRequired,
-            longitude: PropTypes.number.isRequired
-          }),
-        })
-    ).isRequired
   }).isRequired
 };
 
