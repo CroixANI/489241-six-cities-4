@@ -11,7 +11,7 @@ import {withHeader} from '../../hocs/with-header/with-header.jsx';
 const MAX_NEAR_PLACES = 3;
 
 const Offer = (props) => {
-  const {offer, onOfferTitleClick, authorizationStatus} = props;
+  const {offer, onOfferTitleClick, authorizationStatus, onReviewSubmit} = props;
   const {
     title,
     price,
@@ -119,7 +119,7 @@ const Offer = (props) => {
                 ))}
               </div>
             </div>
-            <ReviewsList reviews={reviews} authorizationStatus={authorizationStatus} />
+            <ReviewsList reviews={reviews} authorizationStatus={authorizationStatus} onReviewSubmit={onReviewSubmit} />
           </div>
         </div>
         <OfferMap activeLocation={location} locations={locations} />
@@ -141,6 +141,7 @@ const Offer = (props) => {
 };
 
 Offer.propTypes = {
+  onReviewSubmit: PropTypes.func.isRequired,
   onOfferTitleClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   offer: PropTypes.shape({

@@ -258,6 +258,7 @@ exports[`Render Review List component Render Reviews List component for authenti
     action="#"
     className="reviews__form form"
     method="post"
+    onSubmit={[Function]}
   >
     <label
       className="reviews__label form__label"

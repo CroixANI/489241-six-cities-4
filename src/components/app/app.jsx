@@ -41,7 +41,7 @@ class App extends PureComponent {
     const foundOffer = offers.find((offer) => offer.id === currentOfferId);
     const MainScreen = withClassName(`page--gray page--main`, Main);
     if (foundOffer) {
-      return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} authorizationStatus={authorizationStatus} />;
+      return <Offer offer={foundOffer} onOfferTitleClick={onOfferClick} authorizationStatus={authorizationStatus} onReviewSubmit={() => {}} />;
     } else {
       return <MainScreen offers={offers} cities={cities} selectedCity={selectedCity} onCityClick={onCityClick} onOfferTitleClick={onOfferClick} />;
     }
