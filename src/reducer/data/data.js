@@ -22,6 +22,10 @@ const OperationCreator = {
   loadHotels: () => (dispatch, getState, api) => {
     return api.get(`/hotels`)
       .then((response) => {
+        if (!Array.isArray(response.data)) {
+          return;
+        }
+
         const offers = response.data.map((offerData) => createOffer(offerData));
         dispatch(ActionCreator.loadData(offers));
         const cities = getCities(getState());

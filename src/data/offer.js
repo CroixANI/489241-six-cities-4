@@ -1,4 +1,5 @@
-import {createUser} from './user';
+import {createCityDto} from './city';
+import {createUser, createUserDto} from './user';
 import {createOfferLocation} from './offer-location';
 import {OFFER_LUXURY_TYPE} from '../data/constants';
 
@@ -31,6 +32,29 @@ const createOffer = (offerData) =>
       offerData.goods, createUser(offerData.host), createOfferLocation(offerData.city, offerData.location),
       offerData.description);
 
-export {createOffer};
+const createOfferDto = (offer) => ({
+  'bedrooms': offer.capacity.bedRoomsCount,
+  'city': createCityDto(offer.location.city),
+  'description': offer.description,
+  'goods': offer.features,
+  'host': createUserDto(offer.host),
+  'id': offer.id,
+  'images': offer.images,
+  'is_favorite': offer.isBookmarked,
+  'is_premium': offer.luxuryType === OFFER_LUXURY_TYPE.PREMIUM,
+  'location': {
+    'latitude': offer.location.latitude,
+    'longitude': offer.location.longitude,
+    'zoom': offer.location.zoom
+  },
+  'max_adults': offer.capacity.adultsCount,
+  'preview_image': offer.previewImage,
+  'price': offer.price,
+  'rating': offer.rating,
+  'title': offer.title,
+  'type': offer.type
+});
+
+export {createOffer, createOfferDto};
 
 export default Offer;

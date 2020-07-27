@@ -114,11 +114,11 @@ describe(`Action creators should work correctly`, () => {
 
 describe(`Operations work correctly`, () => {
   const apiMock = new MockAdapter(api);
-  const dispatch = jest.fn();
 
   it(`Should make correct API call to GET /login and with success response change AuthorizationStatus`, () => {
     const checkAuth = OperationCreator.checkAuth();
-
+    const dispatch = jest.fn();
+    onUnauthorized.mockReset();
     apiMock
       .onGet(`/login`)
       .reply(200, {fake: true});
@@ -136,7 +136,8 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make correct API call to GET /login and with unauthorized error change AuthorizationStatus`, () => {
     const checkAuth = OperationCreator.checkAuth();
-
+    const dispatch = jest.fn();
+    onUnauthorized.mockReset();
     apiMock
       .onGet(`/login`)
       .reply(403, {fake: true});
@@ -150,7 +151,8 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make correct API call to POST /login and with success response change AuthorizationStatus`, () => {
     const login = OperationCreator.login({});
-
+    const dispatch = jest.fn();
+    onUnauthorized.mockReset();
     apiMock
       .onPost(`/login`)
       .reply(200, {fake: true});
@@ -168,7 +170,8 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make correct API call to POST /login and with unauthorized error should not change AuthorizationStatus`, () => {
     const login = OperationCreator.login({});
-
+    const dispatch = jest.fn();
+    onUnauthorized.mockReset();
     apiMock
       .onPost(`/login`)
       .reply(400, {fake: true});

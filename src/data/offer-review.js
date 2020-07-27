@@ -1,4 +1,4 @@
-import {createUser} from './user';
+import {createUser, createUserDto} from './user';
 
 class OfferReview {
   constructor(id, reviewText, rating, date, user) {
@@ -13,6 +13,14 @@ class OfferReview {
 const createOfferReview = (reviewData) =>
   new OfferReview(reviewData.id, reviewData.comment, reviewData.rating, reviewData.date, createUser(reviewData.user));
 
-export {createOfferReview};
+const createOfferReviewDto = (review) => ({
+  'comment': review.reviewText,
+  'date': review.date.toISOString(),
+  'id': review.id,
+  'rating': review.rating,
+  'user': createUserDto(review.user),
+});
+
+export {createOfferReview, createOfferReviewDto};
 
 export default OfferReview;

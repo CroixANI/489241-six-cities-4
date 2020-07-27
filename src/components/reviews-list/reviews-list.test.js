@@ -17,7 +17,12 @@ const store = mockStore({
   [NameSpace.OFFER_DATA]: {
     reviews: [],
     nearBy: [],
-    isActionInProgress: false,
+    currentReview: {
+      reviewText: ``,
+      rating: ``,
+      isValid: false,
+      isSubmitInProgress: false,
+    }
   },
 });
 

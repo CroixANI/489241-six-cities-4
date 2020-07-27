@@ -26,11 +26,16 @@ const store = mockStore({
   [NameSpace.OFFER_DATA]: {
     reviews: [],
     nearBy: [],
-    isActionInProgress: false,
+    currentReview: {
+      reviewText: ``,
+      rating: ``,
+      isValid: false,
+      isSubmitInProgress: false,
+    }
   },
 });
 
-it(`Render Offer Card component`, () => {
+it(`Render Offer component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>

@@ -1,5 +1,6 @@
 import Offer from '../data/offer';
 import User from '../data/user';
+import City from '../data/city';
 import OfferReview from '../data/offer-review';
 import OfferLocation from '../data/offer-location';
 import {OFFER_TYPES, OFFER_LUXURY_TYPE} from '../data/constants';
@@ -32,9 +33,9 @@ const DEFAULT_FEATURES = [
 ];
 
 const CITIES = {
-  AMSTERDAM: {name: `Amsterdam`, location: {latitude: 52.370216, longitude: 4.895168, zoom: 10}},
-  PARIS: {name: `Paris`, location: {latitude: 52.370216, longitude: 4.895168, zoom: 10}},
-  COLOGNE: {name: `Cologne`, location: {latitude: 52.370216, longitude: 4.895168, zoom: 10}}
+  AMSTERDAM: new City(`Amsterdam`, 52.370216, 4.895168, 10),
+  PARIS: new City(`Paris`, 52.370216, 4.895168, 10),
+  COLOGNE: new City(`Cologne`, 52.370216, 4.895168, 10)
 };
 
 const USERS = {

@@ -6,19 +6,21 @@ import Review from '../review/review.jsx';
 import ReviewForm from '../review-form/review-form.jsx';
 import {AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
-import {OperationCreator} from '../../reducer/offer-data/offer-data';
 import {getReviews} from '../../reducer/offer-data/selectors';
 
 const MAX_REVIEW = 10;
 
 const ReviewsList = (props) => {
-  const {reviews, authorizationStatus, onReviewSubmit} = props;
-  const limitedReviews = reviews.slice(0, MAX_REVIEW).sort((firstReview, secondReview) => {
-    return secondReview.date - firstReview.date;
-  });
+  const {reviews, authorizationStatus} = props;
+  const limitedReviews = reviews
+    .slice()
+    .sort((firstReview, secondReview) => {
+      return secondReview.date - firstReview.date;
+    })
+    .slice(0, MAX_REVIEW);
 
   const ReviewFormElement = authorizationStatus === AuthorizationStatus.AUTH
-    ? <ReviewForm onReviewSubmit={onReviewSubmit} />
+    ? <ReviewForm />
     : <></>;
 
   return (
@@ -26,7 +28,7 @@ const ReviewsList = (props) => {
       <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{limitedReviews.length}</span></h2>
       <ul className="reviews__list">
         {limitedReviews.map((review) => (
-          <li key={review.user.id} className="reviews__item">
+          <li key={review.id} className="reviews__item">
             <Review review={review} />
           </li>
         ))}
@@ -37,7 +39,6 @@ const ReviewsList = (props) => {
 };
 
 ReviewsList.propTypes = {
-  onReviewSubmit: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     reviewText: PropTypes.string.isRequired,
@@ -57,11 +58,5 @@ const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onReviewSubmit(reviewData) {
-    dispatch(OperationCreator.submitReview(reviewData));
-  },
-});
-
 export {ReviewsList};
-export default connect(mapStateToProps, mapDispatchToProps)(ReviewsList);
+export default connect(mapStateToProps)(ReviewsList);
