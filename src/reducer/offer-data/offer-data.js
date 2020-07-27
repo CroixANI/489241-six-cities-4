@@ -1,5 +1,6 @@
 import {createOffer} from '../../data/offer';
 import {createOfferReview} from '../../data/offer-review';
+import {ActionCreator as AppActionCreator} from '../app/app';
 
 const initialState = {
   reviews: [],
@@ -53,6 +54,10 @@ const OperationCreator = {
 
         const reviews = response.data.map((review) => createOfferReview(review));
         dispatch(ActionCreator.loadReviews(reviews));
+      })
+      .catch((err) => {
+        dispatch(AppActionCreator.setErrorMessage(`Unable to load reviews`));
+        throw err;
       });
   },
   loadNearBy: (offerId) => (dispatch, getState, api) => {
@@ -64,6 +69,10 @@ const OperationCreator = {
 
         const offers = response.data.map((offer) => createOffer(offer));
         dispatch(ActionCreator.loadNearBy(offers));
+      })
+      .catch((err) => {
+        dispatch(AppActionCreator.setErrorMessage(`Unable to load near by hotels`));
+        throw err;
       });
   },
   submitReview: (offerId, reviewData) => (dispatch, getState, api) => {
@@ -83,6 +92,7 @@ const OperationCreator = {
     }).catch((err) => {
       dispatch(ActionCreator.setCurrentReview(reviewData));
       dispatch(ActionCreator.setInProgress(false));
+      dispatch(AppActionCreator.setErrorMessage(`Unable to submit review`));
       throw err;
     });
   }

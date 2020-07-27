@@ -55,3 +55,6 @@ export const getSortedOffers = createSelector(
     getSortType,
     getFilteredOffers,
     (sortType, filteredOffers) => sortOffers(filteredOffers, sortType));
+
+export const getErrorMessage = (state) =>
+  state[NAME_SPACE].errorMessage;

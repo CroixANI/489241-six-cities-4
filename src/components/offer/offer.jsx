@@ -6,6 +6,7 @@ import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Rating from '../rating/rating.jsx';
 import Map from '../map/map.jsx';
 import OfferCard from '../offer-card/offer-card.jsx';
+import Error from '../error/error.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
 import {getCurrentOffer} from '../../reducer/app/selectors.js';
@@ -49,6 +50,7 @@ const Offer = (props) => {
 
   return (
     <main className="page__main page__main--property">
+      <Error />
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">

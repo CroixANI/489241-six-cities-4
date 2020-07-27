@@ -1,0 +1,45 @@
+.top-right {
+  top: 12px;
+  right: 12px;
+  transition: transform .6s ease-in-out;
+  animation: toast-in-right .7s;
+}
+
+.notification {
+  font-size: 14px;
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  background-color: rgb(255, 235, 230);
+  box-shadow: rgba(0, 0, 0, 0.176) 0px 3px 8px;
+  color: rgb(191, 38, 0);
+  width: 360px;
+}
+
+.notification-message-container {
+  padding: 8px 12px;
+  flex-grow: 1;
+}
+
+.notification-buttons {
+  background-color: rgb(255, 86, 48);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  color: rgb(255, 235, 230);
+  flex-shrink: 0;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  position: relative;
+  text-align: center;
+  width: 30px;
+  overflow: hidden;
+}
+
+.notification-buttons button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+}
