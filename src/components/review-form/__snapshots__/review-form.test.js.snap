@@ -20,6 +20,7 @@ exports[`Render Review Form component 1`] = `
     <input
       checked={false}
       className="form__rating-input visually-hidden"
+      disabled={false}
       id="5-stars"
       name="rating"
       onChange={[Function]}
@@ -45,6 +46,7 @@ exports[`Render Review Form component 1`] = `
     <input
       checked={false}
       className="form__rating-input visually-hidden"
+      disabled={false}
       id="4-stars"
       name="rating"
       onChange={[Function]}
@@ -70,6 +72,7 @@ exports[`Render Review Form component 1`] = `
     <input
       checked={false}
       className="form__rating-input visually-hidden"
+      disabled={false}
       id="3-stars"
       name="rating"
       onChange={[Function]}
@@ -95,6 +98,7 @@ exports[`Render Review Form component 1`] = `
     <input
       checked={false}
       className="form__rating-input visually-hidden"
+      disabled={false}
       id="2-stars"
       name="rating"
       onChange={[Function]}
@@ -120,6 +124,7 @@ exports[`Render Review Form component 1`] = `
     <input
       checked={false}
       className="form__rating-input visually-hidden"
+      disabled={false}
       id="1-star"
       name="rating"
       onChange={[Function]}
@@ -145,6 +150,7 @@ exports[`Render Review Form component 1`] = `
   </div>
   <textarea
     className="reviews__textarea form__textarea"
+    disabled={false}
     id="review"
     maxLength="300"
     minLength="50"
