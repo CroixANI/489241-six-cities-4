@@ -14,3 +14,10 @@ export const SORT_TYPE = {
   PRICE_HIGH_TO_LOW: `Price: high to low`,
   TOP_RATED: `Top rated first`
 };
+
+export const APP_ROUTE = {
+  LOGIN: `/login`,
+  OFFER: `/offer`,
+  FAVORITES: `/favorites`,
+  ROOT: `/`,
+};

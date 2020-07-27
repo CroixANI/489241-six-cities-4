@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom';
+import {Switch, Route, Router, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
@@ -13,6 +13,8 @@ import {OperationCreator as UserOperationCreator, AuthorizationStatus} from '../
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {OperationCreator as OfferDataOperationCreator} from '../../reducer/offer-data/offer-data';
+import {APP_ROUTE} from '../../data/constants';
+import {history} from '../../history';
 
 class App extends PureComponent {
   constructor(props) {
@@ -23,17 +25,17 @@ class App extends PureComponent {
     const {onLogin, authorizationStatus} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={APP_ROUTE.ROOT}>
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-auth">
+          <Route exact path={APP_ROUTE.LOGIN}>
             {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
             <LoginScreen onLogin={onLogin} />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 
