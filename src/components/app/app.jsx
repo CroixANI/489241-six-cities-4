@@ -1,13 +1,12 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, Router, Redirect} from 'react-router-dom';
+import {Switch, Route, Router, Redirect, BrowserRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import Login from '../login/login.jsx';
 import Favorites from '../favorites/favorites.jsx';
-import PrivateRoute from '../private-route/private-route.jsx';
 import OffersCardsListEmpty from '../offers-cards-list-empty/offers-cards-list-empty.jsx';
 import {ActionCreator} from '../../reducer/app/app';
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
@@ -33,26 +32,21 @@ class App extends PureComponent {
     }
 
     return (
-      <Router history={history}>
+      <BrowserRouter>
         <Switch>
           <Route exact path={APP_ROUTE.ROOT}>
             {this._renderApp()}
           </Route>
           <Route exact path={APP_ROUTE.LOGIN}>
-            {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
+            {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to={APP_ROUTE.ROOT} />}
             <LoginScreen onLogin={onLogin} />
           </Route>
-          <PrivateRoute
-            exact
-            path={APP_ROUTE.FAVORITES}
-            render={() => {
-              return (
-                <Favorites />
-              );
-            }}
-          />
+          <Route exact path={APP_ROUTE.FAVORITES}>
+            {authorizationStatus !== AuthorizationStatus.AUTH && <Redirect to={APP_ROUTE.LOGIN} />}
+            <Favorites />
+          </Route>
         </Switch>
-      </Router>
+      </BrowserRouter>
     );
   }
 
