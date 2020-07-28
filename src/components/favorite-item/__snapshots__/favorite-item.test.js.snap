@@ -1,28 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Offer Card component 1`] = `
+exports[`Render Favorite Item component 1`] = `
 <article
-  className="cities__place-card place-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
+  className="favorites__card place-card"
 >
   <div
-    className="cities__image-wrapper place-card__image-wrapper"
+    className="favorites__image-wrapper place-card__image-wrapper"
   >
     <a
       href="#"
     >
       <img
-        alt="apartment"
+        alt="Place image"
         className="place-card__image"
-        height="200"
+        height="110"
         src="img/room.jpg"
-        width="260"
+        width="150"
       />
     </a>
   </div>
   <div
-    className="place-card__info"
+    className="favorites__card-info place-card__info"
   >
     <div
       className="place-card__price-wrapper"
@@ -43,7 +41,8 @@ exports[`Render Offer Card component 1`] = `
         </span>
       </div>
       <button
-        className="place-card__bookmark-button button place-card__bookmark-button--active"
+        className="place-card__bookmark-button place-card__bookmark-button--active button"
+        onClick={[Function]}
         type="button"
       >
         <svg
@@ -58,7 +57,7 @@ exports[`Render Offer Card component 1`] = `
         <span
           className="visually-hidden"
         >
-          To bookmarks
+          In bookmarks
         </span>
       </button>
     </div>
@@ -84,7 +83,6 @@ exports[`Render Offer Card component 1`] = `
     </div>
     <h2
       className="place-card__name"
-      onClick={[Function]}
     >
       <a
         href="#"

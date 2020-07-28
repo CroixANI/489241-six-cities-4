@@ -57,7 +57,7 @@ const REVIEWS_TEST = [
 ];
 
 const OFFERS_TESTS = [
-  new Offer(1, `Beautiful & luxurious apartment at great location`, OFFER_TYPES.APARTMENT, OFFER_LUXURY_TYPE.PREMIUM, 120, 4.8, false,
+  new Offer(1, `Beautiful & luxurious apartment at great location`, OFFER_TYPES.APARTMENT, OFFER_LUXURY_TYPE.PREMIUM, 120, 4.8, true,
       OFFER_DETAILS_IMAGES[0], OFFER_DETAILS_IMAGES, DEFAULT_CAPACITY, DEFAULT_FEATURES, USERS.ANGELINA, new OfferLocation(CITIES.AMSTERDAM, 52.3909553943508, 4.85309666406198, 8),
       DEFAULT_DESCRIPTION),
   new Offer(2, `Wood and stone place`, OFFER_TYPES.PRIVATE_ROOM, OFFER_LUXURY_TYPE.NONE, 80, 3.2, true,

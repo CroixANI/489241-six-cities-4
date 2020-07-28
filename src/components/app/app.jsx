@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import Login from '../login/login.jsx';
+import Favorites from '../favorites/favorites.jsx';
 import {ActionCreator} from '../../reducer/app/app';
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
 import {getCities} from '../../reducer/data/selectors.js';
@@ -14,7 +15,7 @@ import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {OperationCreator as OfferDataOperationCreator} from '../../reducer/offer-data/offer-data';
 import {APP_ROUTE} from '../../data/constants';
-import {history} from '../../history';
+import history from '../../history';
 
 class App extends PureComponent {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends PureComponent {
   render() {
     const {onLogin, authorizationStatus} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
+
     return (
       <Router history={history}>
         <Switch>
@@ -33,6 +35,9 @@ class App extends PureComponent {
           <Route exact path={APP_ROUTE.LOGIN}>
             {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
             <LoginScreen onLogin={onLogin} />
+          </Route>
+          <Route exact path={APP_ROUTE.FAVORITES}>
+            <Favorites />
           </Route>
         </Switch>
       </Router>

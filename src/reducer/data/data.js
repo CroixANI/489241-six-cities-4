@@ -1,5 +1,5 @@
 import {createOffer} from '../../data/offer';
-import {getCities} from './selectors';
+import {getCities, getOffers} from './selectors';
 import {ActionCreator as AppActionCreator} from '../app/app';
 
 const initialState = {
@@ -27,11 +27,23 @@ const OperationCreator = {
         }
 
         const offers = response.data.map((offerData) => createOffer(offerData));
+        offers[0].isBookmarked = true;
+        offers[1].isBookmarked = true;
         dispatch(ActionCreator.loadData(offers));
         const cities = getCities(getState());
         if (cities && cities.length > 0) {
           dispatch(AppActionCreator.changeCity(cities[0]));
         }
+      });
+  },
+  toggleFavoriteFlag: (offer) => (dispatch, getState, api) => {
+    const newStatus = offer.isBookmarked ? 0 : 1;
+    return api.post(`/favorite/${offer.id}/${newStatus}`)
+      .then(() => {
+        const offers = getOffers(getState());
+        const foundOffer = offers.find((x) => x.id === offer.id);
+        foundOffer.isBookmarked = !offer.isBookmarked;
+        dispatch(ActionCreator.loadData(offers));
       });
   }
 };
