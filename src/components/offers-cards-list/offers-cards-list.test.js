@@ -7,7 +7,7 @@ import {SORT_TYPE} from '../../data/constants';
 
 it(`Render Offers List component`, () => {
   const tree = renderer
-    .create(<OffersCardsList sortType={SORT_TYPE.POPULAR} items={OFFERS_TESTS} onOfferTitleClick={() => {}} onSort={() => {}} onItemSelected={() => {}} />)
+    .create(<OffersCardsList sortType={SORT_TYPE.POPULAR} items={OFFERS_TESTS} onOfferTitleClick={() => {}} onSort={() => {}} onItemSelected={() => {}} onFavoriteToggle={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();
@@ -15,7 +15,7 @@ it(`Render Offers List component`, () => {
 
 it(`Render empty Offers List component`, () => {
   const tree = renderer
-    .create(<OffersCardsList sortType={SORT_TYPE.POPULAR} items={[]} onOfferTitleClick={() => {}} onSort={() => {}} onItemSelected={() => {}} />)
+    .create(<OffersCardsList sortType={SORT_TYPE.POPULAR} items={[]} onOfferTitleClick={() => {}} onSort={() => {}} onItemSelected={() => {}} onFavoriteToggle={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

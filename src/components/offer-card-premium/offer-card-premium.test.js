@@ -6,7 +6,7 @@ import {OFFERS_TESTS} from '../../mocks/offers-tests';
 
 it(`Render Offer Card Premium component`, () => {
   const tree = renderer
-    .create(<OfferCardPremium offer={OFFERS_TESTS[0]} onHover={() => {}} onTitleClick={() => {}} />)
+    .create(<OfferCardPremium offer={OFFERS_TESTS[0]} onHover={() => {}} onTitleClick={() => {}} onFavoriteToggle={() => {}} />)
     .toJSON();
 
   expect(tree).toMatchSnapshot();

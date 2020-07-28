@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onLogin(authData) {
     dispatch(UserOperationCreator.login(authData));
-  }
+  },
 });
 
 export {App};

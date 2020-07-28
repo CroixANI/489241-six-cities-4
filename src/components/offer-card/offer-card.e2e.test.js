@@ -18,7 +18,7 @@ describe(`Offer Card Component`, () => {
     const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={onMouseOver} onTitleClick={() => {}} />
+        <OfferCard offer={currentOffer} onHover={onMouseOver} onTitleClick={() => {}} onFavoriteToggle={() => {}} />
     );
 
     const card = offerCard.find(`.place-card`);
@@ -37,7 +37,7 @@ describe(`Offer Card Component`, () => {
     const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={onTitleClick} />
+        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={onTitleClick} onFavoriteToggle={() => {}} />
     );
 
     const card = offerCard.find(`h2.place-card__name`);
@@ -46,5 +46,24 @@ describe(`Offer Card Component`, () => {
 
     expect(onTitleClick.mock.calls.length).toBe(1);
     expect(resultOfferId).toBe(currentOffer.id);
+  });
+
+  it(`Should favorite button be clicked`, () => {
+    let resultOffer = null;
+    const onFavoriteClick = jest.fn((offer) => {
+      resultOffer = offer;
+    });
+    const currentOffer = OFFERS_TESTS[0];
+
+    const offerCard = shallow(
+        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={() => {}} onFavoriteToggle={onFavoriteClick} />
+    );
+
+    const card = offerCard.find(`button.place-card__bookmark-button`);
+
+    card.prop(`onClick`)();
+
+    expect(onFavoriteClick.mock.calls.length).toBe(1);
+    expect(resultOffer).toBe(currentOffer);
   });
 });

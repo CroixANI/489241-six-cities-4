@@ -250,6 +250,7 @@ exports[`Render Main component 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button place-card__bookmark-button--active"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
@@ -348,6 +349,7 @@ exports[`Render Main component 1`] = `
                   </div>
                   <button
                     className="place-card__bookmark-button button place-card__bookmark-button--active"
+                    onClick={[Function]}
                     type="button"
                   >
                     <svg
