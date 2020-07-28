@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Error component Render error component with error message 1`] = `null`;
+
+exports[`Render Error component Render error component without any error 1`] = `null`;

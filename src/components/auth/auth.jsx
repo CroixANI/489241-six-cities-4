@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 
 import {AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus, getCurrentUserEmail} from '../../reducer/user/selectors';

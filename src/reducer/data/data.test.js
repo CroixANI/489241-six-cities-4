@@ -1,8 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
+
 import {createAPI} from '../../api';
 import {reducer, ActionCreator, ActionType, OperationCreator} from './data';
-
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
+import {createOfferDto} from '../../data/offer';
+import NameSpace from '../name-space';
 
 const api = createAPI(() => {});
 
@@ -32,23 +34,30 @@ describe(`Action creators should work correctly`, () => {
   });
 });
 
-describe(`Operations work correctly`, () => {
+describe(`Data operations work correctly`, () => {
   const apiMock = new MockAdapter(api);
   const dispatch = jest.fn();
 
   it(`Should make correct API call to /hotels`, () => {
     const loadHotels = OperationCreator.loadHotels();
-
+    const offersDto = OFFERS_TESTS.map((x) => createOfferDto(x));
     apiMock
       .onGet(`/hotels`)
-      .reply(200, {fake: true});
+      .reply(200, offersDto);
 
-    loadHotels(dispatch, () => {}, api)
+    loadHotels(dispatch, () => ({
+      [NameSpace.DATA]: {
+        cities: CITIES_TESTS,
+        offers: OFFERS_TESTS,
+      }
+    }), api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        // 1 - dispatch to load offers
+        // 2 - dispatch to change city
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_DATA,
-          payload: [{fake: true}]
+          payload: OFFERS_TESTS
         });
       });
   });

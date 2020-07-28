@@ -6,6 +6,7 @@ describe(`Reducer should work correctly`, () => {
       city: ``,
       currentOfferId: null,
       sortType: `Popular`,
+      errorMessage: null,
     });
   });
 
@@ -13,22 +14,39 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      sortType: `Popular`}, ActionCreator.changeCity(`Amsterdam`)))
+      sortType: `Popular`,
+      errorMessage: null}, ActionCreator.changeCity(`Amsterdam`)))
     .toEqual({
       city: `Amsterdam`,
       currentOfferId: null,
-      sortType: `Popular`});
+      sortType: `Popular`,
+      errorMessage: null});
   });
 
   it(`Reducer with Change Current Offer action should change current offer id`, () => {
     expect(reducer({
       city: ``,
       currentOfferId: null,
-      sortType: `Popular`}, ActionCreator.changeCurrentOffer(1)))
+      sortType: `Popular`,
+      errorMessage: null}, ActionCreator.changeCurrentOffer(1)))
     .toEqual({
       city: ``,
       currentOfferId: 1,
-      sortType: `Popular`});
+      sortType: `Popular`,
+      errorMessage: null});
+  });
+
+  it(`Reducer with set error message should change current error message`, () => {
+    expect(reducer({
+      city: ``,
+      currentOfferId: null,
+      sortType: `Popular`,
+      errorMessage: null}, ActionCreator.setErrorMessage(`My message`)))
+    .toEqual({
+      city: ``,
+      currentOfferId: null,
+      sortType: `Popular`,
+      errorMessage: `My message`});
   });
 });
 
@@ -51,6 +69,13 @@ describe(`Action creators should work correctly`, () => {
     expect(ActionCreator.changeCurrentOffer(42)).toEqual({
       type: ActionType.CHANGE_CURRENT_OFFER,
       payload: 42
+    });
+  });
+
+  it(`Action creator for setting error message should create correct action`, () => {
+    expect(ActionCreator.setErrorMessage(`My message`)).toEqual({
+      type: ActionType.SET_ERROR_MESSAGE,
+      payload: `My message`
     });
   });
 });

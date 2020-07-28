@@ -11,6 +11,14 @@ class User {
 const createUser = (hostData) =>
   new User(hostData.id, hostData.name, hostData.email, hostData.avatar_url, hostData.is_pro);
 
-export {createUser};
+const createUserDto = (user) => ({
+  'avatar_url': user.imageUrl,
+  'email': user.email,
+  'id': user.id,
+  'is_pro': user.isPro,
+  'name': user.name
+});
+
+export {createUser, createUserDto};
 
 export default User;
