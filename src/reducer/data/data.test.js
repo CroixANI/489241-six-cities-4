@@ -13,6 +13,7 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       cities: [],
       offers: [],
+      isDataLoaded: false,
     });
   });
 
@@ -20,7 +21,8 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer(void 0, ActionCreator.loadData(OFFERS_TESTS)))
     .toEqual({
       cities: CITIES_TESTS,
-      offers: OFFERS_TESTS
+      offers: OFFERS_TESTS,
+      isDataLoaded: true,
     });
   });
 });
@@ -49,6 +51,7 @@ describe(`Data operations work correctly`, () => {
       [NameSpace.DATA]: {
         cities: CITIES_TESTS,
         offers: OFFERS_TESTS,
+        isDataLoaded: false,
       }
     }), api)
       .then(() => {

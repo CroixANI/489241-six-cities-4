@@ -7,9 +7,11 @@ import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import Login from '../login/login.jsx';
 import Favorites from '../favorites/favorites.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
+import OffersCardsListEmpty from '../offers-cards-list-empty/offers-cards-list-empty.jsx';
 import {ActionCreator} from '../../reducer/app/app';
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
-import {getCities} from '../../reducer/data/selectors.js';
+import {getCities, getIsDataLoaded} from '../../reducer/data/selectors.js';
 import {OperationCreator as UserOperationCreator, AuthorizationStatus} from '../../reducer/user/user';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
@@ -23,8 +25,12 @@ class App extends PureComponent {
   }
 
   render() {
-    const {onLogin, authorizationStatus} = this.props;
+    const {onLogin, authorizationStatus, isDataLoaded} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
+
+    if (!isDataLoaded) {
+      return <OffersCardsListEmpty />;
+    }
 
     return (
       <Router history={history}>
@@ -36,9 +42,15 @@ class App extends PureComponent {
             {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to="/" />}
             <LoginScreen onLogin={onLogin} />
           </Route>
-          <Route exact path={APP_ROUTE.FAVORITES}>
-            <Favorites />
-          </Route>
+          <PrivateRoute
+            exact
+            path={APP_ROUTE.FAVORITES}
+            render={() => {
+              return (
+                <Favorites />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );
@@ -60,6 +72,7 @@ App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
+  isDataLoaded: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
@@ -96,6 +109,7 @@ const mapStateToProps = (state) => ({
   selectedCity: getCity(state),
   currentOfferId: getCurrentOfferId(state),
   authorizationStatus: getAuthorizationStatus(state),
+  isDataLoaded: getIsDataLoaded(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -5,6 +5,7 @@ import {ActionCreator as AppActionCreator} from '../app/app';
 const initialState = {
   cities: [],
   offers: [],
+  isDataLoaded: false
 };
 
 const ActionType = {
@@ -15,7 +16,7 @@ const ActionCreator = {
   loadData: (offers) => ({
     type: ActionType.LOAD_DATA,
     payload: offers
-  }),
+  })
 };
 
 const OperationCreator = {
@@ -59,6 +60,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         cities: filteredCities,
         offers: action.payload,
+        isDataLoaded: true
       });
   }
 

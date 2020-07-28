@@ -2,9 +2,6 @@ import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../api';
 import {reducer, ActionCreator, OperationCreator, ActionType, AuthorizationStatus} from './user';
 
-const onUnauthorized = jest.fn();
-const api = createAPI(onUnauthorized);
-
 describe(`Reducer should work correctly`, () => {
   it(`Reducer with no incoming parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
@@ -113,31 +110,38 @@ describe(`Action creators should work correctly`, () => {
 });
 
 describe(`Operations work correctly`, () => {
-  const apiMock = new MockAdapter(api);
-
   it(`Should make correct API call to GET /login and with success response change AuthorizationStatus`, () => {
     const checkAuth = OperationCreator.checkAuth();
     const dispatch = jest.fn();
-    onUnauthorized.mockReset();
+    const onUnauthorized = jest.fn();
+    const api = createAPI(onUnauthorized);
+    const apiMock = new MockAdapter(api);
     apiMock
       .onGet(`/login`)
       .reply(200, {fake: true});
 
     checkAuth(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        // 1 - ActionCreator.requireAuthorization
+        // 2 - ActionCreator.setCurrentUser
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REQUIRED_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH
         });
         expect(onUnauthorized).toHaveBeenCalledTimes(0);
+      })
+      .catch((err) => {
+        throw err;
       });
   });
 
   it(`Should make correct API call to GET /login and with unauthorized error change AuthorizationStatus`, () => {
     const checkAuth = OperationCreator.checkAuth();
     const dispatch = jest.fn();
-    onUnauthorized.mockReset();
+    const onUnauthorized = jest.fn();
+    const api = createAPI(onUnauthorized);
+    const apiMock = new MockAdapter(api);
     apiMock
       .onGet(`/login`)
       .reply(403, {fake: true});
@@ -146,32 +150,44 @@ describe(`Operations work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(0);
         expect(onUnauthorized).toHaveBeenCalledTimes(1);
+      })
+      .catch((err) => {
+        throw err;
       });
   });
 
   it(`Should make correct API call to POST /login and with success response change AuthorizationStatus`, () => {
     const login = OperationCreator.login({});
     const dispatch = jest.fn();
-    onUnauthorized.mockReset();
+    const onUnauthorized = jest.fn();
+    const api = createAPI(onUnauthorized);
+    const apiMock = new MockAdapter(api);
     apiMock
       .onPost(`/login`)
       .reply(200, {fake: true});
 
     login(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        // 1 - ActionCreator.requireAuthorization
+        // 2 - ActionCreator.setCurrentUser
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.REQUIRED_AUTHORIZATION,
           payload: AuthorizationStatus.AUTH
         });
         expect(onUnauthorized).toHaveBeenCalledTimes(0);
+      })
+      .catch((err) => {
+        throw err;
       });
   });
 
   it(`Should make correct API call to POST /login and with unauthorized error should not change AuthorizationStatus`, () => {
     const login = OperationCreator.login({});
     const dispatch = jest.fn();
-    onUnauthorized.mockReset();
+    const onUnauthorized = jest.fn();
+    const api = createAPI(onUnauthorized);
+    const apiMock = new MockAdapter(api);
     apiMock
       .onPost(`/login`)
       .reply(400, {fake: true});
@@ -180,6 +196,9 @@ describe(`Operations work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(0);
         expect(onUnauthorized).toHaveBeenCalledTimes(1);
+      })
+      .catch((err) => {
+        throw err;
       });
   });
 });

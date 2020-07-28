@@ -60,7 +60,9 @@ describe(`Favorites component E2E tests`, () => {
     favoriteToggleButton.simulate(`click`, {});
 
     store.subscribe(() => {
-      const countAfter = getBookmarkedOffers(store.getState()).length;
+      const updatedOffers = store.getActions()[0].payload;
+      // eslint-disable-next-line max-nested-callbacks
+      const countAfter = updatedOffers.filter((x) => x.isBookmarked).length;
       expect(countAfter).toBe(countBefore - 1);
     });
   });

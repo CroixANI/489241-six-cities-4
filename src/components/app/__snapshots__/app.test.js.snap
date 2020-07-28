@@ -45,9 +45,9 @@ exports[`Render Main component 1`] = `
                   className="header__avatar-wrapper user__avatar-wrapper"
                 />
                 <span
-                  className="header__login"
+                  className="header__user-name user__name"
                 >
-                  Sign in
+                  
                 </span>
               </a>
             </li>

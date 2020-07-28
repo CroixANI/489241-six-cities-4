@@ -9,6 +9,9 @@ export const getOffers = (state) =>
 export const getCities = (state) =>
   state[NAME_SPACE].cities;
 
+export const getIsDataLoaded = (state) =>
+  state[NAME_SPACE].isDataLoaded;
+
 export const getBookmarkedOffers = createSelector(
     getOffers,
     (offers) => offers.filter((offer) => offer.isBookmarked));

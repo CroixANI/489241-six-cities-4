@@ -48,6 +48,9 @@ const OperationCreator = {
     }).then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setCurrentUser(createUser(response.data)));
+    })
+    .catch((err) => {
+      throw err;
     });
   }
 };

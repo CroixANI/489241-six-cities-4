@@ -24,8 +24,8 @@ const store = createStore(
     )
 );
 
-store.dispatch(DataOperationCreator.loadHotels());
-store.dispatch(UserOperationCreator.checkAuth());
+store.dispatch(UserOperationCreator.checkAuth())
+  .then(() => store.dispatch(DataOperationCreator.loadHotels()));
 
 ReactDOM.render(
     <Provider store={store}>
