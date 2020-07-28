@@ -109,7 +109,7 @@ describe(`Action creators should work correctly`, () => {
   });
 });
 
-describe(`Operations work correctly`, () => {
+describe(`User operations work correctly`, () => {
   it(`Should make correct API call to GET /login and with success response change AuthorizationStatus`, () => {
     const checkAuth = OperationCreator.checkAuth();
     const dispatch = jest.fn();
@@ -131,9 +131,7 @@ describe(`Operations work correctly`, () => {
         });
         expect(onUnauthorized).toHaveBeenCalledTimes(0);
       })
-      .catch((err) => {
-        throw err;
-      });
+      .catch(() => {});
   });
 
   it(`Should make correct API call to GET /login and with unauthorized error change AuthorizationStatus`, () => {
@@ -151,9 +149,7 @@ describe(`Operations work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(0);
         expect(onUnauthorized).toHaveBeenCalledTimes(1);
       })
-      .catch((err) => {
-        throw err;
-      });
+      .catch(() => {});
   });
 
   it(`Should make correct API call to POST /login and with success response change AuthorizationStatus`, () => {
@@ -177,9 +173,7 @@ describe(`Operations work correctly`, () => {
         });
         expect(onUnauthorized).toHaveBeenCalledTimes(0);
       })
-      .catch((err) => {
-        throw err;
-      });
+      .catch(() => {});
   });
 
   it(`Should make correct API call to POST /login and with unauthorized error should not change AuthorizationStatus`, () => {
@@ -197,8 +191,6 @@ describe(`Operations work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(0);
         expect(onUnauthorized).toHaveBeenCalledTimes(1);
       })
-      .catch((err) => {
-        throw err;
-      });
+      .catch(() => {});
   });
 });

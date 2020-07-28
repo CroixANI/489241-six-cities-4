@@ -28,8 +28,6 @@ const OperationCreator = {
         }
 
         const offers = response.data.map((offerData) => createOffer(offerData));
-        offers[0].isBookmarked = true;
-        offers[1].isBookmarked = true;
         dispatch(ActionCreator.loadData(offers));
         const cities = getCities(getState());
         if (cities && cities.length > 0) {
