@@ -15,7 +15,7 @@ const Auth = (props) => {
 
   return (
     <Link className="header__nav-link header__nav-link--profile"
-      to={authorizationStatus === AuthorizationStatus.NO_AUTH ? APP_ROUTE.LOGIN : `/favorites`}>
+      to={authorizationStatus === AuthorizationStatus.NO_AUTH ? APP_ROUTE.LOGIN : APP_ROUTE.FAVORITES}>
       <div className="header__avatar-wrapper user__avatar-wrapper">
       </div>
       {authorizationStatus === AuthorizationStatus.NO_AUTH ? SignIn : UserInfo}

@@ -3,7 +3,8 @@
 exports[`Render Auth component Render Auth component with AUTH authorization status 1`] = `
 <a
   className="header__nav-link header__nav-link--profile"
-  href="#"
+  href="/favorites"
+  onClick={[Function]}
 >
   <div
     className="header__avatar-wrapper user__avatar-wrapper"
@@ -19,7 +20,8 @@ exports[`Render Auth component Render Auth component with AUTH authorization sta
 exports[`Render Auth component Render Auth component with NO_AUTH authorization status 1`] = `
 <a
   className="header__nav-link header__nav-link--profile"
-  href="#"
+  href="/login"
+  onClick={[Function]}
 >
   <div
     className="header__avatar-wrapper user__avatar-wrapper"

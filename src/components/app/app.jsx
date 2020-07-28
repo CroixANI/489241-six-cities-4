@@ -1,18 +1,19 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {Switch, Route, Router, Redirect, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, Router, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
 import Offer from '../offer/offer.jsx';
 import Login from '../login/login.jsx';
 import Favorites from '../favorites/favorites.jsx';
-import OffersCardsListEmpty from '../offers-cards-list-empty/offers-cards-list-empty.jsx';
+import NotFound from '../not-found/not-found.jsx';
+
 import {ActionCreator} from '../../reducer/app/app';
 import {getFilteredOffers, getCity, getCurrentOfferId} from '../../reducer/app/selectors.js';
-import {getCities, getIsDataLoaded} from '../../reducer/data/selectors.js';
+import {getCities} from '../../reducer/data/selectors.js';
 import {OperationCreator as UserOperationCreator, AuthorizationStatus} from '../../reducer/user/user';
-import {getAuthorizationStatus} from '../../reducer/user/selectors';
+import {getAuthorizationStatus, getIsAuthChecked} from '../../reducer/user/selectors';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {OperationCreator as OfferDataOperationCreator} from '../../reducer/offer-data/offer-data';
 import {APP_ROUTE} from '../../data/constants';
@@ -24,15 +25,11 @@ class App extends PureComponent {
   }
 
   render() {
-    const {onLogin, authorizationStatus, isDataLoaded} = this.props;
+    const {onLogin, authorizationStatus, isAuthChecked} = this.props;
     const LoginScreen = withClassName(`page--gray page--login`, Login);
 
-    if (!isDataLoaded) {
-      return <OffersCardsListEmpty />;
-    }
-
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path={APP_ROUTE.ROOT}>
             {this._renderApp()}
@@ -42,11 +39,14 @@ class App extends PureComponent {
             <LoginScreen onLogin={onLogin} />
           </Route>
           <Route exact path={APP_ROUTE.FAVORITES}>
-            {authorizationStatus !== AuthorizationStatus.AUTH && <Redirect to={APP_ROUTE.LOGIN} />}
+            {authorizationStatus !== AuthorizationStatus.AUTH && isAuthChecked && <Redirect to={APP_ROUTE.LOGIN} />}
             <Favorites />
           </Route>
+          <Route>
+            <NotFound />
+          </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 
@@ -66,7 +66,7 @@ App.propTypes = {
   onCityClick: PropTypes.func.isRequired,
   onOfferClick: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
-  isDataLoaded: PropTypes.bool.isRequired,
+  isAuthChecked: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => ({
   selectedCity: getCity(state),
   currentOfferId: getCurrentOfferId(state),
   authorizationStatus: getAuthorizationStatus(state),
-  isDataLoaded: getIsDataLoaded(state)
+  isAuthChecked: getIsAuthChecked(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

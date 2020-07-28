@@ -45,6 +45,7 @@ describe(`App Component`, () => {
     },
     [NameSpace.USER]: {
       authorizationStatus: `AUTH`,
+      isAuthChecked: true,
     },
   });
 

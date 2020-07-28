@@ -23,6 +23,7 @@ const store = mockStore({
   [NameSpace.USER]: {
     authorizationStatus: `AUTH`,
     currentUser: null,
+    isAuthChecked: true,
   },
 });
 

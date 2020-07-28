@@ -3,7 +3,9 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Router} from 'react-router-dom';
 
+import history from '../../history';
 import Login from './login.jsx';
 import NameSpace from '../../reducer/name-space';
 
@@ -24,7 +26,9 @@ describe(`Login Screen`, () => {
     const onLogin = jest.fn();
     const loginScreen = mount(
         <Provider store={store}>
-          <Login onLogin={onLogin} />
+          <Router history={history}>
+            <Login onLogin={onLogin} />
+          </Router>
         </Provider>
     );
 

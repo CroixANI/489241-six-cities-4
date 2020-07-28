@@ -16,8 +16,8 @@ export const SORT_TYPE = {
 };
 
 export const APP_ROUTE = {
-  LOGIN: `/login`,
-  OFFER: `/offer`,
-  FAVORITES: `/favorites`,
+  LOGIN: `login`,
+  OFFER: `offer`,
+  FAVORITES: `favorites`,
   ROOT: `/`,
 };

@@ -5,9 +5,10 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
+import {Router} from 'react-router-dom';
 
+import history from '../../history';
 import Favorites from './favorites.jsx';
-
 import {getBookmarkedOffers} from '../../reducer/data/selectors';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
@@ -49,7 +50,9 @@ describe(`Favorites component E2E tests`, () => {
   it(`Should offer favorite toggle button be clicked and change favorite state`, () => {
     const wrapper = mount(
         <Provider store={store}>
-          <Favorites />
+          <Router history={history}>
+            <Favorites />
+          </Router>
         </Provider>
     );
 

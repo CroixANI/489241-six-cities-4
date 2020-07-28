@@ -3,7 +3,9 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Router} from 'react-router-dom';
 
+import history from '../../history';
 import Main from './main';
 import OffersCardsList from '../offers-cards-list/offers-cards-list.jsx';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
@@ -35,7 +37,9 @@ describe(`Main Screen`, () => {
   it(`Should mouse over be triggered`, () => {
     const mainScreen = mount(
         <Provider store={store}>
-          <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={() => {}} />
+          <Router history={history}>
+            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={() => {}} />
+          </Router>
         </Provider>
     );
 
@@ -52,7 +56,9 @@ describe(`Main Screen`, () => {
 
     const mainScreen = mount(
         <Provider store={store}>
-          <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={onOfferTitleClick} />
+          <Router history={history}>
+            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={onOfferTitleClick} />
+          </Router>
         </Provider>
     );
 

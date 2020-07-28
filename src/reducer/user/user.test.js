@@ -7,6 +7,7 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       authorizationStatus: `NO_AUTH`,
       currentUser: null,
+      isAuthChecked: false,
     });
   });
 
@@ -14,12 +15,14 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       currentUser: null,
+      isAuthChecked: false,
     }, {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
     })).toEqual({
       authorizationStatus: AuthorizationStatus.AUTH,
       currentUser: null,
+      isAuthChecked: true,
     });
 
     expect(reducer({
@@ -31,28 +34,33 @@ describe(`Reducer should work correctly`, () => {
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       currentUser: null,
+      isAuthChecked: true,
     });
 
     expect(reducer({
       authorizationStatus: AuthorizationStatus.AUTH,
       currentUser: null,
+      isAuthChecked: false,
     }, {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
     })).toEqual({
       authorizationStatus: AuthorizationStatus.AUTH,
       currentUser: null,
+      isAuthChecked: true,
     });
 
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       currentUser: null,
+      isAuthChecked: false,
     }, {
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.NO_AUTH,
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       currentUser: null,
+      isAuthChecked: true,
     });
   });
 
@@ -60,6 +68,7 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.AUTH,
       currentUser: null,
+      isAuthChecked: false,
     }, {
       type: ActionType.SET_CURRENT_USER,
       payload: {
@@ -75,6 +84,7 @@ describe(`Reducer should work correctly`, () => {
         name: `John Doe`,
         imageUrl: `img/1.png`,
         isPro: false},
+      isAuthChecked: false,
     });
   });
 });
