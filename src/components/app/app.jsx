@@ -8,6 +8,7 @@ import Offer from '../offer/offer.jsx';
 import Login from '../login/login.jsx';
 import Favorites from '../favorites/favorites.jsx';
 import NotFound from '../not-found/not-found.jsx';
+import PrivateRoute from '../private-route/private-route.jsx';
 
 import {ActionCreator} from '../../reducer/app/app';
 import {getFilteredOffers, getCity} from '../../reducer/app/selectors.js';
@@ -39,11 +40,17 @@ class App extends PureComponent {
             {authorizationStatus === AuthorizationStatus.AUTH && <Redirect to={APP_ROUTE.ROOT} />}
             <LoginScreen onLogin={onLogin} />
           </Route>
-          <Route exact path={APP_ROUTE.FAVORITES}>
-            {authorizationStatus !== AuthorizationStatus.AUTH && isAuthChecked && <Redirect to={APP_ROUTE.LOGIN} />}
-            <Favorites />
-          </Route>
           <Route exact path={`${APP_ROUTE.OFFER}/:id`} component={Offer} />
+          <PrivateRoute
+            exact
+            path={APP_ROUTE.FAVORITES}
+            isAuthChecked={isAuthChecked}
+            render={() => {
+              return (
+                <Favorites />
+              );
+            }}
+          />
           <Route>
             <NotFound />
           </Route>
