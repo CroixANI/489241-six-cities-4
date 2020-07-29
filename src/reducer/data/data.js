@@ -43,6 +43,10 @@ const OperationCreator = {
         const foundOffer = offers.find((x) => x.id === offer.id);
         foundOffer.isBookmarked = !offer.isBookmarked;
         dispatch(ActionCreator.loadData(offers));
+      })
+      .catch(() => {
+        const offers = getOffers(getState());
+        dispatch(ActionCreator.loadData(offers));
       });
   }
 };
