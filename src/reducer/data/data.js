@@ -1,10 +1,11 @@
 import {createOffer} from '../../data/offer';
-import {getCities} from './selectors';
+import {getCities, getOffers} from './selectors';
 import {ActionCreator as AppActionCreator} from '../app/app';
 
 const initialState = {
   cities: [],
   offers: [],
+  isDataLoaded: false
 };
 
 const ActionType = {
@@ -15,7 +16,7 @@ const ActionCreator = {
   loadData: (offers) => ({
     type: ActionType.LOAD_DATA,
     payload: offers
-  }),
+  })
 };
 
 const OperationCreator = {
@@ -33,6 +34,16 @@ const OperationCreator = {
           dispatch(AppActionCreator.changeCity(cities[0]));
         }
       });
+  },
+  toggleFavoriteFlag: (offer) => (dispatch, getState, api) => {
+    const newStatus = offer.isBookmarked ? 0 : 1;
+    return api.post(`/favorite/${offer.id}/${newStatus}`)
+      .then(() => {
+        const offers = getOffers(getState());
+        const foundOffer = offers.find((x) => x.id === offer.id);
+        foundOffer.isBookmarked = !offer.isBookmarked;
+        dispatch(ActionCreator.loadData(offers));
+      });
   }
 };
 
@@ -47,6 +58,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         cities: filteredCities,
         offers: action.payload,
+        isDataLoaded: true
       });
   }
 

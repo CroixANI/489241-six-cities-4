@@ -132,7 +132,8 @@ exports[`Render Offers List component 1`] = `
                 </span>
               </div>
               <button
-                className="place-card__bookmark-button button "
+                className="place-card__bookmark-button button place-card__bookmark-button--active"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -231,6 +232,7 @@ exports[`Render Offers List component 1`] = `
               </div>
               <button
                 className="place-card__bookmark-button button place-card__bookmark-button--active"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -329,6 +331,7 @@ exports[`Render Offers List component 1`] = `
               </div>
               <button
                 className="place-card__bookmark-button button "
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -427,6 +430,7 @@ exports[`Render Offers List component 1`] = `
               </div>
               <button
                 className="place-card__bookmark-button button place-card__bookmark-button--active"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -525,6 +529,7 @@ exports[`Render Offers List component 1`] = `
               </div>
               <button
                 className="place-card__bookmark-button button "
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -614,7 +619,7 @@ exports[`Render empty Offers List component 1`] = `
         <p
           className="cities__status-description"
         >
-          We could not find any property available at the moment in Dusseldorf
+          We could not find any property available at the moment
         </p>
       </div>
     </section>

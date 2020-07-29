@@ -8,11 +8,12 @@ import Map from '../map/map.jsx';
 import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
-import {ActionCreator} from '../../reducer/app/app';
+import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 import {getSortedOffers, getSortType} from '../../reducer/app/selectors';
+import {OperationCreator as DataOperationCreator} from '../../reducer/data/data';
 
 const OffersCardsList = (props) => {
-  const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected} = props;
+  const {sortType, items, activeItem, onOfferTitleClick, onSort, onItemSelected, onFavoriteToggle} = props;
   const locations = items.map((offer) => offer.location);
   const activeLocation = activeItem && items && items.length > 0 && items[0].location.city.name === activeItem.location.city.name ? activeItem.location : null;
 
@@ -31,7 +32,7 @@ const OffersCardsList = (props) => {
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{items.length} places to stay in Amsterdam</b>
           <SortOffersMenu activeOption={sortType} onSortTypeChange={onSort} />
-          <OffersCardsContainer offers={items} onOfferTitleClick={onOfferTitleClick} onOfferHover={onItemSelected} />
+          <OffersCardsContainer offers={items} onOfferTitleClick={onOfferTitleClick} onOfferHover={onItemSelected} onFavoriteToggle={onFavoriteToggle} />
         </section>
 
         <div className="cities__right-section">
@@ -44,6 +45,7 @@ const OffersCardsList = (props) => {
 
 OffersCardsList.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
+  onFavoriteToggle: PropTypes.func.isRequired,
   onSort: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
   onItemSelected: PropTypes.func.isRequired,
@@ -102,8 +104,11 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onSort(sortType) {
-    dispatch(ActionCreator.changeSortType(sortType));
-  }
+    dispatch(AppActionCreator.changeSortType(sortType));
+  },
+  onFavoriteToggle(offer) {
+    dispatch(DataOperationCreator.toggleFavoriteFlag(offer));
+  },
 });
 
 export {OffersCardsList};

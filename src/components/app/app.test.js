@@ -18,10 +18,12 @@ const store = mockStore({
   [NameSpace.DATA]: {
     cities: CITIES_TESTS,
     offers: OFFERS_TESTS,
+    isDataLoaded: true,
   },
   [NameSpace.USER]: {
-    authorizationStatus: `NO_AUTH`,
+    authorizationStatus: `AUTH`,
     currentUser: null,
+    isAuthChecked: true,
   },
 });
 

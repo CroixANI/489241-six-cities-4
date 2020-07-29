@@ -15,7 +15,7 @@ describe(`Offers List Component`, () => {
     const onOfferTitleClick = jest.fn();
 
     const offersList = mount(
-        <OffersCardsList sortType={SORT_TYPE.POPULAR} items={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} onSort={() => {}} onItemSelected={() => {}} />
+        <OffersCardsList sortType={SORT_TYPE.POPULAR} items={OFFERS_TESTS} onOfferTitleClick={onOfferTitleClick} onSort={() => {}} onItemSelected={() => {}} onFavoriteToggle={() => {}} />
     );
 
     const allTitles = offersList.find(`h2.place-card__name`);

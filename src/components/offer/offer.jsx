@@ -11,11 +11,12 @@ import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
 import {getCurrentOffer} from '../../reducer/app/selectors.js';
 import {getNearBy} from '../../reducer/offer-data/selectors';
+import {OperationCreator as DataOperationCreator} from '../../reducer/data/data';
 
 const MAX_NEAR_PLACES = 3;
 
 const Offer = (props) => {
-  const {offer, nearBy, onOfferTitleClick} = props;
+  const {offer, nearBy, onOfferTitleClick, onFavoriteToggle} = props;
   const {
     title,
     price,
@@ -35,6 +36,10 @@ const Offer = (props) => {
   const locations = limitedNearPlaces.map((nearOffer) => nearOffer.location);
   const OfferMap = withClassName(`property__map`, Map);
   const OfferRating = withClassName(`property__stars`, Rating);
+
+  const handleFavoriteToggle = () => {
+    onFavoriteToggle(offer);
+  };
 
   const tag = luxuryType
     ? <div className="property__mark">
@@ -68,7 +73,7 @@ const Offer = (props) => {
               <h1 className="property__name">
                 {title}
               </h1>
-              <button className={bookmarkButtonClass} type="button">
+              <button onClick={handleFavoriteToggle} className={bookmarkButtonClass} type="button">
                 <svg className="property__bookmark-icon" width="31" height="33">
                   <use xlinkHref="#icon-bookmark"></use>
                 </svg>
@@ -145,6 +150,7 @@ const Offer = (props) => {
 
 Offer.propTypes = {
   onOfferTitleClick: PropTypes.func.isRequired,
+  onFavoriteToggle: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -216,5 +222,11 @@ const mapStateToProps = (state) => ({
   nearBy: getNearBy(state),
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onFavoriteToggle(offer) {
+    dispatch(DataOperationCreator.toggleFavoriteFlag(offer));
+  },
+});
+
 export {Offer};
-export default connect(mapStateToProps)(withHeader(Offer));
+export default connect(mapStateToProps, mapDispatchToProps)(withHeader(Offer));

@@ -2,7 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
+import {Router} from 'react-router-dom';
 
+import history from '../../history';
 import Offer from './offer';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
@@ -39,7 +41,9 @@ it(`Render Offer component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Offer onOfferTitleClick={() => {}} />
+          <Router history={history}>
+            <Offer onOfferTitleClick={() => {}} />
+          </Router>
         </Provider>
     )
     .toJSON();

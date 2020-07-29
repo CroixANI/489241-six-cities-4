@@ -8,6 +8,7 @@ const AuthorizationStatus = {
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   currentUser: null,
+  isAuthChecked: false,
 };
 
 const ActionType = {
@@ -38,6 +39,7 @@ const OperationCreator = {
         dispatch(ActionCreator.setCurrentUser(createUser(response.data)));
       })
       .catch((err) => {
+        dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
         throw err;
       });
   },
@@ -48,6 +50,10 @@ const OperationCreator = {
     }).then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(ActionCreator.setCurrentUser(createUser(response.data)));
+    })
+    .catch((err) => {
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+      throw err;
     });
   }
 };
@@ -56,7 +62,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION:
       return Object.assign({}, state, {
-        authorizationStatus: action.payload
+        authorizationStatus: action.payload,
+        isAuthChecked: true
       });
     case ActionType.SET_CURRENT_USER:
       return Object.assign({}, state, {
