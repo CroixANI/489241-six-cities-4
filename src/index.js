@@ -11,10 +11,11 @@ import {ActionCreator as UserActionCreator, OperationCreator as UserOperationCre
 import {OperationCreator as DataOperationCreator} from './reducer/data/data';
 import reducer from './reducer/reducer';
 import {APP_ROUTE} from './data/constants.js';
+import history from './history';
 
 const onUnauthorized = (url) => {
   store.dispatch(UserActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-  if (url !== `${APP_ROUTE.LOGIN}/`) {
+  if (url !== `${APP_ROUTE.LOGIN}`) {
     history.push(APP_ROUTE.LOGIN);
   }
 };
