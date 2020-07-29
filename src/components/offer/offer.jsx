@@ -34,6 +34,7 @@ class Offer extends PureComponent {
     const id = Number(this.props.match.params.id);
     if (Number(prevProps.match.params.id) !== id) {
       onComponentUpdate(id);
+      window.scrollTo(0, 0);
     }
   }
 

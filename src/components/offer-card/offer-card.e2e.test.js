@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {Router} from 'react-router-dom';
+import {Router, Link} from 'react-router-dom';
 import {createMemoryHistory} from "history";
 
 import OfferCard from './offer-card';
@@ -36,7 +36,7 @@ describe(`Offer Card Component`, () => {
     expect(result).toEqual(currentOffer);
   });
 
-  it(`Should title be clicked`, () => {
+  it(`Should title reference to details page`, () => {
     const currentOffer = OFFERS_TESTS[0];
 
     const offerCard = mount(
@@ -45,11 +45,9 @@ describe(`Offer Card Component`, () => {
         </Router>
     );
 
-    const card = offerCard.find(`h2.place-card__name`).first();
+    const link = offerCard.find(`h2.place-card__name`).find(Link).first();
 
-    card.prop(`click`, {});
-
-    expect(memoryHistory.location.pathname).toBe(`${APP_ROUTE.OFFER}/${currentOffer.id}`);
+    expect(link.props().to).toBe(`${APP_ROUTE.OFFER}/${currentOffer.id}`);
   });
 
   it(`Should favorite button be clicked`, () => {

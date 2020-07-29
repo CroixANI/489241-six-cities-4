@@ -32,7 +32,7 @@ describe(`Render Review List component`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <ReviewsList reviews={REVIEWS_TEST} />
+            <ReviewsList reviews={REVIEWS_TEST} currentOfferId={1} />
           </Provider>
       )
       .toJSON();
@@ -45,7 +45,7 @@ describe(`Render Review List component`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <ReviewsList reviews={REVIEWS_TEST} />
+            <ReviewsList reviews={REVIEWS_TEST} currentOfferId={1} />
           </Provider>
       )
       .toJSON();
