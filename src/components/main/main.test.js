@@ -10,6 +10,11 @@ import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
 import {SORT_TYPE} from '../../data/constants';
 import NameSpace from '../../reducer/name-space';
 
+const match = {
+  params: {
+  },
+};
+
 const mockStore = configureStore([]);
 const store = mockStore({
   [NameSpace.APP]: {
@@ -30,7 +35,7 @@ it(`Render Main component`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} />
+            <Main offers={OFFERS_TESTS} match={match} />
           </Router>
         </Provider>)
     .toJSON();

@@ -14,6 +14,11 @@ import NameSpace from '../../reducer/name-space';
 
 const memoryHistory = createMemoryHistory();
 
+const match = {
+  params: {
+  },
+};
+
 Enzyme.configure({
   adapter: new Adapter(),
 });
@@ -38,7 +43,7 @@ describe(`Main Screen`, () => {
     const mainScreen = mount(
         <Provider store={store}>
           <Router history={memoryHistory}>
-            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} />
+            <Main offers={OFFERS_TESTS} match={match} />
           </Router>
         </Provider>
     );

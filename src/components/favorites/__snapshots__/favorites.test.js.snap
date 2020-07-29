@@ -30,7 +30,8 @@ Array [
               >
                 <a
                   className="locations__item-link"
-                  href="#"
+                  href="/Amsterdam"
+                  onClick={[Function]}
                 >
                   <span>
                     Amsterdam
@@ -250,7 +251,8 @@ Array [
               >
                 <a
                   className="locations__item-link"
-                  href="#"
+                  href="/Paris"
+                  onClick={[Function]}
                 >
                   <span>
                     Paris
