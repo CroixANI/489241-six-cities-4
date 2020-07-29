@@ -42,9 +42,9 @@ const OfferCard = (props) => {
     <article className={containerCss} onMouseEnter={handleHover(offer)} onMouseLeave={handleMouseLeave}>
       {renderMark && renderMark()}
       <div className={wrapperCss}>
-        {previewImage && <a href="#">
+        {previewImage && <Link to={`${APP_ROUTE.OFFER}/${offer.id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt={type} />
-        </a>}
+        </Link>}
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">

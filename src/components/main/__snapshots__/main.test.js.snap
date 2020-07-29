@@ -216,7 +216,8 @@ exports[`Render Main component 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
+                  onClick={[Function]}
                 >
                   <img
                     alt="apartment"
@@ -315,7 +316,8 @@ exports[`Render Main component 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Private room"

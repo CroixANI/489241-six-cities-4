@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import Rating from '../rating/rating.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
+import {APP_ROUTE} from '../../data/constants.js';
 
 const FavoriteItem = (props) => {
   const {offer, onFavoriteToggle} = props;
@@ -21,9 +23,9 @@ const FavoriteItem = (props) => {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`${APP_ROUTE.OFFER}/${offer.id}`}>
           <img className="place-card__image" src={previewImage} width="150" height="110" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
@@ -43,7 +45,7 @@ const FavoriteItem = (props) => {
           <FavoriteRating rating={offer.rating} />
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`${APP_ROUTE.OFFER}/${offer.id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

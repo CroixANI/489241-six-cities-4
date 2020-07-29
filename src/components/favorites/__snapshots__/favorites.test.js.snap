@@ -48,7 +48,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -125,7 +126,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/1"
+                      onClick={[Function]}
                     >
                       Beautiful & luxurious apartment at great location
                     </a>
@@ -144,7 +146,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -221,7 +224,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/2"
+                      onClick={[Function]}
                     >
                       Wood and stone place
                     </a>
@@ -264,7 +268,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -341,7 +346,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/4"
+                      onClick={[Function]}
                     >
                       Nice, cozy, warm big bed apartment
                     </a>

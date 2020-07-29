@@ -20,7 +20,8 @@ exports[`Render Offers Container component 1`] = `
       className="cities__image-wrapper place-card__image-wrapper"
     >
       <a
-        href="#"
+        href="/offer/1"
+        onClick={[Function]}
       >
         <img
           alt="apartment"
@@ -119,7 +120,8 @@ exports[`Render Offers Container component 1`] = `
       className="cities__image-wrapper place-card__image-wrapper"
     >
       <a
-        href="#"
+        href="/offer/2"
+        onClick={[Function]}
       >
         <img
           alt="Private room"
@@ -218,7 +220,8 @@ exports[`Render Offers Container component 1`] = `
       className="cities__image-wrapper place-card__image-wrapper"
     >
       <a
-        href="#"
+        href="/offer/3"
+        onClick={[Function]}
       >
         <img
           alt="Private room"
@@ -317,7 +320,8 @@ exports[`Render Offers Container component 1`] = `
       className="cities__image-wrapper place-card__image-wrapper"
     >
       <a
-        href="#"
+        href="/offer/4"
+        onClick={[Function]}
       >
         <img
           alt="apartment"
@@ -416,7 +420,8 @@ exports[`Render Offers Container component 1`] = `
       className="cities__image-wrapper place-card__image-wrapper"
     >
       <a
-        href="#"
+        href="/offer/5"
+        onClick={[Function]}
       >
         <img
           alt="apartment"
