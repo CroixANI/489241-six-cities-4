@@ -1,9 +1,14 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import {Router} from 'react-router-dom';
+import {createMemoryHistory} from "history";
 
 import OfferCard from './offer-card';
 import {OFFERS_TESTS} from '../../mocks/offers-tests';
+import {APP_ROUTE} from '../../data/constants';
+
+const memoryHistory = createMemoryHistory();
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -17,35 +22,34 @@ describe(`Offer Card Component`, () => {
     });
     const currentOffer = OFFERS_TESTS[0];
 
-    const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={onMouseOver} onTitleClick={() => {}} onFavoriteToggle={() => {}} />
+    const offerCard = mount(
+        <Router history={memoryHistory}>
+          <OfferCard offer={currentOffer} onHover={onMouseOver} onFavoriteToggle={() => {}} />
+        </Router>
     );
 
-    const card = offerCard.find(`.place-card`);
+    const card = offerCard.find(`.place-card`).first();
 
-    card.prop(`onMouseEnter`)();
+    card.simulate(`mouseenter`);
 
     expect(onMouseOver.mock.calls.length).toBe(1);
     expect(result).toEqual(currentOffer);
   });
 
   it(`Should title be clicked`, () => {
-    let resultOfferId = null;
-    const onTitleClick = jest.fn((offerId) => {
-      resultOfferId = offerId;
-    });
     const currentOffer = OFFERS_TESTS[0];
 
-    const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={onTitleClick} onFavoriteToggle={() => {}} />
+    const offerCard = mount(
+        <Router history={memoryHistory}>
+          <OfferCard offer={currentOffer} onHover={() => {}} onFavoriteToggle={() => {}} />
+        </Router>
     );
 
-    const card = offerCard.find(`h2.place-card__name`);
+    const card = offerCard.find(`h2.place-card__name`).first();
 
-    card.prop(`onClick`)();
+    card.prop(`click`, {});
 
-    expect(onTitleClick.mock.calls.length).toBe(1);
-    expect(resultOfferId).toBe(currentOffer.id);
+    expect(memoryHistory.location.pathname).toBe(`${APP_ROUTE.OFFER}/${currentOffer.id}`);
   });
 
   it(`Should favorite button be clicked`, () => {
@@ -55,13 +59,15 @@ describe(`Offer Card Component`, () => {
     });
     const currentOffer = OFFERS_TESTS[0];
 
-    const offerCard = shallow(
-        <OfferCard offer={currentOffer} onHover={() => {}} onTitleClick={() => {}} onFavoriteToggle={onFavoriteClick} />
+    const offerCard = mount(
+        <Router history={memoryHistory}>
+          <OfferCard offer={currentOffer} onHover={() => {}} onFavoriteToggle={onFavoriteClick} />
+        </Router>
     );
 
     const card = offerCard.find(`button.place-card__bookmark-button`);
 
-    card.prop(`onClick`)();
+    card.simulate(`click`, {});
 
     expect(onFavoriteClick.mock.calls.length).toBe(1);
     expect(resultOffer).toBe(currentOffer);

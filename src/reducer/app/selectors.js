@@ -23,14 +23,6 @@ export const getCity = (state) => {
   return ``;
 };
 
-export const getCurrentOfferId = (state) =>
-  state[NAME_SPACE].currentOfferId;
-
-export const getCurrentOffer = createSelector(
-    getCurrentOfferId,
-    getOffers,
-    (offerId, offers) => offers.find((offer) => offer.id === offerId));
-
 export const getFilteredOffers = createSelector(
     getCity,
     getOffers,

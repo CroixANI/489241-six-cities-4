@@ -8,7 +8,7 @@ import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
 
 const Main = (props) => {
-  const {offers, cities, selectedCity, onCityClick, onOfferTitleClick} = props;
+  const {offers, cities, selectedCity, onCityClick} = props;
   const mainClassName = `page__main page__main--index ${offers.length > 0 ? `` : `page__main--index-empty`}`;
   const limitedCities = cities.sort().slice(0, 6);
 
@@ -19,14 +19,13 @@ const Main = (props) => {
       <Error />
       <h1 className="visually-hidden">Cities</h1>
       <CitiesMenuWithActive items={limitedCities} activeItem={selectedCity} onItemSelected={onCityClick} />
-      <OffersCardsList onOfferTitleClick={onOfferTitleClick} />
+      <OffersCardsList />
     </main>
   );
 };
 
 Main.propTypes = {
   onCityClick: PropTypes.func.isRequired,
-  onOfferTitleClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedCity: PropTypes.string,
   offers: PropTypes.arrayOf(

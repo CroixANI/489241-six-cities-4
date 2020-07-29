@@ -14,7 +14,6 @@ const mockStore = configureStore([]);
 const store = mockStore({
   [NameSpace.APP]: {
     city: CITIES_TESTS[0],
-    currentOfferId: null,
     sortType: SORT_TYPE.POPULAR,
   },
   [NameSpace.DATA]: {
@@ -31,7 +30,7 @@ it(`Render Main component`, () => {
     .create(
         <Provider store={store}>
           <Router history={history}>
-            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} onOfferTitleClick={() => {}} />
+            <Main offers={OFFERS_TESTS} selectedCity={CITIES_TESTS[0]} cities={CITIES_TESTS} onCityClick={() => {}} />
           </Router>
         </Provider>)
     .toJSON();

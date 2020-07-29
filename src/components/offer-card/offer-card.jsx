@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 import Rating from '../rating/rating.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
+import {APP_ROUTE} from '../../data/constants.js';
 
 const OfferCard = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {offer, renderMark, onHover, onTitleClick, containerCssClass, imageWrapperCssClass, onFavoriteToggle} = props;
+  const {offer, renderMark, onHover, containerCssClass, imageWrapperCssClass, onFavoriteToggle} = props;
   const {
     id,
     title,
@@ -30,10 +32,6 @@ const OfferCard = (props) => {
 
   const handleMouseLeave = () => {
     onHover(null);
-  };
-
-  const handleTitleClick = (offerId) => () => {
-    onTitleClick(offerId);
   };
 
   const handleFavoriteToggle = () => {
@@ -64,8 +62,8 @@ const OfferCard = (props) => {
         <div className="place-card__rating rating">
           <OfferCardRating rating={offer.rating} />
         </div>
-        <h2 onClick={handleTitleClick(id)} className="place-card__name">
-          <a href="#">{title}</a>
+        <h2 className="place-card__name">
+          <Link to={`${APP_ROUTE.OFFER}/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -76,7 +74,6 @@ const OfferCard = (props) => {
 OfferCard.propTypes = {
   renderMark: PropTypes.func,
   onHover: PropTypes.func.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
   onFavoriteToggle: PropTypes.func.isRequired,
   containerCssClass: PropTypes.string,
   imageWrapperCssClass: PropTypes.string,

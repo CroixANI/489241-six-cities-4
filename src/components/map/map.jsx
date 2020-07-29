@@ -4,11 +4,11 @@ import leaflet from 'leaflet';
 
 const MAP_STARTING_POINT = [52.38333, 4.9];
 const MAP_PIN_ICON = leaflet.icon({
-  iconUrl: `img/pin.svg`,
+  iconUrl: `/img/pin.svg`,
   iconSize: [30, 30]
 });
 const MAP_ORANGE_PIN_ICON = leaflet.icon({
-  iconUrl: `img/pin-active.svg`,
+  iconUrl: `/img/pin-active.svg`,
   iconSize: [30, 30]
 });
 const MAP_ZOOM = 12;

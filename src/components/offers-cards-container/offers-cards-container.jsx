@@ -6,14 +6,14 @@ import OfferCardPremium from '../offer-card-premium/offer-card-premium.jsx';
 import {OFFER_LUXURY_TYPE} from '../../data/constants.js';
 
 const OffersCardsContainer = (props) => {
-  const {offers, onOfferTitleClick, onOfferHover, onFavoriteToggle} = props;
+  const {offers, onOfferHover, onFavoriteToggle} = props;
   const getOfferCardByLuxuryType = (offer) => {
     switch (offer.luxuryType) {
       case OFFER_LUXURY_TYPE.PREMIUM:
-        return <OfferCardPremium key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+        return <OfferCardPremium key={offer.id} offer={offer}
           onHover={onOfferHover} onFavoriteToggle={onFavoriteToggle} />;
       default:
-        return <OfferCard key={offer.id} offer={offer} onTitleClick={onOfferTitleClick}
+        return <OfferCard key={offer.id} offer={offer}
           onHover={onOfferHover} onFavoriteToggle={onFavoriteToggle} />;
     }
   };
@@ -26,7 +26,6 @@ const OffersCardsContainer = (props) => {
 };
 
 OffersCardsContainer.propTypes = {
-  onOfferTitleClick: PropTypes.func.isRequired,
   onOfferHover: PropTypes.func.isRequired,
   onFavoriteToggle: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(

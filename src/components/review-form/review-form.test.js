@@ -8,9 +8,6 @@ import NameSpace from '../../reducer/name-space';
 
 const mockStore = configureStore([]);
 const store = mockStore({
-  [NameSpace.APP]: {
-    currentOfferId: 1,
-  },
   [NameSpace.USER]: {
     authorizationStatus: `NO_AUTH`,
     currentUser: null,
@@ -31,7 +28,7 @@ it(`Render Review Form component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <ReviewForm />
+          <ReviewForm currentOfferId={1} />
         </Provider>
     )
     .toJSON();

@@ -11,7 +11,7 @@ import {getReviews} from '../../reducer/offer-data/selectors';
 const MAX_REVIEW = 10;
 
 const ReviewsList = (props) => {
-  const {reviews, authorizationStatus} = props;
+  const {reviews, authorizationStatus, currentOfferId} = props;
   const limitedReviews = reviews
     .slice()
     .sort((firstReview, secondReview) => {
@@ -20,7 +20,7 @@ const ReviewsList = (props) => {
     .slice(0, MAX_REVIEW);
 
   const ReviewFormElement = authorizationStatus === AuthorizationStatus.AUTH
-    ? <ReviewForm />
+    ? <ReviewForm currentOfferId={currentOfferId} />
     : <></>;
 
   return (
@@ -39,6 +39,7 @@ const ReviewsList = (props) => {
 };
 
 ReviewsList.propTypes = {
+  currentOfferId: PropTypes.number.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     reviewText: PropTypes.string.isRequired,

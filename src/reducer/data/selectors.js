@@ -7,6 +7,9 @@ const NAME_SPACE = NameSpace.DATA;
 export const getOffers = (state) =>
   state[NAME_SPACE].offers;
 
+export const getOfferById = (state, id) =>
+  state[NAME_SPACE].offers.find((x) => x.id === id);
+
 export const getCities = (state) =>
   state[NAME_SPACE].cities;
 
