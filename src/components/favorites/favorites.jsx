@@ -6,35 +6,15 @@ import Footer from '../footer/footer.jsx';
 import FavoritesEmpty from '../favorites-empty/favorites-empty.jsx';
 import FavoritesGroup from '../favorites-group/favorites-group.jsx';
 import {OperationCreator} from '../../reducer/data/data';
-import {getBookmarkedOffers} from '../../reducer/data/selectors';
-
-const groupOffersByCity = (offers) => {
-  return offers.reduce((total, offer) => {
-    const cityName = offer.location.city.name;
-
-    if (!total.has(cityName)) {
-      total.set(cityName, []);
-    }
-
-    const offersInCity = total.get(cityName);
-    offersInCity.push(offer);
-
-    return total;
-  }, new Map());
-};
+import {getGroupedByCityOffers} from '../../reducer/data/selectors';
 
 const Favorites = (props) => {
-  const {offers, onFavoriteToggle} = props;
+  const {offersGroups, onFavoriteToggle} = props;
 
-  if (!offers || offers.length === 0) {
+  if (!offersGroups || offersGroups.length === 0) {
     return <FavoritesEmpty />;
   }
 
-  const groupedOffers = groupOffersByCity(offers);
-  const childElements = [];
-  groupedOffers.forEach((val, key) =>(
-    childElements.push(<FavoritesGroup key={key} city={key} offers={val}
-      onFavoriteToggle={onFavoriteToggle} />)));
   return (
     <>
       <main className="page__main page__main--favorites">
@@ -42,7 +22,10 @@ const Favorites = (props) => {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {childElements}
+              {offersGroups.map((group) =>(
+                <FavoritesGroup key={group.city} city={group.city} offers={group.offers}
+                  onFavoriteToggle={onFavoriteToggle} />
+              ))}
             </ul>
           </section>
         </div>
@@ -54,22 +37,24 @@ const Favorites = (props) => {
 
 Favorites.propTypes = {
   onFavoriteToggle: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        type: PropTypes.string.isRequired,
-        luxuryType: PropTypes.string.isRequired,
-        isBookmarked: PropTypes.bool.isRequired,
-        previewImage: PropTypes.string.isRequired,
-      })
-  ),
+  offersGroups: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string.isRequired,
+    offers: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          title: PropTypes.string.isRequired,
+          price: PropTypes.number.isRequired,
+          rating: PropTypes.number.isRequired,
+          type: PropTypes.string.isRequired,
+          luxuryType: PropTypes.string.isRequired,
+          isBookmarked: PropTypes.bool.isRequired,
+          previewImage: PropTypes.string.isRequired,
+        })),
+  }))
 };
 
 const mapStateToProps = (state) => ({
-  offers: getBookmarkedOffers(state),
+  offersGroups: getGroupedByCityOffers(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

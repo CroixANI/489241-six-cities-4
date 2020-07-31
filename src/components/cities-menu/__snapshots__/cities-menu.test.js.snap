@@ -14,21 +14,8 @@ exports[`Render Cities Menu component 1`] = `
         className="locations__item"
       >
         <a
-          className="locations__item-link tabs__item tabs__item--active"
-          href="#"
-          onClick={[Function]}
-        >
-          <span>
-            Minsk
-          </span>
-        </a>
-      </li>
-      <li
-        className="locations__item"
-      >
-        <a
           className="locations__item-link tabs__item"
-          href="#"
+          href="/Brest"
           onClick={[Function]}
         >
           <span>
@@ -41,11 +28,24 @@ exports[`Render Cities Menu component 1`] = `
       >
         <a
           className="locations__item-link tabs__item"
-          href="#"
+          href="/Grodno"
           onClick={[Function]}
         >
           <span>
             Grodno
+          </span>
+        </a>
+      </li>
+      <li
+        className="locations__item"
+      >
+        <a
+          className="locations__item-link tabs__item tabs__item--active"
+          href="/Minsk"
+          onClick={[Function]}
+        >
+          <span>
+            Minsk
           </span>
         </a>
       </li>

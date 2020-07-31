@@ -1,7 +1,9 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
+import {APP_ROUTE} from '../../data/constants';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -46,9 +48,9 @@ class Login extends PureComponent {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <a className="locations__item-link" href="#">
+              <Link to={`${APP_ROUTE.ROOT}Amsterdam`} className="locations__item-link">
                 <span>Amsterdam</span>
-              </a>
+              </Link>
             </div>
           </section>
         </div>

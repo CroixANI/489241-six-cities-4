@@ -8,7 +8,8 @@ exports[`Render Favorite Item component 1`] = `
     className="favorites__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href="/offer/1"
+      onClick={[Function]}
     >
       <img
         alt="Place image"
@@ -85,7 +86,8 @@ exports[`Render Favorite Item component 1`] = `
       className="place-card__name"
     >
       <a
-        href="#"
+        href="/offer/1"
+        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>

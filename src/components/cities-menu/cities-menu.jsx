@@ -1,37 +1,83 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
-const CitiesMenu = (props) => {
-  const {items, activeItem, onItemSelected} = props;
-  const defaultCityClass = `locations__item-link tabs__item`;
-  const activeCityClass = `${defaultCityClass} tabs__item--active`;
+import {ActionCreator} from '../../reducer/app/app';
+import {getCity} from '../../reducer/app/selectors.js';
+import {getCities} from '../../reducer/data/selectors.js';
+import {APP_ROUTE} from '../../data/constants';
 
-  const handleCityClick = (city) => () => {
-    onItemSelected(city);
-  };
+const MAX_CITIES = 6;
 
-  return (
-    <div className="tabs">
-      <section className="locations container">
-        <ul className="locations__list tabs__list">
-          {items.map((city) => (
-            <li key={city} className="locations__item">
-              <a className={city === activeItem ? activeCityClass : defaultCityClass} href="#"
-                onClick={handleCityClick(city)}>
-                <span>{city}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
-  );
-};
+class CitiesMenu extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._changeCityIfUrlCityNameDiffers = this._changeCityIfUrlCityNameDiffers.bind(this);
+  }
+
+  componentDidMount() {
+    this._changeCityIfUrlCityNameDiffers();
+  }
+
+  componentDidUpdate() {
+    this._changeCityIfUrlCityNameDiffers();
+  }
+
+  _changeCityIfUrlCityNameDiffers() {
+    const {selectedCity, changeCity} = this.props;
+    const cityName = this.props.match.params.cityName;
+    if (selectedCity && cityName && selectedCity !== cityName) {
+      changeCity(cityName);
+    }
+  }
+
+  render() {
+    const {cities, selectedCity} = this.props;
+    const defaultCityClass = `locations__item-link tabs__item`;
+    const activeCityClass = `${defaultCityClass} tabs__item--active`;
+    const limitedCities = cities.sort().slice(0, MAX_CITIES);
+
+    return (
+      <div className="tabs">
+        <section className="locations container">
+          <ul className="locations__list tabs__list">
+            {limitedCities.map((city) => (
+              <li key={city} className="locations__item">
+                <Link to={`${APP_ROUTE.ROOT}${city}`} className={city === selectedCity ? activeCityClass : defaultCityClass}>
+                  <span>{city}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    );
+  }
+}
 
 CitiesMenu.propTypes = {
-  onItemSelected: PropTypes.func.isRequired,
-  items: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeItem: PropTypes.string
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      cityName: PropTypes.string,
+    }),
+  }).isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCity: PropTypes.string,
+  changeCity: PropTypes.func.isRequired,
 };
 
-export default CitiesMenu;
+const mapStateToProps = (state) => ({
+  cities: getCities(state),
+  selectedCity: getCity(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  },
+});
+
+export {CitiesMenu};
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesMenu);

@@ -30,7 +30,8 @@ Array [
               >
                 <a
                   className="locations__item-link"
-                  href="#"
+                  href="/Amsterdam"
+                  onClick={[Function]}
                 >
                   <span>
                     Amsterdam
@@ -48,7 +49,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -125,7 +127,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/1"
+                      onClick={[Function]}
                     >
                       Beautiful & luxurious apartment at great location
                     </a>
@@ -144,7 +147,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -221,7 +225,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/2"
+                      onClick={[Function]}
                     >
                       Wood and stone place
                     </a>
@@ -246,7 +251,8 @@ Array [
               >
                 <a
                   className="locations__item-link"
-                  href="#"
+                  href="/Paris"
+                  onClick={[Function]}
                 >
                   <span>
                     Paris
@@ -264,7 +270,8 @@ Array [
                   className="favorites__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/4"
+                    onClick={[Function]}
                   >
                     <img
                       alt="Place image"
@@ -341,7 +348,8 @@ Array [
                     className="place-card__name"
                   >
                     <a
-                      href="#"
+                      href="/offer/4"
+                      onClick={[Function]}
                     >
                       Nice, cozy, warm big bed apartment
                     </a>
@@ -371,7 +379,7 @@ Array [
         alt="6 cities logo"
         className="footer__logo"
         height="33"
-        src="img/logo.svg"
+        src="/img/logo.svg"
         width="64"
       />
     </a>

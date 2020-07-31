@@ -25,7 +25,7 @@ exports[`Render Login component 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -127,7 +127,8 @@ exports[`Render Login component 1`] = `
         >
           <a
             className="locations__item-link"
-            href="#"
+            href="/Amsterdam"
+            onClick={[Function]}
           >
             <span>
               Amsterdam

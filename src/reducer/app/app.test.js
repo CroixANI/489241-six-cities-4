@@ -4,7 +4,6 @@ describe(`Reducer should work correctly`, () => {
   it(`Reducer with no incoming parameters should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual({
       city: ``,
-      currentOfferId: null,
       sortType: `Popular`,
       errorMessage: null,
     });
@@ -13,25 +12,10 @@ describe(`Reducer should work correctly`, () => {
   it(`Reducer with Change City action should change city`, () => {
     expect(reducer({
       city: ``,
-      currentOfferId: null,
       sortType: `Popular`,
       errorMessage: null}, ActionCreator.changeCity(`Amsterdam`)))
     .toEqual({
       city: `Amsterdam`,
-      currentOfferId: null,
-      sortType: `Popular`,
-      errorMessage: null});
-  });
-
-  it(`Reducer with Change Current Offer action should change current offer id`, () => {
-    expect(reducer({
-      city: ``,
-      currentOfferId: null,
-      sortType: `Popular`,
-      errorMessage: null}, ActionCreator.changeCurrentOffer(1)))
-    .toEqual({
-      city: ``,
-      currentOfferId: 1,
       sortType: `Popular`,
       errorMessage: null});
   });
@@ -39,12 +23,10 @@ describe(`Reducer should work correctly`, () => {
   it(`Reducer with set error message should change current error message`, () => {
     expect(reducer({
       city: ``,
-      currentOfferId: null,
       sortType: `Popular`,
       errorMessage: null}, ActionCreator.setErrorMessage(`My message`)))
     .toEqual({
       city: ``,
-      currentOfferId: null,
       sortType: `Popular`,
       errorMessage: `My message`});
   });

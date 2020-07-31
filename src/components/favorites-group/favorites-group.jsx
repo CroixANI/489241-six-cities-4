@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 import FavoriteItem from '../favorite-item/favorite-item.jsx';
+import {APP_ROUTE} from '../../data/constants';
 
 const FavoritesGroup = (props) => {
   const {city, offers, onFavoriteToggle} = props;
@@ -9,9 +11,9 @@ const FavoritesGroup = (props) => {
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
-          <a className="locations__item-link" href="#">
+          <Link to={`${APP_ROUTE.ROOT}${city}`} className="locations__item-link">
             <span>{city}</span>
-          </a>
+          </Link>
         </div>
       </div>
       <div className="favorites__places">

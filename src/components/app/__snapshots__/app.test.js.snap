@@ -25,7 +25,7 @@ exports[`Render Main component 1`] = `
               alt="6 cities logo"
               className="header__logo"
               height="41"
-              src="img/logo.svg"
+              src="/img/logo.svg"
               width="81"
             />
           </a>
@@ -81,7 +81,7 @@ exports[`Render Main component 1`] = `
           >
             <a
               className="locations__item-link tabs__item tabs__item--active"
-              href="#"
+              href="/Amsterdam"
               onClick={[Function]}
             >
               <span>
@@ -94,7 +94,7 @@ exports[`Render Main component 1`] = `
           >
             <a
               className="locations__item-link tabs__item"
-              href="#"
+              href="/Cologne"
               onClick={[Function]}
             >
               <span>
@@ -107,7 +107,7 @@ exports[`Render Main component 1`] = `
           >
             <a
               className="locations__item-link tabs__item"
-              href="#"
+              href="/Paris"
               onClick={[Function]}
             >
               <span>
@@ -216,7 +216,8 @@ exports[`Render Main component 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/1"
+                  onClick={[Function]}
                 >
                   <img
                     alt="apartment"
@@ -291,10 +292,10 @@ exports[`Render Main component 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/1"
+                    onClick={[Function]}
                   >
                     Beautiful & luxurious apartment at great location
                   </a>
@@ -315,7 +316,8 @@ exports[`Render Main component 1`] = `
                 className="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/2"
+                  onClick={[Function]}
                 >
                   <img
                     alt="Private room"
@@ -390,10 +392,10 @@ exports[`Render Main component 1`] = `
                 </div>
                 <h2
                   className="place-card__name"
-                  onClick={[Function]}
                 >
                   <a
-                    href="#"
+                    href="/offer/2"
+                    onClick={[Function]}
                   >
                     Wood and stone place
                   </a>

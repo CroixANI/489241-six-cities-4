@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 import {OperationCreator, ActionCreator} from '../../reducer/offer-data/offer-data';
 import {getCurrentReview} from '../../reducer/offer-data/selectors';
-import {getCurrentOfferId} from '../../reducer/app/selectors.js';
 
 class ReviewForm extends PureComponent {
   constructor(props) {
@@ -123,7 +122,6 @@ ReviewForm.propTypes = {
 
 const mapStateToProps = (state) => ({
   currentReview: getCurrentReview(state),
-  currentOfferId: getCurrentOfferId(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

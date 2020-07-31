@@ -99,7 +99,8 @@ exports[`Render Offers List component 1`] = `
             className="cities__image-wrapper place-card__image-wrapper"
           >
             <a
-              href="#"
+              href="/offer/1"
+              onClick={[Function]}
             >
               <img
                 alt="apartment"
@@ -174,10 +175,10 @@ exports[`Render Offers List component 1`] = `
             </div>
             <h2
               className="place-card__name"
-              onClick={[Function]}
             >
               <a
-                href="#"
+                href="/offer/1"
+                onClick={[Function]}
               >
                 Beautiful & luxurious apartment at great location
               </a>
@@ -198,7 +199,8 @@ exports[`Render Offers List component 1`] = `
             className="cities__image-wrapper place-card__image-wrapper"
           >
             <a
-              href="#"
+              href="/offer/2"
+              onClick={[Function]}
             >
               <img
                 alt="Private room"
@@ -273,10 +275,10 @@ exports[`Render Offers List component 1`] = `
             </div>
             <h2
               className="place-card__name"
-              onClick={[Function]}
             >
               <a
-                href="#"
+                href="/offer/2"
+                onClick={[Function]}
               >
                 Wood and stone place
               </a>
@@ -297,7 +299,8 @@ exports[`Render Offers List component 1`] = `
             className="cities__image-wrapper place-card__image-wrapper"
           >
             <a
-              href="#"
+              href="/offer/3"
+              onClick={[Function]}
             >
               <img
                 alt="Private room"
@@ -372,10 +375,10 @@ exports[`Render Offers List component 1`] = `
             </div>
             <h2
               className="place-card__name"
-              onClick={[Function]}
             >
               <a
-                href="#"
+                href="/offer/3"
+                onClick={[Function]}
               >
                 Canal View Prinsengracht
               </a>
@@ -396,7 +399,8 @@ exports[`Render Offers List component 1`] = `
             className="cities__image-wrapper place-card__image-wrapper"
           >
             <a
-              href="#"
+              href="/offer/4"
+              onClick={[Function]}
             >
               <img
                 alt="apartment"
@@ -471,10 +475,10 @@ exports[`Render Offers List component 1`] = `
             </div>
             <h2
               className="place-card__name"
-              onClick={[Function]}
             >
               <a
-                href="#"
+                href="/offer/4"
+                onClick={[Function]}
               >
                 Nice, cozy, warm big bed apartment
               </a>
@@ -495,7 +499,8 @@ exports[`Render Offers List component 1`] = `
             className="cities__image-wrapper place-card__image-wrapper"
           >
             <a
-              href="#"
+              href="/offer/5"
+              onClick={[Function]}
             >
               <img
                 alt="apartment"
@@ -570,10 +575,10 @@ exports[`Render Offers List component 1`] = `
             </div>
             <h2
               className="place-card__name"
-              onClick={[Function]}
             >
               <a
-                href="#"
+                href="/offer/5"
+                onClick={[Function]}
               >
                 Wood and stone place
               </a>

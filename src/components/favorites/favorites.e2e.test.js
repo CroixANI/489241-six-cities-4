@@ -6,8 +6,8 @@ import configureStore from 'redux-mock-store';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
 import {Router} from 'react-router-dom';
+import {createMemoryHistory} from 'history';
 
-import history from '../../history';
 import Favorites from './favorites.jsx';
 import {getBookmarkedOffers} from '../../reducer/data/selectors';
 import {OFFERS_TESTS, CITIES_TESTS} from '../../mocks/offers-tests';
@@ -15,6 +15,8 @@ import {SORT_TYPE} from '../../data/constants';
 import NameSpace from '../../reducer/name-space';
 import {createAPI} from '../../api';
 import {createOfferDto} from '../../data/offer';
+
+const memoryHistory = createMemoryHistory();
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -35,7 +37,6 @@ describe(`Favorites component E2E tests`, () => {
   const store = mockStore({
     [NameSpace.APP]: {
       city: CITIES_TESTS[0],
-      currentOfferId: null,
       sortType: SORT_TYPE.POPULAR,
     },
     [NameSpace.DATA]: {
@@ -50,7 +51,7 @@ describe(`Favorites component E2E tests`, () => {
   it(`Should offer favorite toggle button be clicked and change favorite state`, () => {
     const wrapper = mount(
         <Provider store={store}>
-          <Router history={history}>
+          <Router history={memoryHistory}>
             <Favorites />
           </Router>
         </Provider>

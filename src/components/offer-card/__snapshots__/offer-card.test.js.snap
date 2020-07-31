@@ -10,7 +10,8 @@ exports[`Render Offer Card component 1`] = `
     className="cities__image-wrapper place-card__image-wrapper"
   >
     <a
-      href="#"
+      href="/offer/1"
+      onClick={[Function]}
     >
       <img
         alt="apartment"
@@ -85,10 +86,10 @@ exports[`Render Offer Card component 1`] = `
     </div>
     <h2
       className="place-card__name"
-      onClick={[Function]}
     >
       <a
-        href="#"
+        href="/offer/1"
+        onClick={[Function]}
       >
         Beautiful & luxurious apartment at great location
       </a>
