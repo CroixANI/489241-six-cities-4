@@ -12,15 +12,15 @@ const withOpenedClosedState = (WrappedComponent) => {
       this._handleMenuClick = this._handleMenuClick.bind(this);
     }
 
-    render() {
-      const {isOpened} = this.state;
-      return <WrappedComponent isOpened={isOpened} onMenuClicked={this._handleMenuClick} {...this.props} />;
-    }
-
     _handleMenuClick() {
       this.setState((prevState) => ({
         isOpened: !prevState.isOpened
       }));
+    }
+
+    render() {
+      const {isOpened} = this.state;
+      return <WrappedComponent isOpened={isOpened} onMenuClicked={this._handleMenuClick} {...this.props} />;
     }
   };
 };

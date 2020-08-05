@@ -14,12 +14,6 @@ const withActiveItem = (Component) => {
       this._handleItemSelected = this._handleItemSelected.bind(this);
     }
 
-    render() {
-      const {items} = this.props;
-      const {activeItem} = this.state;
-      return <Component items={items} activeItem={activeItem} onItemSelected={this._handleItemSelected} {...this.props} />;
-    }
-
     _handleItemSelected(selectedItem) {
       const {onItemSelected} = this.props;
 
@@ -30,6 +24,12 @@ const withActiveItem = (Component) => {
           onItemSelected(selectedItem);
         }
       });
+    }
+
+    render() {
+      const {items} = this.props;
+      const {activeItem} = this.state;
+      return <Component items={items} activeItem={activeItem} onItemSelected={this._handleItemSelected} {...this.props} />;
     }
   }
 
