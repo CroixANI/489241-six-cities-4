@@ -10,12 +10,17 @@ const initialState = {
 
 const ActionType = {
   LOAD_DATA: `LOAD_DATA`,
+  UPDATE_OFFER: `UPDATE_OFFER`
 };
 
 const ActionCreator = {
   loadData: (offers) => ({
     type: ActionType.LOAD_DATA,
     payload: offers
+  }),
+  updateOfferInState: (offer) => ({
+    type: ActionType.UPDATE_OFFER,
+    payload: offer
   })
 };
 
@@ -38,15 +43,15 @@ const OperationCreator = {
   toggleFavoriteFlag: (offer) => (dispatch, getState, api) => {
     const newStatus = offer.isBookmarked ? 0 : 1;
     return api.post(`/favorite/${offer.id}/${newStatus}`)
-      .then(() => {
-        const offers = getOffers(getState());
-        const foundOffer = offers.find((x) => x.id === offer.id);
-        foundOffer.isBookmarked = !offer.isBookmarked;
-        dispatch(ActionCreator.loadData(offers));
+      .then((response) => {
+        const updatedOffer = createOffer(response.data);
+        dispatch(ActionCreator.updateOfferInState(updatedOffer));
+        dispatch(AppActionCreator.setErrorMessage(null));
       })
       .catch(() => {
         const offers = getOffers(getState());
         dispatch(ActionCreator.loadData(offers));
+        dispatch(AppActionCreator.setErrorMessage(`Unable to toggle favorites flag.`));
       });
   }
 };
@@ -63,6 +68,16 @@ const reducer = (state = initialState, action) => {
         cities: filteredCities,
         offers: action.payload,
         isDataLoaded: true
+      });
+    case ActionType.UPDATE_OFFER:
+      return Object.assign({}, state, {
+        offers: state.offers.map((offer) => {
+          if (offer.id === action.payload.id) {
+            return action.payload;
+          }
+
+          return offer;
+        }),
       });
   }
 
