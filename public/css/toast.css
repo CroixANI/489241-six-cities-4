@@ -43,3 +43,8 @@
   font-weight: bold;
   display: inline-block;
 }
+
+.property__bookmark-button--active .property__bookmark-icon {
+  stroke:#4481c3;
+  fill:#4481c3
+}

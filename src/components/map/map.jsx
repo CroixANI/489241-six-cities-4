@@ -21,6 +21,7 @@ class Map extends PureComponent {
     this._map = null;
     this._mapPinsLayer = null;
 
+    this._getCenterPosition = this._getCenterPosition.bind(this);
     this._renderPinsOnSeparateLayer = this._renderPinsOnSeparateLayer.bind(this);
   }
 
@@ -38,9 +39,7 @@ class Map extends PureComponent {
       marker: true
     });
 
-    const center = activeLocation ? [activeLocation.city.latitude, activeLocation.city.longitude] : MAP_STARTING_POINT;
-    const zoom = activeLocation ? activeLocation.city.zoom : MAP_ZOOM;
-    this._map.setView(center, zoom);
+    this._map.setView(this._getCenterPosition(locations), MAP_ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -62,10 +61,20 @@ class Map extends PureComponent {
     this._map.remove();
   }
 
+  _getCenterPosition(locations) {
+    if (locations && locations.length > 0) {
+      return [locations[0].city.latitude, locations[0].city.longitude];
+    }
+
+    return MAP_STARTING_POINT;
+  }
+
   _renderPinsOnSeparateLayer(activeLocation, locations) {
     if (this._mapPinsLayer) {
       this._mapPinsLayer.clearLayers();
     }
+
+    this._map.setView(this._getCenterPosition(locations));
 
     const locationsMarkers = locations.map((location) => leaflet.marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON}));
     if (activeLocation) {
@@ -73,8 +82,6 @@ class Map extends PureComponent {
     }
 
     locationsMarkers.forEach((marker) => marker.addTo(this._mapPinsLayer));
-    const bounds = this._mapPinsLayer.getBounds();
-    this._map.fitBounds(bounds, {maxZoom: 12});
   }
 
   render() {
