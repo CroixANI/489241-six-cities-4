@@ -24,25 +24,6 @@ class Map extends PureComponent {
     this._renderPinsOnSeparateLayer = this._renderPinsOnSeparateLayer.bind(this);
   }
 
-  _renderPinsOnSeparateLayer(activeLocation, locations) {
-    if (this._mapPinsLayer) {
-      this._mapPinsLayer.clearLayers();
-    }
-
-    const centerLocation = locations[0];
-    const center = centerLocation ? [centerLocation.latitude, centerLocation.longitude] : MAP_STARTING_POINT;
-    this._map.setView(center);
-
-    const locationsMarkers = locations.map((location) => leaflet.marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON}));
-    if (activeLocation) {
-      locationsMarkers.push(leaflet.marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON}));
-    }
-
-    locationsMarkers.forEach((marker) => marker.addTo(this._mapPinsLayer));
-    const bounds = this._mapPinsLayer.getBounds();
-    this._map.fitBounds(bounds, {maxZoom: 12});
-  }
-
   componentDidMount() {
     if (!this._mapRef.current) {
       return;
@@ -57,7 +38,9 @@ class Map extends PureComponent {
       marker: true
     });
 
-    this._map.setView(MAP_STARTING_POINT, MAP_ZOOM);
+    const center = activeLocation ? [activeLocation.city.latitude, activeLocation.city.longitude] : MAP_STARTING_POINT;
+    const zoom = activeLocation ? activeLocation.city.zoom : MAP_ZOOM;
+    this._map.setView(center, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -79,6 +62,21 @@ class Map extends PureComponent {
     this._map.remove();
   }
 
+  _renderPinsOnSeparateLayer(activeLocation, locations) {
+    if (this._mapPinsLayer) {
+      this._mapPinsLayer.clearLayers();
+    }
+
+    const locationsMarkers = locations.map((location) => leaflet.marker([location.latitude, location.longitude], {icon: MAP_PIN_ICON}));
+    if (activeLocation) {
+      locationsMarkers.push(leaflet.marker([activeLocation.latitude, activeLocation.longitude], {icon: MAP_ORANGE_PIN_ICON}));
+    }
+
+    locationsMarkers.forEach((marker) => marker.addTo(this._mapPinsLayer));
+    const bounds = this._mapPinsLayer.getBounds();
+    this._map.fitBounds(bounds, {maxZoom: 12});
+  }
+
   render() {
     const {className} = this.props;
     const fullClassName = `${className || ``} map`;
@@ -93,6 +91,11 @@ class Map extends PureComponent {
 Map.propTypes = {
   className: PropTypes.string,
   activeLocation: PropTypes.shape({
+    city: PropTypes.shape({
+      latitude: PropTypes.number.isRequired,
+      longitude: PropTypes.number.isRequired,
+      zoom: PropTypes.number.isRequired
+    }).isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired
   }),

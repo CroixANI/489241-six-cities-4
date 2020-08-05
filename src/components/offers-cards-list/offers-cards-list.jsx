@@ -6,18 +6,16 @@ import OffersCardsContainer from '../offers-cards-container/offers-cards-contain
 import OffersCardsListEmpty from '../offers-cards-list-empty/offers-cards-list-empty.jsx';
 import Map from '../map/map.jsx';
 import SortOffersMenu from '../sort-offers-menu/sort-offers-menu.jsx';
-import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import withActiveItem from '../../hocs/with-active-item/with-active-item.jsx';
 import {ActionCreator as AppActionCreator} from '../../reducer/app/app';
 import {getSortedOffers, getSortType} from '../../reducer/app/selectors';
 import {OperationCreator as DataOperationCreator} from '../../reducer/data/data';
 
 const OffersCardsList = (props) => {
+
   const {sortType, items, activeItem, onSort, onItemSelected, onFavoriteToggle} = props;
   const locations = items.map((offer) => offer.location);
   const activeLocation = activeItem && items && items.length > 0 && items[0].location.city.name === activeItem.location.city.name ? activeItem.location : null;
-
-  const OffersCardsListMap = withClassName(`cities__map`, Map);
 
   if (items.length === 0) {
     return (
@@ -36,7 +34,7 @@ const OffersCardsList = (props) => {
         </section>
 
         <div className="cities__right-section">
-          <OffersCardsListMap activeLocation={activeLocation} locations={locations} />
+          <Map activeLocation={activeLocation} locations={locations} className={`cities__map`} />
         </div>
       </div>
     </div>
