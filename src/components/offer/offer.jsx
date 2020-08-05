@@ -2,6 +2,8 @@ import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
+import OfferLoading from '../offer-loading/offer-loading.jsx';
+import NotFound from '../not-found/not-found.jsx';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Rating from '../rating/rating.jsx';
 import Map from '../map/map.jsx';
@@ -9,7 +11,7 @@ import OfferCard from '../offer-card/offer-card.jsx';
 import Error from '../error/error.jsx';
 import {withClassName} from '../../hocs/with-class-name/with-class-name.jsx';
 import {withHeader} from '../../hocs/with-header/with-header.jsx';
-import {getOfferById} from '../../reducer/data/selectors';
+import {getOfferById, getIsDataLoaded} from '../../reducer/data/selectors';
 import {getNearBy} from '../../reducer/offer-data/selectors';
 import {OperationCreator as DataOperationCreator} from '../../reducer/data/data';
 import {OperationCreator as OfferDataOperationCreator} from '../../reducer/offer-data/offer-data';
@@ -44,7 +46,13 @@ class Offer extends PureComponent {
   }
 
   render() {
-    const {offer, nearBy, onFavoriteToggle} = this.props;
+    const {offer, nearBy, onFavoriteToggle, isDataLoaded} = this.props;
+
+    if (!offer && isDataLoaded) {
+      return (<NotFound />);
+    } else if (!offer && !isDataLoaded) {
+      return (<OfferLoading />);
+    }
 
     const {
       id,
@@ -181,6 +189,7 @@ Offer.propTypes = {
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
+  isDataLoaded: PropTypes.bool.isRequired,
   onComponentUpdate: PropTypes.func.isRequired,
   onFavoriteToggle: PropTypes.func.isRequired,
   offer: PropTypes.shape({
@@ -215,7 +224,7 @@ Offer.propTypes = {
       longitude: PropTypes.number.isRequired
     }).isRequired,
     description: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   nearBy: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -252,7 +261,8 @@ Offer.propTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
   nearBy: getNearBy(state),
-  offer: getOfferById(state, Number(ownProps.match.params.id))
+  offer: getOfferById(state, Number(ownProps.match.params.id)),
+  isDataLoaded: getIsDataLoaded(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Offer Loading component 1`] = `
+Array [
+  <main
+    className="page__main page__main--favorites page__main--favorites-empty"
+  >
+    <div
+      className="page__favorites-container container"
+    >
+      <section
+        className="favorites favorites--empty"
+      >
+        <h1
+          className="visually-hidden"
+        >
+          Loading...
+        </h1>
+        <div
+          className="cities__status-wrapper tabs__content"
+        >
+          <b
+            className="cities__status"
+          >
+            Please wait
+          </b>
+          <p
+            className="cities__status-description"
+          />
+        </div>
+      </section>
+    </div>
+  </main>,
+  <footer
+    className="footer container"
+  >
+    <a
+      className="footer__logo-link"
+      href="/"
+      onClick={[Function]}
+    >
+      <img
+        alt="6 cities logo"
+        className="footer__logo"
+        height="33"
+        src="/img/logo.svg"
+        width="64"
+      />
+    </a>
+  </footer>,
+]
+`;
